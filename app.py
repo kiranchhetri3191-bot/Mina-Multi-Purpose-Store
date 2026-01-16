@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- PROFESSIONAL NEON BLUE DESIGN ----
+# ---- PROFESSIONAL DARKER NEON HEADER DESIGN ----
 st.markdown("""
 <style>
 
@@ -10,7 +10,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Soft Gradient Background (Professional) */
+/* Soft Gradient Background */
 body::before {
     content: "";
     position: fixed;
@@ -21,14 +21,15 @@ body::before {
 
 /* HEADER WRAPPER */
 .header-box {
-    background: #0a1c33;
+    background: #081628;
     padding: 42px 55px;
     border-radius: 26px;
     margin-bottom: 40px;
 
-    /* Soft elegant neon outline */
-    border: 1px solid rgba(0, 132, 255, 0.45);
-    box-shadow: 0px 0px 14px rgba(0, 132, 255, 0.22);
+    border: 1px solid rgba(0, 112, 230, 0.55);
+    box-shadow: 
+        0px 0px 18px rgba(0, 112, 230, 0.28),
+        0px 10px 26px rgba(0,0,0,0.45);
 
     animation: fadeDown 0.9s ease;
 }
@@ -46,31 +47,36 @@ body::before {
     gap: 38px;
 }
 
-/* LOGO — Professional Look (No cartoon glow) */
+/* LOGO */
 .header-logo img {
     width: 145px;
     border-radius: 14px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 
+        0px 4px 14px rgba(0,0,0,0.45),
+        0px 0px 12px rgba(80,150,255,0.25);
 }
 
-/* MAIN TITLE — Clean Neon Accent */
+/* MAIN TITLE — DARKER, DEEPER PREMIUM NEON */
 .header-title {
     font-size: 54px;
     font-weight: 800;
-    color: #e8f4ff;
+    color: #dfeeff;
 
-    /* soft elegant neon edge */
     text-shadow:
-        0px 0px 6px rgba(80, 160, 255, 0.35),
-        0px 0px 12px rgba(80, 160, 255, 0.28);
+        0px 0px 6px rgba(30, 120, 255, 0.55),
+        0px 0px 14px rgba(30, 120, 255, 0.45),
+        0px 0px 22px rgba(10, 80, 200, 0.35);
 }
 
-/* SUBTITLE — Subtle & Professional */
+/* SUBTITLE — More visible & richer neon */
 .header-subtitle {
     font-size: 22px;
     font-weight: 400;
-    color: #c9d9ea;
-    margin-top: 8px;
+    color: #c8dcf7;
+
+    text-shadow:
+        0px 0px 5px rgba(30, 110, 240, 0.45),
+        0px 0px 10px rgba(20, 90, 210, 0.30);
 }
 
 /* SECTION TITLE */

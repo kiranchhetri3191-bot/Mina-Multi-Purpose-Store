@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="logo.png", layout="wide")
+st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
 # ---- PREMIUM CSS ----
 st.markdown("""

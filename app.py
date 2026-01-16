@@ -21,7 +21,7 @@ body::before {
 
 /* HEADER WRAPPER */
 .header-box {
-    background: #0d2340;   /* 💙 lighter modern blue */
+    background: #0d2340;
     padding: 42px 55px;
     border-radius: 26px;
     margin-bottom: 40px;
@@ -56,30 +56,30 @@ body::before {
         0px 0px 12px rgba(80,150,255,0.25);
 }
 
-/* MAIN TITLE — DARKER, PREMIUM NEON */
+/* MAIN TITLE — WHITE INSIDE + DARK BLUE GLOW */
 .header-title {
     font-size: 40px;
     font-weight: 800;
-    color: #dfeeff;
+    color: #ffffff;  /* Pure white text */
     max-width: 520px;
     line-height: 1.15;
 
     text-shadow:
-        0px 0px 5px rgba(30, 120, 255, 0.45),
-        0px 0px 10px rgba(30, 120, 255, 0.35),
-        0px 0px 16px rgba(10, 80, 200, 0.28);
+        0px 0px 6px rgba(0, 40, 120, 0.55),
+        0px 0px 14px rgba(0, 40, 120, 0.45),
+        0px 0px 22px rgba(0, 40, 120, 0.35);
 }
 
-/* SUBTITLE */
+/* SUBTITLE — WHITE + DARK BLUE GLOW */
 .header-subtitle {
     font-size: 20px;
     font-weight: 400;
     color: #ffffff;
 
     text-shadow:
-        0px 0px 8px rgba(120, 170, 255, 0.60),
-        0px 0px 14px rgba(80, 150, 255, 0.45),
-        0px 0px 22px rgba(40, 110, 220, 0.35);
+        0px 0px 6px rgba(0, 40, 120, 0.55),
+        0px 0px 12px rgba(0, 40, 120, 0.45),
+        0px 0px 20px rgba(0, 40, 120, 0.35);
 }
 
 /* SECTION TITLE */

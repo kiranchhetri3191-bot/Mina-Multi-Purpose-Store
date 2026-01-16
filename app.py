@@ -21,7 +21,7 @@ body::before {
 
 /* HEADER WRAPPER */
 .header-box {
-    background: #081628;
+    background: #0d2340;   /* 💙 lighter modern blue */
     padding: 42px 55px;
     border-radius: 26px;
     margin-bottom: 40px;
@@ -58,10 +58,10 @@ body::before {
 
 /* MAIN TITLE — DARKER, PREMIUM NEON */
 .header-title {
-    font-size: 40px;   /* Reduced size */
+    font-size: 40px;
     font-weight: 800;
     color: #dfeeff;
-    max-width: 520px;  /* Heading width reduced */
+    max-width: 520px;
     line-height: 1.15;
 
     text-shadow:
@@ -70,7 +70,7 @@ body::before {
         0px 0px 16px rgba(10, 80, 200, 0.28);
 }
 
-/* SUBTITLE — Pure white + brighter glow */
+/* SUBTITLE */
 .header-subtitle {
     font-size: 20px;
     font-weight: 400;

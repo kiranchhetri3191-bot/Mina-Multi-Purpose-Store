@@ -30,8 +30,8 @@ with col1:
     st.markdown("""
     <div class="card">
     <h2>Contact Details</h2>
-    📞 <b>Phone:</b> +919775410996 <br>
-    💬 <b>WhatsApp:</b> +919775410996 <br>
+    📞 <b>Phone:</b> +91 9775410996 <br>
+    💬 <b>WhatsApp:</b> +91 9775410996 <br>
     </div>
     """, unsafe_allow_html=True)
 

@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- DARKER PREMIUM HEADER DESIGN ----
+# ---- EVEN DARKER PREMIUM HEADER DESIGN ----
 st.markdown("""
 <style>
 
@@ -15,28 +15,28 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, #dde6ff, #cfdaf7, #e5ecff);
+    background: linear-gradient(135deg, #dce3f7, #c8d4f0, #e6ecff);
     z-index: -2;
 }
 
-/* HEADER WRAPPER – DARKER & PREMIUM */
+/* HEADER WRAPPER – DARKER, DEEP SHADE */
 .header-box {
-    background: rgba(5, 12, 28, 0.82);   /* darker navy */
+    background: rgba(3, 8, 20, 0.90);   /* even darker navy */
     backdrop-filter: blur(14px);
-    padding: 42px 55px;
+    padding: 45px 58px;
     border-radius: 26px;
     margin-bottom: 40px;
 
-    border: 1px solid rgba(0, 112, 230, 0.55); /* deeper neon edge */
+    border: 1px solid rgba(0, 98, 210, 0.55); /* darker neon edge */
     box-shadow:
-        0px 0px 18px rgba(0, 112, 230, 0.28),
-        0px 10px 26px rgba(0,0,0,0.45);
+        0px 0px 22px rgba(0, 98, 210, 0.28),
+        0px 12px 30px rgba(0,0,0,0.55);       /* deeper shadow */
 
     animation: fadeDown 0.9s ease;
 }
 
 @keyframes fadeDown {
-    0% { opacity: 0; transform: translateY(-20px); }
+    0% { opacity: 0; transform: translateY(-22px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -53,26 +53,26 @@ body::before {
     width: 145px;
     border-radius: 14px;
     box-shadow: 
-        0px 4px 14px rgba(0,0,0,0.45),
-        0px 0px 12px rgba(80,150,255,0.25);
+        0px 4px 14px rgba(0,0,0,0.55),
+        0px 0px 12px rgba(70,130,255,0.25);
 }
 
-/* MAIN TITLE — Brighter and More Visible */
+/* MAIN TITLE — Brighter & stronger visibility */
 .header-title {
     font-size: 54px;
     font-weight: 800;
-    color: #f3f7ff;  /* brighter white-blue */
+    color: #f6f9ff;   /* brighter white */
 
     text-shadow:
-        0px 0px 8px rgba(100, 170, 255, 0.45),
-        0px 0px 16px rgba(80, 150, 255, 0.28);
+        0px 0px 8px rgba(120, 180, 255, 0.55),
+        0px 0px 18px rgba(80, 150, 255, 0.35);
 }
 
-/* SUBTITLE */
+/* SUBTITLE — slightly darkened for match */
 .header-subtitle {
     font-size: 22px;
     font-weight: 400;
-    color: #d3e4f4;
+    color: #d0dcee;
     margin-top: 8px;
 }
 
@@ -155,4 +155,3 @@ We are open every day to serve our customers.
 """, unsafe_allow_html=True)
 
 st.success("✨ Explore Products & Contact pages using the sidebar!")
-

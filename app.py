@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- NEON BLUE GLOW PRO CSS ----
+# ---- PROFESSIONAL NEON BLUE DESIGN ----
 st.markdown("""
 <style>
 
@@ -10,50 +10,35 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Soft animated gradient background */
+/* Soft Gradient Background (Professional) */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 20% 20%, #dbe6ff, #c7d4ff, #e7eeff);
+    background: linear-gradient(135deg, #e8f0ff, #d4e2ff, #eef3ff);
     z-index: -2;
-    animation: bgShift 10s infinite alternate ease-in-out;
-}
-@keyframes bgShift {
-    0% { opacity: 0.8; }
-    100% { opacity: 1; }
 }
 
-/* HEADER BOX */
+/* HEADER WRAPPER */
 .header-box {
-    background: #00152e;
-    padding: 45px 55px;
-    border-radius: 28px;
+    background: #0a1c33;
+    padding: 42px 55px;
+    border-radius: 26px;
     margin-bottom: 40px;
-    position: relative;
-    box-shadow: 0 0 25px rgba(0, 146, 255, 0.35);
-    animation: fadeDown 1s ease;
+
+    /* Soft elegant neon outline */
+    border: 1px solid rgba(0, 132, 255, 0.45);
+    box-shadow: 0px 0px 14px rgba(0, 132, 255, 0.22);
+
+    animation: fadeDown 0.9s ease;
 }
 
-/* Outer neon glow */
-.header-box::after {
-    content: "";
-    position: absolute;
-    inset: -5px;
-    border-radius: 32px;
-    background: linear-gradient(135deg, #008cff, #00b6ff, #0090ff);
-    filter: blur(22px);
-    z-index: -1;
-    opacity: 0.6;
-}
-
-/* Fade animation */
 @keyframes fadeDown {
-    0% { opacity: 0; transform: translateY(-25px); }
+    0% { opacity: 0; transform: translateY(-20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
-/* FLEX - Logo + Title */
+/* FLEX */
 .header-flex {
     display: flex;
     align-items: center;
@@ -61,66 +46,62 @@ body::before {
     gap: 38px;
 }
 
-/* Logo */
+/* LOGO — Professional Look (No cartoon glow) */
 .header-logo img {
-    border-radius: 16px;
-    width: 150px;
-    box-shadow: 0px 0px 18px rgba(0, 162, 255, 0.55);
+    width: 145px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.25);
 }
 
-/* MAIN TITLE with NEON GLOW */
+/* MAIN TITLE — Clean Neon Accent */
 .header-title {
-    font-size: 60px;
-    font-weight: 900;
-    color: #dff2ff;
-    letter-spacing: 1px;
+    font-size: 54px;
+    font-weight: 800;
+    color: #e8f4ff;
+
+    /* soft elegant neon edge */
     text-shadow:
-        0 0 8px #00aaff,
-        0 0 12px #0099ff,
-        0 0 18px #0099ff,
-        0 0 25px #00c8ff;
+        0px 0px 6px rgba(80, 160, 255, 0.35),
+        0px 0px 12px rgba(80, 160, 255, 0.28);
 }
 
-/* SUBTITLE */
+/* SUBTITLE — Subtle & Professional */
 .header-subtitle {
     font-size: 22px;
     font-weight: 400;
+    color: #c9d9ea;
     margin-top: 8px;
-    color: #c6e4ff;
-    text-shadow: 0 0 10px rgba(0, 136, 255, 0.35);
 }
 
-/* Section Title */
+/* SECTION TITLE */
 .section-title {
-    font-size: 38px;
+    font-size: 36px;
     font-weight: 700;
-    color: #0f2a45;
-    padding-left: 12px;
-    border-left: 7px solid #0094ff;
     margin-top: 40px;
+    color: #102a45;
+    padding-left: 12px;
+    border-left: 6px solid #007bff;
 }
 
-/* Card */
+/* CARD */
 .card {
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(6px);
-    padding: 30px;
-    border-radius: 22px;
-    border-left: 7px solid #0074d4;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.12);
-    transition: 0.3s;
+    background: rgba(255,255,255,0.95);
+    padding: 28px;
+    border-radius: 20px;
+    border-left: 6px solid #0a4ba6;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.10);
+    transition: 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 14px 35px rgba(0, 140, 255, 0.28);
-    border-left: 7px solid #004c99;
+    transform: translateY(-3px);
+    box-shadow: 0px 12px 26px rgba(0,0,0,0.18);
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HEADER SECTION ----
+# ---- HEADER ----
 logo_path = "Mina Store Logo.png"
 
 st.markdown('<div class="header-box">', unsafe_allow_html=True)
@@ -130,7 +111,7 @@ col1, col2 = st.columns([1, 4])
 
 with col1:
     st.markdown('<div class="header-logo">', unsafe_allow_html=True)
-    st.image(logo_path, width=150)
+    st.image(logo_path, width=145)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
@@ -144,29 +125,29 @@ with col2:
 st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ---- ABOUT US ----
+# ---- ABOUT ----
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
-We are a trusted neighborhood retail store located <b>near Pragati Club, Birpara, West Bengal</b>.  
-We offer a carefully selected collection of daily-use products:<br><br>
+We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.
+We offer a curated selection of essential everyday products:<br><br>
 
 ✔ Gift Items 🎁<br>
 ✔ Grocery Essentials 🛒<br>
 ✔ Hardware Tools 🔧<br>
 ✔ Xerox & Printing Services 📝<br><br>
 
-Our promise is to deliver <b>quality, convenience, and fair pricing</b> every single day.
+Our mission is to provide <b>quality, convenience, and fair pricing</b> daily.
 </div>
 """, unsafe_allow_html=True)
 
-# ---- STORE TIMINGS ----
+# ---- TIMINGS ----
 st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
 🕘 <b>Opening:</b> 9:00 AM<br>
 🕖 <b>Closing:</b> 7:00 PM<br><br>
-We remain open all days to serve the local community.
+We are open every day to serve our customers.
 </div>
 """, unsafe_allow_html=True)
 

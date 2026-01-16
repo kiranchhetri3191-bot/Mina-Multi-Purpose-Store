@@ -1,3 +1,4 @@
+import streanlit as st
 # ---------------- HEADER FIX -------------------
 
 logo_path = "Mina Store Logo.png"

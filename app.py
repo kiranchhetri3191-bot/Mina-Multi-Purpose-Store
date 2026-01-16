@@ -23,7 +23,8 @@ body {
 .header-subtitle {
     font-size: 20px;
     margin-top: 8px;
-    color: #e8e8e8;
+    color: #ffffff;   /* ✔ FIXED – now subtitle is visible */
+    font-weight: 500;
 }
 .card {
     background: white;
@@ -53,7 +54,7 @@ st.markdown('<div class="header-box">', unsafe_allow_html=True)
 col1, col2 = st.columns([1, 5])
 
 with col1:
-    st.image(logo_path, width=130)   # ✔ LOGO DISPLAYS CORRECTLY
+    st.image(logo_path, width=130)   # ✔ Logo appears correctly
 
 with col2:
     st.markdown("""

@@ -56,7 +56,7 @@ body::before {
         0px 0px 12px rgba(80,150,255,0.25);
 }
 
-/* MAIN TITLE — DARKER, DEEPER PREMIUM NEON */
+/* MAIN TITLE — DARKER, PREMIUM NEON */
 .header-title {
     font-size: 54px;
     font-weight: 800;
@@ -68,15 +68,16 @@ body::before {
         0px 0px 22px rgba(10, 80, 200, 0.35);
 }
 
-/* SUBTITLE — More visible & richer neon */
+/* SUBTITLE — Now same neon theme as main title */
 .header-subtitle {
     font-size: 22px;
     font-weight: 400;
-    color: #c8dcf7;
+    color: #dceaff;
 
     text-shadow:
-        0px 0px 5px rgba(30, 110, 240, 0.45),
-        0px 0px 10px rgba(20, 90, 210, 0.30);
+        0px 0px 5px rgba(30, 120, 255, 0.50),
+        0px 0px 12px rgba(30, 120, 255, 0.40),
+        0px 0px 18px rgba(10, 80, 200, 0.30);
 }
 
 /* SECTION TITLE */

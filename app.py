@@ -16,11 +16,6 @@ body {
     color: white;
     margin-bottom: 30px;
 }
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .header-title {
     font-size: 50px;
     font-weight: bold;
@@ -50,22 +45,25 @@ body {
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HEADER SECTION WITH LOGO ----
-logo_path = "Mina Store Logo.png"    # Make sure this file is in same folder as app.py
+# ---- HEADER SECTION WITH WORKING LOGO ----
+logo_path = "Mina Store Logo.png"   # Your uploaded logo file
 
-st.markdown(f"""
-<div class="header-box">
-    <div class="header-container">
-        <div style="margin-right: 25px;">
-            <img src="{logo_path}" width="140" style="border-radius: 12px;">
-        </div>
-        <div>
+st.markdown('<div class="header-box">', unsafe_allow_html=True)
+
+col1, col2 = st.columns([1, 5])
+
+with col1:
+    st.image(logo_path, width=130)   # ✔ LOGO DISPLAYS CORRECTLY
+
+with col2:
+    st.markdown("""
+        <div style="padding-top: 10px;">
             <div class="header-title">Mina Multi-Purpose Store</div>
             <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
         </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ---- ABOUT US ----
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)

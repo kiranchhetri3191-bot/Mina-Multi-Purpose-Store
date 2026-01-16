@@ -2,74 +2,111 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- PREMIUM CSS (MODERN UI) ----
+# ---- MODERN, COMPACT HEADER CSS ----
 st.markdown("""
 <style>
-body {
-    background-color: #eef1f5;
-    font-family: 'Segoe UI', sans-serif;
+body { background-color: #f6f8fb; font-family: 'Segoe UI', sans-serif; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(90deg, #1f6feb, #0f2545);
+  padding: 18px 22px;
+  border-radius: 14px;
+  color: white;
+  margin-bottom: 28px;
 }
 
-/* Elegant header container */
-.hero-section {
-    background: linear-gradient(135deg, #3358f4, #051d3f);
-    padding: 40px 20px;
-    border-radius: 18px;
-    text-align: center;
-    color: white;
-    margin-bottom: 40px;
+/* Layout inside hero */
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-content: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* Logo styling */
-.logo-style {
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+/* Small circular logo */
+.logo-compact {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(4,12,30,0.35);
+  border: 2px solid rgba(255,255,255,0.08);
 }
 
-/* Title text */
-.big-title {
-    font-size: 56px;
-    font-weight: bold;
-    margin-top: 10px;
+/* Brand text */
+.brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.brand-title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+.brand-sub {
+  margin: 4px 0 0 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
 }
 
-/* Tagline text */
-.tagline {
-    font-size: 22px;
-    color: #f2f2f2;
-    margin-top: -10px;
+/* Decorative accent line under brand */
+.accent {
+  height: 4px;
+  width: 160px;
+  margin-top: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.35));
 }
 
-/* Main cards */
+/* Card style used below */
 .card {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.10);
-    margin-bottom: 25px;
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(13,30,60,0.06);
+  margin-bottom: 22px;
 }
-
-/* Section headers */
 .section-title {
-    font-size: 32px;
-    font-weight: bold;
-    color: #1c2a3a;
+  font-size: 26px;
+  font-weight: 700;
+  color: #12202f;
+  margin-bottom: 12px;
+}
+@media(max-width:700px){
+  .brand-title { font-size: 26px; }
+  .logo-compact { width:56px; height:56px; border-radius:12px; }
+  .accent { width: 120px; }
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HERO HEADER WITH LOGO ----
-logo_path = "Mina Store Logo.png"
+# ---- HERO (compact logo + brand text) ----
+logo_path = "Mina Store Logo.png"   # keep this file in same folder
 
-st.markdown('<div class="hero-section">', unsafe_allow_html=True)
+st.markdown('<div class="hero">', unsafe_allow_html=True)
+st.markdown('<div class="hero-inner">', unsafe_allow_html=True)
 
-st.image(logo_path, width=140, output_format="PNG", use_column_width=False)
+col1, col2 = st.columns([0.8, 8])  # column layout to align nicely
 
-st.markdown("""
-<div class="big-title">Mina Multi-Purpose Store</div>
-<div class="tagline">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
-""", unsafe_allow_html=True)
+with col1:
+    # show compact circular/rounded logo
+    st.image(logo_path, width=72, use_column_width=False, output_format="PNG")
 
+with col2:
+    st.markdown("""
+    <div class="brand">
+      <div class="brand-title">Mina Multi-Purpose Store</div>
+      <div class="brand-sub">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+      <div class="accent"></div>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ---- ABOUT US ----
@@ -77,7 +114,7 @@ st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
 We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
-We offer a wide range of everyday essential items at fair and affordable prices:<br><br>
+We offer a wide range of everyday essentials at fair prices:<br><br>
 
 ✔ Gift items  
 ✔ Grocery items  
@@ -85,7 +122,7 @@ We offer a wide range of everyday essential items at fair and affordable prices:
 ✔ Xerox & printing services  
 <br>
 
-Our mission is to offer <b>quality products, great convenience, and friendly service</b> to everyone.
+Our mission is to offer <b>quality products, great convenience, and friendly service</b>.
 </div>
 """, unsafe_allow_html=True)
 
@@ -95,8 +132,8 @@ st.markdown("""
 <div class="card">
 🕘 <b>Opens:</b> 9:00 AM<br>
 🕖 <b>Closes:</b> 7:00 PM<br><br>
-We are open every day for customer convenience.
+Open daily for your convenience.
 </div>
 """, unsafe_allow_html=True)
 
-st.success("✨ Use the sidebar to explore more!")
+st.success("✨ Use the sidebar to explore other pages!")

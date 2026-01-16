@@ -2,12 +2,32 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- PREMIUM V3 CSS (Animated) ----
+# ---- PREMIUM V4 ANIMATED BACKGROUND CSS ----
 st.markdown("""
 <style>
+
 body {
-    background-color: #edf1f7;
     font-family: 'Segoe UI', sans-serif;
+}
+
+/* 🔵 Animated Background Pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, #dbe6f6, #c3d0e8, #edf1f7);
+    animation: bgMove 12s infinite alternate ease-in-out;
+    z-index: -2;
+}
+
+/* Background animation */
+@keyframes bgMove {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 50% 80%; }
+    100% { background-position: 100% 0%; }
 }
 
 /* Header Box */
@@ -20,13 +40,13 @@ body {
     animation: fadeInDown 1.2s ease-in-out;
 }
 
-/* Header Animation */
+/* Header animation */
 @keyframes fadeInDown {
   0% { opacity: 0; transform: translateY(-25px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Flex Layout */
+/* Flex alignment */
 .header-flex {
     display: flex;
     align-items: center;
@@ -73,9 +93,10 @@ body {
   100% { opacity: 1; transform: translateX(0); }
 }
 
-/* Animated Card */
+/* Card */
 .card {
-    background: white;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(6px);
     padding: 32px;
     border-radius: 22px;
     box-shadow: 0px 8px 25px rgba(0,0,0,0.12);
@@ -84,20 +105,20 @@ body {
     animation: fadeInUp 1s ease-in-out;
 }
 
-/* Card animation */
+/* Card Fade Up */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Card Hover Animation */
+/* Card Hover */
 .card:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0px 12px 30px rgba(0,0,0,0.20);
     border-left: 7px solid #0f2557;
 }
 
-/* Nice Bullet Points */
+/* Bullet List */
 ul li {
     font-size: 18px;
     color: #0f2557;
@@ -128,7 +149,7 @@ with col2:
 st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ---- ABOUT SECTION ----
+# ---- ABOUT US SECTION ----
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
@@ -156,3 +177,4 @@ We remain open daily to assist customers in the area.
 """, unsafe_allow_html=True)
 
 st.success("✨ Explore Products & Contact pages using the sidebar!")
+

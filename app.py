@@ -2,67 +2,73 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- PREMIUM CSS ----
+# ---- PREMIUM CSS (MODERN UI) ----
 st.markdown("""
 <style>
 body {
-    background-color: #f1f3f5;
+    background-color: #eef1f5;
     font-family: 'Segoe UI', sans-serif;
 }
-.header-box {
-    background: linear-gradient(90deg, #4b79a1, #283e51);
-    padding: 40px;
-    border-radius: 20px;
+
+/* Elegant header container */
+.hero-section {
+    background: linear-gradient(135deg, #3358f4, #051d3f);
+    padding: 40px 20px;
+    border-radius: 18px;
+    text-align: center;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
-.header-title {
-    font-size: 50px;
+
+/* Logo styling */
+.logo-style {
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Title text */
+.big-title {
+    font-size: 56px;
     font-weight: bold;
+    margin-top: 10px;
 }
-.header-subtitle {
-    font-size: 20px;
-    margin-top: 8px;
-    color: #ffffff;   /* ✔ FIXED – now subtitle is visible */
-    font-weight: 500;
+
+/* Tagline text */
+.tagline {
+    font-size: 22px;
+    color: #f2f2f2;
+    margin-top: -10px;
 }
+
+/* Main cards */
 .card {
     background: white;
-    padding: 28px;
-    border-radius: 18px;
-    box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
-    transition: 0.3s;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.10);
+    margin-bottom: 25px;
 }
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
-}
+
+/* Section headers */
 .section-title {
     font-size: 32px;
-    margin-top: 40px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #1c2a3a;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HEADER SECTION WITH WORKING LOGO ----
-logo_path = "Mina Store Logo.png"   # Your uploaded logo file
+# ---- HERO HEADER WITH LOGO ----
+logo_path = "Mina Store Logo.png"
 
-st.markdown('<div class="header-box">', unsafe_allow_html=True)
+st.markdown('<div class="hero-section">', unsafe_allow_html=True)
 
-col1, col2 = st.columns([1, 5])
+st.image(logo_path, width=140, output_format="PNG", use_column_width=False)
 
-with col1:
-    st.image(logo_path, width=130)   # ✔ Logo appears correctly
-
-with col2:
-    st.markdown("""
-        <div style="padding-top: 10px;">
-            <div class="header-title">Mina Multi-Purpose Store</div>
-            <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
-        </div>
-    """, unsafe_allow_html=True)
+st.markdown("""
+<div class="big-title">Mina Multi-Purpose Store</div>
+<div class="tagline">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+""", unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -70,16 +76,16 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
-We are a reliable neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
-We offer a complete range of daily-use products including:<br><br>
+We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
+We offer a wide range of everyday essential items at fair and affordable prices:<br><br>
 
 ✔ Gift items  
 ✔ Grocery items  
 ✔ Basic hardware tools  
-✔ Xerox & printing  
+✔ Xerox & printing services  
 <br>
 
-Our focus is always on <b>fair pricing, convenience, and friendly customer service</b>.
+Our mission is to offer <b>quality products, great convenience, and friendly service</b> to everyone.
 </div>
 """, unsafe_allow_html=True)
 
@@ -87,11 +93,10 @@ Our focus is always on <b>fair pricing, convenience, and friendly customer servi
 st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
-🕘 <b>Opens:</b> 9:00 AM  
-🕖 <b>Closes:</b> 7:00 PM  
-<br>
-We operate daily for your convenience.
+🕘 <b>Opens:</b> 9:00 AM<br>
+🕖 <b>Closes:</b> 7:00 PM<br><br>
+We are open every day for customer convenience.
 </div>
 """, unsafe_allow_html=True)
 
-st.success("✨ Use the sidebar to explore other pages!")
+st.success("✨ Use the sidebar to explore more!")

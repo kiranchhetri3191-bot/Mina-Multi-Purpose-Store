@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
 # --------------------------------------------------------
-#                PREMIUM GLOBAL CSS
+#                GLOBAL PREMIUM CSS
 # --------------------------------------------------------
 st.markdown("""
 <style>
@@ -23,7 +23,7 @@ body {
     border-left: 6px solid #457b9d;
 }
 
-/* Card Design */
+/* Card */
 .card {
     background: white;
     padding: 30px;
@@ -43,10 +43,12 @@ body {
 
 
 # --------------------------------------------------------
-#                FLOATING HEADER (WORKING)
+#                FIXED FLOATING HEADER
 # --------------------------------------------------------
+
 logo_path = "Mina Store Logo.png"
 
+# Header wrapper
 st.markdown("""
 <div style="
     display: flex;
@@ -57,11 +59,11 @@ st.markdown("""
 ">
 """, unsafe_allow_html=True)
 
-# ---- LEFT : Floating Logo Box ----
+# ---- LEFT: Floating Logo Box ----
 st.markdown("""
 <div style="
     background: white;
-    padding: 18px;
+    padding: 12px;
     border-radius: 18px;
     box-shadow: 0px 8px 25px rgba(0,0,0,0.18);
     width: 150px;
@@ -73,12 +75,11 @@ st.markdown("""
 ">
 """, unsafe_allow_html=True)
 
-st.image(logo_path, width=120)
+st.image(logo_path, width=130)  # FIXED: Logo inside box
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-
-# ---- RIGHT : Floating Blue Box with Glow ----
+# ---- RIGHT: Floating Blue Header Box ----
 st.markdown("""
 <style>
 .header-float-box {
@@ -90,8 +91,6 @@ st.markdown("""
     box-shadow: 0px 10px 35px rgba(0,0,0,0.30);
     transition: 0.35s ease-in-out;
 }
-
-/* Hover Glow + Lift */
 .header-float-box:hover {
     transform: translateY(-8px);
     box-shadow: 0px 18px 45px rgba(0,0,0,0.40),
@@ -115,14 +114,15 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 
 
+
 # --------------------------------------------------------
-#                ABOUT US SECTION
+#                ABOUT US
 # --------------------------------------------------------
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="card">
-We are a friendly neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
+We are a friendly neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.
 We provide daily-use essentials with a clean and customer-friendly approach:
 <br><br>
 

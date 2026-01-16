@@ -1,58 +1,11 @@
-import streamlit as st
-
-st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
-
-# --------------------------------------------------------
-#                GLOBAL PREMIUM CSS
-# --------------------------------------------------------
-st.markdown("""
-<style>
-
-body {
-    background-color: #eef1f6;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-/* Section Title */
-.section-title {
-    font-size: 34px;
-    font-weight: 700;
-    margin-top: 40px;
-    color: #1d3557;
-    padding-left: 10px;
-    border-left: 6px solid #457b9d;
-}
-
-/* Card Design */
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
-    border-left: 7px solid #1d4e89;
-    transition: 0.3s;
-}
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0px 12px 25px rgba(0,0,0,0.18);
-    border-left: 7px solid #0f2557;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-
-
-# --------------------------------------------------------
-#      PREMIUM HEADER (Working, No Glitch)
-# --------------------------------------------------------
+# ---------------- HEADER FIX -------------------
 
 logo_path = "Mina Store Logo.png"
 
-st.markdown(f"""
+header_html = f"""
 <div style='display: flex; align-items: center; gap: 30px; margin-bottom: 40px;'>
 
-    <!-- LEFT : LOGO FRAME  -->
+    <!-- LEFT : LOGO FRAME -->
     <div style="
         background: linear-gradient(135deg, #1d4e89, #0f2557);
         padding: 18px;
@@ -97,43 +50,6 @@ st.markdown(f"""
     </div>
 
 </div>
-""", unsafe_allow_html=True)
+"""
 
-
-
-# --------------------------------------------------------
-#                ABOUT US SECTION
-# --------------------------------------------------------
-st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="card">
-We are a friendly neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
-We provide daily-use essentials with a clean and customer-friendly approach:
-<br><br>
-
-✔ Gift items 🎁 <br>
-✔ Grocery items 🛒 <br>
-✔ Hardware tools 🔧 <br>
-✔ Xerox & printing 📝 <br><br>
-
-Our mission is simple: <b>Quality, Convenience & Fair Pricing</b>.
-</div>
-""", unsafe_allow_html=True)
-
-
-
-# --------------------------------------------------------
-#                STORE TIMINGS
-# --------------------------------------------------------
-st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="card">
-🕘 <b>Opening:</b> 9:00 AM <br>
-🕖 <b>Closing:</b> 7:00 PM <br><br>
-We are open daily for your convenience.
-</div>
-""", unsafe_allow_html=True)
-
-st.success("✨ Use the sidebar to explore Products & Contact pages!")
+st.markdown(header_html, unsafe_allow_html=True)

@@ -58,21 +58,23 @@ body::before {
 
 /* MAIN TITLE — DARKER, PREMIUM NEON */
 .header-title {
-    font-size: 54px;
+    font-size: 40px;   /* Reduced size */
     font-weight: 800;
     color: #dfeeff;
+    max-width: 520px;  /* Heading width reduced */
+    line-height: 1.15;
 
     text-shadow:
-        0px 0px 6px rgba(30, 120, 255, 0.55),
-        0px 0px 14px rgba(30, 120, 255, 0.45),
-        0px 0px 22px rgba(10, 80, 200, 0.35);
+        0px 0px 5px rgba(30, 120, 255, 0.45),
+        0px 0px 10px rgba(30, 120, 255, 0.35),
+        0px 0px 16px rgba(10, 80, 200, 0.28);
 }
 
 /* SUBTITLE — Pure white + brighter glow */
 .header-subtitle {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
-    color: #ffffff;  /* pure bright white */
+    color: #ffffff;
 
     text-shadow:
         0px 0px 8px rgba(120, 170, 255, 0.60),

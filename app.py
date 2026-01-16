@@ -56,7 +56,7 @@ body::before {
         0px 0px 12px rgba(80,150,255,0.25);
 }
 
-/* MAIN TITLE — WHITE + DARK SCATTERED GLOW */
+/* MAIN TITLE — WHITE + DEEP BLUE GLOW */
 .header-title {
     font-size: 40px;
     font-weight: 800;
@@ -65,22 +65,21 @@ body::before {
     line-height: 1.15;
 
     text-shadow:
-        0px 0px 10px rgba(0, 20, 70, 0.75),
-        0px 0px 18px rgba(0, 20, 70, 0.55),
-        0px 0px 28px rgba(0, 20, 70, 0.45),
-        0px 0px 40px rgba(0, 20, 70, 0.38);
+        0px 0px 8px rgba(0, 60, 160, 0.60),
+        0px 0px 16px rgba(0, 60, 160, 0.45),
+        0px 0px 24px rgba(0, 60, 160, 0.38);
 }
 
-/* SUBTITLE — WHITE + DARK SMOOTH GLOW */
+/* SUBTITLE — WHITE + DEEP BLUE GLOW */
 .header-subtitle {
     font-size: 20px;
     font-weight: 400;
     color: #ffffff;
 
     text-shadow:
-        0px 0px 8px rgba(0, 20, 70, 0.70),
-        0px 0px 16px rgba(0, 20, 70, 0.55),
-        0px 0px 26px rgba(0, 20, 70, 0.45);
+        0px 0px 6px rgba(0, 60, 160, 0.60),
+        0px 0px 14px rgba(0, 60, 160, 0.45),
+        0px 0px 20px rgba(0, 60, 160, 0.35);
 }
 
 /* SECTION TITLE */

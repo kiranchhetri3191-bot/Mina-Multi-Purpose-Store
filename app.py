@@ -1,145 +1,179 @@
 import streamlit as st
 
-st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
+st.set_page_config(page_title="Mina Multi-Purpose Store",
+                   page_icon="Mina Store Logo.png",
+                   layout="wide")
 
-# ---- CREATIVE COLORS + GLASSMORPHISM CSS ----
+# --------------------- STYLES: VIBRANT GRADIENT + ANIMATED BLOBS ---------------------
 st.markdown("""
 <style>
-/* Page background: soft creative gradient with subtle diagonal pattern */
 :root{
-  --bg1: #f6f3ff; /* light lavender */
-  --bg2: #e6fff7; /* mint */
-  --accent: #3b82f6; /* blue accent */
-  --accent-2: #7c3aed; /* purple accent */
-  --card-bg: rgba(255,255,255,0.55);
-  --glass-border: rgba(255,255,255,0.45);
-  --muted: #2f3b45;
+  --text: #072036;
+  --card-glass: rgba(255,255,255,0.10);
+  --card-border: rgba(255,255,255,0.14);
+  --accent-white: rgba(255,255,255,0.95);
 }
 
-/* Overall page */
+/* page background: vivid gradient */
 body {
-  background: linear-gradient(120deg, var(--bg1) 0%, var(--bg2) 60%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--muted);
+  background: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 10%),
+              linear-gradient(135deg, #00c6ff 0%, #0072ff 40%, #ff4d6d 100%);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Decorative soft diagonal overlay */
+/* Add animated floating blobs to create lively background */
 .appview-container .main > div {
-  background-image: radial-gradient(circle at 10% 10%, rgba(60,99,246,0.05), transparent 10%),
-                    radial-gradient(circle at 90% 90%, rgba(124,58,237,0.04), transparent 12%);
+  position: relative;
+  overflow: visible;
 }
 
-/* Hero / compact header styling */
+.bg-blob {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.18;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+/* blob styles & animation */
+#blob1 { width: 420px; height: 420px; left: -80px; top: -60px; background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0) 60%); animation: floatA 9s ease-in-out infinite; }
+#blob2 { width: 380px; height: 380px; right: -100px; top: -20px; background: radial-gradient(circle, #ffd3e0 0%, rgba(255,255,255,0) 60%); animation: floatB 11s ease-in-out infinite; }
+#blob3 { width: 520px; height: 520px; left: 30%; bottom: -220px; background: radial-gradient(circle, rgba(0,0,0,0.06), rgba(0,0,0,0)); animation: floatA 13s ease-in-out infinite; }
+
+@keyframes floatA {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  50% { transform: translateY(-30px) translateX(18px) rotate(8deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+@keyframes floatB {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  50% { transform: translateY(22px) translateX(-18px) rotate(-6deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+/* HERO: compact logo + title block over gradient (front) */
 .hero {
-  padding: 18px 22px;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 18px auto 30px auto;
+  padding: 22px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
   border-radius: 14px;
-  margin-bottom: 28px;
-  /* soft two-tone inner gradient for hero */
-  background: linear-gradient(90deg, rgba(59,130,246,0.95), rgba(124,58,237,0.92));
-  color: white;
-  box-shadow: 0 12px 40px rgba(21,30,61,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 12px 40px rgba(2,8,23,0.26);
 }
 
-/* hero inner layout */
-.hero-inner {
-  display:flex;
-  align-items:center;
-  gap:18px;
-  max-width:1200px;
-  margin:0 auto;
-}
-
-/* compact logo */
+/* small compact logo */
 .logo-compact {
-  width:72px;
-  height:72px;
-  border-radius:12px;
-  object-fit:cover;
-  border: 2px solid rgba(255,255,255,0.18);
-  box-shadow: 0 8px 20px rgba(12,20,40,0.28);
-  background: rgba(255,255,255,0.03);
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow: 0 6px 18px rgba(2,8,23,0.3);
 }
 
-/* brand text */
-.brand { display:flex; flex-direction:column; justify-content:center; }
-.brand-title { font-size:34px; font-weight:700; margin:0; letter-spacing:-0.4px; }
-.brand-sub { margin-top:4px; font-size:14.5px; color: rgba(255,255,255,0.92); }
-
-/* accent line under brand (glass-ish) */
-.accent {
-  height:4px;
-  width:140px;
-  border-radius:6px;
-  margin-top:10px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.65));
-  box-shadow: 0 6px 16px rgba(59,130,246,0.18);
+/* title area */
+.title-block { display:flex; flex-direction:column; gap:6px; }
+.title-main {
+  font-size: 34px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 4px 18px rgba(2,8,23,0.45);
+  margin:0;
+}
+.title-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.92);
+  margin:0;
+  letter-spacing: 0.1px;
 }
 
-/* glass card style for content */
+/* accent underline */
+.accent-line {
+  width: 160px;
+  height: 4px;
+  border-radius: 6px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(255,255,255,0.55));
+  box-shadow: 0 8px 30px rgba(255,255,255,0.06);
+}
+
+/* content cards (glass-like but tinted) */
 .card {
-  background: var(--card-bg);
-  padding: 24px;
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 26px;
   border-radius: 14px;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 30px rgba(19,24,44,0.06);
-  backdrop-filter: blur(6px) saturate(120%);
-  -webkit-backdrop-filter: blur(6px) saturate(120%);
-  margin-bottom: 20px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 12px 40px rgba(2,8,23,0.18);
+  backdrop-filter: blur(6px) saturate(140%);
 }
 
-/* section title */
-.section-title {
-  font-size:24px;
-  font-weight:700;
-  color: #0f2430;
-  margin-bottom:12px;
-}
+/* headings inside */
+.section-title { font-size: 22px; font-weight: 700; color: #051427; margin-bottom: 8px; }
 
 /* list style */
-.card ul { padding-left: 18px; margin: 8px 0 0 0; }
+.card ul { margin-left: 18px; color: #041827; }
 .card li { margin: 8px 0; }
 
-/* subtle footer notice */
-.footer-note { font-size:13px; color:#33414a; margin-top:8px; }
+/* footer-ish note */
+.footer-note { color: rgba(2,8,23,0.72); font-size: 14px; margin-top: 8px; }
 
-/* responsive tweaks */
-@media (max-width:720px) {
-  .brand-title { font-size:22px; }
-  .brand-sub { font-size:13px; }
-  .logo-compact { width:56px; height:56px; border-radius:10px;}
-  .accent { width:110px; }
+/* responsiveness */
+@media (max-width: 780px) {
+  .hero { flex-direction: row; gap: 12px; padding: 16px; }
+  .title-main { font-size: 22px; }
+  .logo-compact { width: 56px; height: 56px; border-radius: 10px; }
+  .accent-line { width: 110px; }
+  .card { padding: 18px; margin: 14px 12px; border-radius: 12px; }
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HERO (compact logo + brand text) ----
-logo_path = "Mina Store Logo.png"   # keep this file in same folder
+# --------------------- BACKGROUND BLOBS (absolute positioned) ---------------------
+st.markdown("""
+<div class="bg-blob" id="blob1"></div>
+<div class="bg-blob" id="blob2"></div>
+<div class="bg-blob" id="blob3"></div>
+""", unsafe_allow_html=True)
+
+# --------------------- HERO (logo + title) ---------------------
+logo_path = "Mina Store Logo.png"
 
 st.markdown('<div class="hero">', unsafe_allow_html=True)
-st.markdown('<div class="hero-inner">', unsafe_allow_html=True)
 
-col1, col2 = st.columns([0.6, 9])
+col1, col2 = st.columns([0.7, 9])
 
 with col1:
-    st.image(logo_path, width=72, use_column_width=False, output_format="PNG")
+    st.image(logo_path, width=72, use_column_width=False)
 
 with col2:
     st.markdown("""
-    <div class="brand">
-      <div class="brand-title">Mina Multi-Purpose Store</div>
-      <div class="brand-sub">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
-      <div class="accent"></div>
-    </div>
+      <div class="title-block">
+        <div class="title-main">Mina Multi-Purpose Store</div>
+        <div class="title-sub">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+        <div class="accent-line"></div>
+      </div>
     """, unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
 
-# ---- ABOUT US (glass card) ----
+# --------------------- ABOUT CARD ---------------------
+st.markdown('<div class="card">', unsafe_allow_html=True)
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
-<div class="card">
-We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
+We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.
 We offer a wide range of everyday essentials at fair prices:
 <ul>
   <li>🎁 Gift items</li>
@@ -147,18 +181,25 @@ We offer a wide range of everyday essentials at fair prices:
   <li>🔧 Basic hardware tools</li>
   <li>📝 Xerox & printing services</li>
 </ul>
-<p class="footer-note">Our mission is to offer <b>quality products, great convenience, and friendly service</b> to everyone.</p>
-</div>
+<p class="footer-note">Our mission: <b>quality products, great convenience, and friendly service</b>.</p>
 """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
-# ---- TIMINGS (glass card with a slightly tinted accent) ----
+# --------------------- TIMINGS CARD ---------------------
+st.markdown('<div class="card">', unsafe_allow_html=True)
 st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
 st.markdown("""
-<div class="card">
-  <strong>🕘 Opens:</strong> 9:00 AM<br>
-  <strong>🕖 Closes:</strong> 7:00 PM<br><br>
-  Open daily for your convenience.
+<strong>🕘 Opens:</strong> 9:00 AM<br>
+<strong>🕖 Closes:</strong> 7:00 PM<br><br>
+Open every day for your convenience.
+""", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# small CTA / friendly note
+st.markdown("""
+<div style="max-width:1100px; margin:10px auto; text-align:center;">
+  <span style="background:rgba(255,255,255,0.06); padding:10px 18px; border-radius:999px; color:white; border:1px solid rgba(255,255,255,0.08); box-shadow:0 6px 20px rgba(2,8,23,0.18);">
+    ✨ Add our site to your LinkedIn or share the link — fully free & safe.
+  </span>
 </div>
 """, unsafe_allow_html=True)
-
-st.success("✨ Use the sidebar to explore other pages!")

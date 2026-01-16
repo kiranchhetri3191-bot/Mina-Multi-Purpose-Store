@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
 # --------------------------------------------------------
-#                GLOBAL PREMIUM CSS
+# Global CSS
 # --------------------------------------------------------
 st.markdown("""
 <style>
@@ -23,7 +23,7 @@ body {
     border-left: 6px solid #457b9d;
 }
 
-/* Card Design */
+/* Cards */
 .card {
     background: white;
     padding: 30px;
@@ -41,96 +41,66 @@ body {
 </style>
 """, unsafe_allow_html=True)
 
-
 # --------------------------------------------------------
-#    PREMIUM HEADER (BLUE GRADIENT LOGO FRAME + TITLE)
+# HEADER (FIXED, NO GLITCH)
 # --------------------------------------------------------
 
 logo_path = "Mina Store Logo.png"
 
-# Header Row
-st.markdown("""
-<div style="
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
-">
-""", unsafe_allow_html=True)
+header_html = f"""
+<div style='display: flex; align-items: center; gap: 30px; margin-bottom: 40px;'>
 
-# --------------------------------------------------------
-#        LEFT SIDE → BLUE GRADIENT LOGO FRAME
-# --------------------------------------------------------
-st.markdown(f"""
-<div style="
-    background: linear-gradient(135deg, #1d4e89, #0f2557);
-    padding: 18px;
-    border-radius: 22px;
-    height: 150px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.20);
-">
+    <!-- LEFT : LOGO FRAME -->
     <div style="
-        background: white;
-        padding: 12px;
-        border-radius: 16px;
-        width: 120px;
-        height: 120px;
+        background: linear-gradient(135deg, #1d4e89, #0f2557);
+        padding: 18px;
+        border-radius: 22px;
+        height: 150px;
+        width: 150px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0px 10px 30px rgba(0,0,0,0.20);
     ">
-        <img src="{logo_path}" width="100" style="border-radius:10px;" />
+        <div style="
+            background: white;
+            padding: 12px;
+            border-radius: 16px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+            <img src='{logo_path}' width='100' style='border-radius:10px;' />
+        </div>
     </div>
+
+    <!-- RIGHT : BLUE TITLE BOX -->
+    <div style="
+        background: linear-gradient(135deg, #1d4e89, #0f2557);
+        padding: 32px 45px;
+        border-radius: 22px;
+        color: white;
+        width: 70%;
+        box-shadow: 0px 12px 40px rgba(0,0,0,0.28);
+    ">
+        <h1 style="margin: 0; font-size: 46px; font-weight: 800;">
+            Mina Multi-Purpose Store
+        </h1>
+
+        <p style="margin: 0; margin-top: 10px; font-size: 20px; color: #dce3eb;">
+            Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox
+        </p>
+    </div>
+
 </div>
-""", unsafe_allow_html=True)
+"""
+
+st.markdown(header_html, unsafe_allow_html=True)
 
 # --------------------------------------------------------
-#        RIGHT SIDE → FLOATING BLUE HEADER BOX
-# --------------------------------------------------------
-st.markdown("""
-<style>
-.header-blue-box {
-    background: linear-gradient(135deg, #1d4e89, #0f2557);
-    padding: 32px 45px;
-    border-radius: 22px;
-    color: white;
-    box-shadow: 0px 12px 40px rgba(0,0,0,0.28);
-    width: 70%;
-    transition: 0.3s ease-in-out;
-}
-
-/* Hover Lift + Glow */
-.header-blue-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 18px 50px rgba(0,0,0,0.35),
-                0px 0px 25px rgba(29,78,137,0.70);
-}
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="header-blue-box">
-    <h1 style="margin: 0; font-size: 46px; font-weight: 800;">
-        Mina Multi-Purpose Store
-    </h1>
-
-    <h3 style="margin: 0; margin-top: 10px; font-size: 20px; color: #dce3eb;">
-        Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox
-    </h3>
-</div>
-""", unsafe_allow_html=True)
-
-# End header row
-st.markdown("</div>", unsafe_allow_html=True)
-
-
-
-# --------------------------------------------------------
-#                ABOUT US SECTION
+# ABOUT US
 # --------------------------------------------------------
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 
@@ -149,10 +119,8 @@ Our mission is simple: <b>Quality, Convenience & Fair Pricing</b>.
 </div>
 """, unsafe_allow_html=True)
 
-
-
 # --------------------------------------------------------
-#                STORE TIMINGS
+# STORE TIMINGS
 # --------------------------------------------------------
 st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
 
@@ -164,4 +132,4 @@ We are open daily for your convenience.
 </div>
 """, unsafe_allow_html=True)
 
-st.success("✨ Explore Products & Contact pages using the sidebar!")
+st.success("✨ Explore Products & Contact pages using the left sidebar!")

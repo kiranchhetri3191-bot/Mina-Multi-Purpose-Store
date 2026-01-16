@@ -1,4 +1,3 @@
-
 import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
@@ -12,19 +11,24 @@ body {
 }
 .header-box {
     background: linear-gradient(90deg, #4b79a1, #283e51);
-    padding: 60px;
+    padding: 40px;
     border-radius: 20px;
     color: white;
-    text-align: center;
     margin-bottom: 30px;
 }
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .header-title {
-    font-size: 55px;
+    font-size: 50px;
     font-weight: bold;
 }
 .header-subtitle {
-    font-size: 22px;
-    margin-top: 10px;
+    font-size: 20px;
+    margin-top: 8px;
+    color: #e8e8e8;
 }
 .card {
     background: white;
@@ -46,11 +50,20 @@ body {
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HEADER SECTION ----
-st.markdown("""
+# ---- HEADER SECTION WITH LOGO ----
+logo_path = "Mina Store Logo.png"    # Make sure this file is in same folder as app.py
+
+st.markdown(f"""
 <div class="header-box">
-    <div class="header-title">🛍️ Mina Multi-Purpose Store</div>
-    <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+    <div class="header-container">
+        <div style="margin-right: 25px;">
+            <img src="{logo_path}" width="140" style="border-radius: 12px;">
+        </div>
+        <div>
+            <div class="header-title">Mina Multi-Purpose Store</div>
+            <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -58,15 +71,16 @@ st.markdown("""
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
-We are a reliable local store located <b>near Pragati Club, Birpara, West Bengal</b>.  
-We offer a complete range of daily-use products including:
-<br><br>
+We are a reliable neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
+We offer a complete range of daily-use products including:<br><br>
+
 ✔ Gift items  
 ✔ Grocery items  
 ✔ Basic hardware tools  
 ✔ Xerox & printing  
 <br>
-Our focus is on <b>fair pricing, convenience, and friendly service</b>.
+
+Our focus is always on <b>fair pricing, convenience, and friendly customer service</b>.
 </div>
 """, unsafe_allow_html=True)
 
@@ -77,7 +91,7 @@ st.markdown("""
 🕘 <b>Opens:</b> 9:00 AM  
 🕖 <b>Closes:</b> 7:00 PM  
 <br>
-We are open daily for customer convenience.
+We operate daily for your convenience.
 </div>
 """, unsafe_allow_html=True)
 

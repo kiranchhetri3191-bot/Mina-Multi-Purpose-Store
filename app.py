@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
 # --------------------------------------------------------
-#                GLOBAL PREMIUM CSS
+#                GLOBAL CSS (Premium)
 # --------------------------------------------------------
 st.markdown("""
 <style>
@@ -43,43 +43,40 @@ body {
 
 
 # --------------------------------------------------------
-#                FIXED FLOATING HEADER
+#             FLOATING LOGO + FLOATING HEADER
 # --------------------------------------------------------
-
 logo_path = "Mina Store Logo.png"
 
-# Header wrapper
+# Outer wrapper
 st.markdown("""
 <div style="
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 40px;
     width: 100%;
+    margin-bottom: 40px;
 ">
 """, unsafe_allow_html=True)
 
-# ---- LEFT: Floating Logo Box ----
-st.markdown("""
+# -------- LEFT : CLEAN PREMIUM LOGO BOX (WORKING) --------
+st.markdown(f"""
 <div style="
     background: white;
-    padding: 12px;
-    border-radius: 18px;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.18);
-    width: 150px;
-    height: 150px;
+    padding: 15px;
+    border-radius: 20px;
+    width: 180px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.35s;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.18);
+    transition: 0.3s ease-in-out;
 ">
+    <img src="{logo_path}" style="width: 140px; border-radius: 12px;" />
+</div>
 """, unsafe_allow_html=True)
 
-st.image(logo_path, width=130)  # FIXED: Logo inside box
-
-st.markdown("</div>", unsafe_allow_html=True)
-
-# ---- RIGHT: Floating Blue Header Box ----
+# -------- RIGHT : FLOATING BLUE HEADER --------
 st.markdown("""
 <style>
 .header-float-box {
@@ -88,7 +85,7 @@ st.markdown("""
     border-radius: 22px;
     width: 72%;
     color: white;
-    box-shadow: 0px 10px 35px rgba(0,0,0,0.30);
+    box-shadow: 0px 15px 35px rgba(0,0,0,0.30);
     transition: 0.35s ease-in-out;
 }
 .header-float-box:hover {
@@ -114,24 +111,23 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 
 
-
 # --------------------------------------------------------
-#                ABOUT US
+#                ABOUT US SECTION
 # --------------------------------------------------------
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="card">
-We are a friendly neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.
-We provide daily-use essentials with a clean and customer-friendly approach:
-<br><br>
+We are a friendly neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.<br><br>
+
+We provide everyday essentials with great service:<br><br>
 
 ✔ Gift items 🎁 <br>
 ✔ Grocery items 🛒 <br>
 ✔ Hardware tools 🔧 <br>
 ✔ Xerox & printing 📝 <br><br>
 
-Our mission is simple: <b>Quality, Convenience & Fair Pricing</b>.
+Our mission is: <b>Quality • Convenience • Fair Pricing</b>.
 </div>
 """, unsafe_allow_html=True)
 

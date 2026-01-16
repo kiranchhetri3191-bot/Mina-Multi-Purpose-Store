@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- PREMIUM V4 ANIMATED BACKGROUND CSS ----
+# ---- PREMIUM PRO CSS ----
 st.markdown("""
 <style>
 
@@ -10,115 +10,108 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* 🔵 Animated Background Pattern */
+/* Soft Animated Background */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 20%, #dbe6f6, #c3d0e8, #edf1f7);
-    animation: bgMove 12s infinite alternate ease-in-out;
+    inset: 0;
+    background: linear-gradient(135deg, #dce8ff, #c7d4f0, #e9f0ff);
+    animation: bgShift 12s infinite alternate ease-in-out;
     z-index: -2;
 }
 
-/* Background animation */
-@keyframes bgMove {
+@keyframes bgShift {
     0% { background-position: 0% 0%; }
-    50% { background-position: 50% 80%; }
-    100% { background-position: 100% 0%; }
+    100% { background-position: 80% 100%; }
 }
 
-/* Header Box */
+/* HEADER BOX */
 .header-box {
-    background: linear-gradient(135deg, #1d4e89, #0f2557);
-    padding: 50px;
-    border-radius: 25px;
-    margin-bottom: 35px;
-    box-shadow: 0px 8px 35px rgba(0,0,0,0.25);
-    animation: fadeInDown 1.2s ease-in-out;
+    background: linear-gradient(135deg, #123d73, #0a1f42);
+    padding: 40px 55px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0px 10px 35px rgba(0,0,0,0.25);
+    animation: fadeDown 1s ease;
+    border: 2px solid rgba(255,255,255,0.1);
+    position: relative;
 }
 
-/* Header animation */
-@keyframes fadeInDown {
+/* Glow Border */
+.header-box::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 35px;
+    background: linear-gradient(135deg, #4fa3ff, #103e77);
+    z-index: -1;
+    filter: blur(18px);
+    opacity: 0.55;
+}
+
+@keyframes fadeDown {
   0% { opacity: 0; transform: translateY(-25px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Flex alignment */
+/* FLEX */
 .header-flex {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 35px;
 }
 
-/* Title */
+/* Logo */
+.header-logo img {
+    border-radius: 14px;
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.35);
+}
+
+/* MAIN TITLE */
 .header-title {
-    font-size: 60px;
+    font-size: 58px;
     font-weight: 900;
-    margin-bottom: 5px;
+    line-height: 1.15;
     color: white;
-    animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Subtitle */
+/* SUBTITLE */
 .header-subtitle {
-    font-size: 24px;
-    color: #e0e6ee;
-    margin-top: 0px;
-    animation: fadeIn 1.8s ease-in-out;
-}
-
-/* Fade animation */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+    font-size: 22px;
+    color: #cfd7e6;
+    margin-top: 6px;
+    font-weight: 400;
 }
 
 /* Section Title */
 .section-title {
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 700;
     margin-top: 40px;
-    color: #1d3557;
-    padding-left: 10px;
-    border-left: 7px solid #457b9d;
-    animation: slideInLeft 1.2s ease-in-out;
-}
-
-/* Slide animation */
-@keyframes slideInLeft {
-  0% { opacity: 0; transform: translateX(-25px); }
-  100% { opacity: 1; transform: translateX(0); }
+    color: #102a43;
+    padding-left: 12px;
+    border-left: 7px solid #376ba6;
 }
 
 /* Card */
 .card {
-    background: rgba(255,255,255,0.88);
+    background: rgba(255,255,255,0.90);
     backdrop-filter: blur(6px);
-    padding: 32px;
+    padding: 30px;
     border-radius: 22px;
+    border-left: 7px solid #123d73;
     box-shadow: 0px 8px 25px rgba(0,0,0,0.12);
-    transition: 0.3s ease-in-out;
-    border-left: 7px solid #1d4e89;
-    animation: fadeInUp 1s ease-in-out;
+    transition: 0.3s;
 }
 
-/* Card Fade Up */
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Card Hover */
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0px 12px 30px rgba(0,0,0,0.20);
-    border-left: 7px solid #0f2557;
+    transform: translateY(-4px);
+    box-shadow: 0px 14px 35px rgba(0,0,0,0.20);
+    border-left: 7px solid #0a1f42;
 }
 
-/* Bullet List */
+/* List */
 ul li {
     font-size: 18px;
     color: #0f2557;
@@ -127,16 +120,18 @@ ul li {
 </style>
 """, unsafe_allow_html=True)
 
-# ---- HEADER SECTION WITH LOGO ----
+# ---- HEADER SECTION ----
 logo_path = "Mina Store Logo.png"
 
 st.markdown('<div class="header-box">', unsafe_allow_html=True)
 st.markdown('<div class="header-flex">', unsafe_allow_html=True)
 
-col1, col2 = st.columns([1, 5])
+col1, col2 = st.columns([1, 4])
 
 with col1:
-    st.image(logo_path, width=125)
+    st.markdown('<div class="header-logo">', unsafe_allow_html=True)
+    st.image(logo_path, width=135)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
@@ -149,20 +144,19 @@ with col2:
 st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ---- ABOUT US SECTION ----
+# ---- ABOUT US ----
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
-We are a friendly neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.  
-We serve the community with a well-selected collection of daily essentials:<br><br>
+We are a trusted neighborhood retail store located <b>near Pragati Club, Birpara, West Bengal</b>.  
+We offer a carefully selected collection of daily-use products:<br><br>
 
-✔ Gift items 🎁  
-✔ Grocery items 🛒  
-✔ Hardware tools 🔧  
-✔ Xerox & printing 📝  
-<br>
+✔ Gift Items 🎁<br>
+✔ Grocery Essentials 🛒<br>
+✔ Hardware Tools 🔧<br>
+✔ Xerox & Printing Services 📝<br><br>
 
-Our mission is to deliver <b>quality, convenience, and fair pricing</b> every day.
+Our promise is to deliver <b>quality, convenience, and fair pricing</b> every single day.
 </div>
 """, unsafe_allow_html=True)
 
@@ -172,7 +166,7 @@ st.markdown("""
 <div class="card">
 🕘 <b>Opening:</b> 9:00 AM<br>
 🕖 <b>Closing:</b> 7:00 PM<br><br>
-We remain open daily to assist customers in the area.
+We remain open all days to serve the local community.
 </div>
 """, unsafe_allow_html=True)
 

@@ -68,16 +68,16 @@ body::before {
         0px 0px 22px rgba(10, 80, 200, 0.35);
 }
 
-/* SUBTITLE — Now same neon theme as main title */
+/* SUBTITLE — Pure white + brighter glow */
 .header-subtitle {
     font-size: 22px;
     font-weight: 400;
-    color: #dceaff;
+    color: #ffffff;  /* pure bright white */
 
     text-shadow:
-        0px 0px 5px rgba(30, 120, 255, 0.50),
-        0px 0px 12px rgba(30, 120, 255, 0.40),
-        0px 0px 18px rgba(10, 80, 200, 0.30);
+        0px 0px 8px rgba(120, 170, 255, 0.60),
+        0px 0px 14px rgba(80, 150, 255, 0.45),
+        0px 0px 22px rgba(40, 110, 220, 0.35);
 }
 
 /* SECTION TITLE */

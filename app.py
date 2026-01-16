@@ -1,4 +1,3 @@
-
 import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
@@ -8,102 +7,104 @@ st.markdown("""
 <style>
 
 body {
-font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 /* Soft Gradient Background */
 body::before {
-content: "";
-position: fixed;
-inset: 0;
-background: linear-gradient(135deg, #e8f0ff, #d4e2ff, #eef3ff);
-z-index: -2;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #e8f0ff, #d4e2ff, #eef3ff);
+    z-index: -2;
 }
 
 /* HEADER WRAPPER */
 .header-box {
-background: #081628;
-padding: 42px 55px;
-border-radius: 26px;
-margin-bottom: 40px;
+    background: #081628;
+    padding: 42px 55px;
+    border-radius: 26px;
+    margin-bottom: 40px;
 
-border: 1px solid rgba(0, 112, 230, 0.55);
-box-shadow:
-0px 0px 18px rgba(0, 112, 230, 0.28),
-0px 10px 26px rgba(0,0,0,0.45);
+    border: 1px solid rgba(0, 112, 230, 0.55);
+    box-shadow: 
+        0px 0px 18px rgba(0, 112, 230, 0.28),
+        0px 10px 26px rgba(0,0,0,0.45);
 
-animation: fadeDown 0.9s ease;
+    animation: fadeDown 0.9s ease;
 }
 
 @keyframes fadeDown {
-0% { opacity: 0; transform: translateY(-20px); }
-100% { opacity: 1; transform: translateY(0); }
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* FLEX */
 .header-flex {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 38px;
 }
 
 /* LOGO */
 .header-logo img {
-width: 145px;
-border-radius: 14px;
-box-shadow:
-0px 4px 14px rgba(0,0,0,0.45),
-0px 0px 12px rgba(80,150,255,0.25);
+    width: 145px;
+    border-radius: 14px;
+    box-shadow: 
+        0px 4px 14px rgba(0,0,0,0.45),
+        0px 0px 12px rgba(80,150,255,0.25);
 }
 
 /* MAIN TITLE — DARKER, PREMIUM NEON */
 .header-title {
-font-size: 54px;
-font-weight: 800;
-color: #dfeeff;
+    font-size: 40px;   /* Reduced size */
+    font-weight: 800;
+    color: #dfeeff;
+    max-width: 520px;  /* Heading width reduced */
+    line-height: 1.15;
 
-text-shadow:
-0px 0px 6px rgba(30, 120, 255, 0.55),
-0px 0px 14px rgba(30, 120, 255, 0.45),
-0px 0px 22px rgba(10, 80, 200, 0.35);
+    text-shadow:
+        0px 0px 5px rgba(30, 120, 255, 0.45),
+        0px 0px 10px rgba(30, 120, 255, 0.35),
+        0px 0px 16px rgba(10, 80, 200, 0.28);
 }
 
 /* SUBTITLE — Pure white + brighter glow */
 .header-subtitle {
-font-size: 22px;
-font-weight: 400;
-color: #ffffff; /* pure bright white */
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
 
-text-shadow:
-0px 0px 8px rgba(120, 170, 255, 0.60),
-0px 0px 14px rgba(80, 150, 255, 0.45),
-0px 0px 22px rgba(40, 110, 220, 0.35);
+    text-shadow:
+        0px 0px 8px rgba(120, 170, 255, 0.60),
+        0px 0px 14px rgba(80, 150, 255, 0.45),
+        0px 0px 22px rgba(40, 110, 220, 0.35);
 }
 
 /* SECTION TITLE */
 .section-title {
-font-size: 36px;
-font-weight: 700;
-margin-top: 40px;
-color: #102a45;
-padding-left: 12px;
-border-left: 6px solid #007bff;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 40px;
+    color: #102a45;
+    padding-left: 12px;
+    border-left: 6px solid #007bff;
 }
 
 /* CARD */
 .card {
-background: rgba(255,255,255,0.95);
-padding: 28px;
-border-radius: 20px;
-border-left: 6px solid #0a4ba6;
-box-shadow: 0px 6px 18px rgba(0,0,0,0.10);
-transition: 0.2s ease;
+    background: rgba(255,255,255,0.95);
+    padding: 28px;
+    border-radius: 20px;
+    border-left: 6px solid #0a4ba6;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.10);
+    transition: 0.2s ease;
 }
 
 .card:hover {
-transform: translateY(-3px);
-box-shadow: 0px 12px 26px rgba(0,0,0,0.18);
+    transform: translateY(-3px);
+    box-shadow: 0px 12px 26px rgba(0,0,0,0.18);
 }
 
 </style>
@@ -118,17 +119,17 @@ st.markdown('<div class="header-flex">', unsafe_allow_html=True)
 col1, col2 = st.columns([1, 4])
 
 with col1:
-st.markdown('<div class="header-logo">', unsafe_allow_html=True)
-st.image(logo_path, width=145)
-st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-logo">', unsafe_allow_html=True)
+    st.image(logo_path, width=145)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
-st.markdown("""
-<div>
-<div class="header-title">Mina Multi-Purpose Store</div>
-<div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
-</div>
-""", unsafe_allow_html=True)
+    st.markdown("""
+        <div>
+            <div class="header-title">Mina Multi-Purpose Store</div>
+            <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+        </div>
+    """, unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)

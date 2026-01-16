@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
 # --------------------------------------------------------
-# Global CSS
+#                GLOBAL PREMIUM CSS
 # --------------------------------------------------------
 st.markdown("""
 <style>
@@ -23,7 +23,7 @@ body {
     border-left: 6px solid #457b9d;
 }
 
-/* Cards */
+/* Card Design */
 .card {
     background: white;
     padding: 30px;
@@ -41,16 +41,18 @@ body {
 </style>
 """, unsafe_allow_html=True)
 
+
+
 # --------------------------------------------------------
-# HEADER (FIXED, NO GLITCH)
+#      PREMIUM HEADER (Working, No Glitch)
 # --------------------------------------------------------
 
 logo_path = "Mina Store Logo.png"
 
-header_html = f"""
+st.markdown(f"""
 <div style='display: flex; align-items: center; gap: 30px; margin-bottom: 40px;'>
 
-    <!-- LEFT : LOGO FRAME -->
+    <!-- LEFT : LOGO FRAME  -->
     <div style="
         background: linear-gradient(135deg, #1d4e89, #0f2557);
         padding: 18px;
@@ -76,7 +78,7 @@ header_html = f"""
         </div>
     </div>
 
-    <!-- RIGHT : BLUE TITLE BOX -->
+    <!-- RIGHT : BLUE HEADER BOX -->
     <div style="
         background: linear-gradient(135deg, #1d4e89, #0f2557);
         padding: 32px 45px;
@@ -95,12 +97,12 @@ header_html = f"""
     </div>
 
 </div>
-"""
+""", unsafe_allow_html=True)
 
-st.markdown(header_html, unsafe_allow_html=True)
+
 
 # --------------------------------------------------------
-# ABOUT US
+#                ABOUT US SECTION
 # --------------------------------------------------------
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 
@@ -119,8 +121,10 @@ Our mission is simple: <b>Quality, Convenience & Fair Pricing</b>.
 </div>
 """, unsafe_allow_html=True)
 
+
+
 # --------------------------------------------------------
-# STORE TIMINGS
+#                STORE TIMINGS
 # --------------------------------------------------------
 st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
 
@@ -132,4 +136,4 @@ We are open daily for your convenience.
 </div>
 """, unsafe_allow_html=True)
 
-st.success("✨ Explore Products & Contact pages using the left sidebar!")
+st.success("✨ Use the sidebar to explore Products & Contact pages!")

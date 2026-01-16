@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
 
-# ---- PREMIUM PRO CSS ----
+# ---- NEON BLUE GLOW PRO CSS ----
 st.markdown("""
 <style>
 
@@ -10,111 +10,111 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Soft Animated Background */
+/* Soft animated gradient background */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, #dce8ff, #c7d4f0, #e9f0ff);
-    animation: bgShift 12s infinite alternate ease-in-out;
+    background: radial-gradient(circle at 20% 20%, #dbe6ff, #c7d4ff, #e7eeff);
     z-index: -2;
+    animation: bgShift 10s infinite alternate ease-in-out;
 }
-
 @keyframes bgShift {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 80% 100%; }
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
 }
 
 /* HEADER BOX */
 .header-box {
-    background: linear-gradient(135deg, #123d73, #0a1f42);
-    padding: 40px 55px;
-    border-radius: 30px;
+    background: #00152e;
+    padding: 45px 55px;
+    border-radius: 28px;
     margin-bottom: 40px;
-    box-shadow: 0px 10px 35px rgba(0,0,0,0.25);
-    animation: fadeDown 1s ease;
-    border: 2px solid rgba(255,255,255,0.1);
     position: relative;
+    box-shadow: 0 0 25px rgba(0, 146, 255, 0.35);
+    animation: fadeDown 1s ease;
 }
 
-/* Glow Border */
+/* Outer neon glow */
 .header-box::after {
     content: "";
     position: absolute;
-    inset: -3px;
-    border-radius: 35px;
-    background: linear-gradient(135deg, #4fa3ff, #103e77);
+    inset: -5px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #008cff, #00b6ff, #0090ff);
+    filter: blur(22px);
     z-index: -1;
-    filter: blur(18px);
-    opacity: 0.55;
+    opacity: 0.6;
 }
 
+/* Fade animation */
 @keyframes fadeDown {
-  0% { opacity: 0; transform: translateY(-25px); }
-  100% { opacity: 1; transform: translateY(0); }
+    0% { opacity: 0; transform: translateY(-25px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* FLEX */
+/* FLEX - Logo + Title */
 .header-flex {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 35px;
+    gap: 38px;
 }
 
 /* Logo */
 .header-logo img {
-    border-radius: 14px;
-    box-shadow: 0px 8px 18px rgba(0,0,0,0.35);
+    border-radius: 16px;
+    width: 150px;
+    box-shadow: 0px 0px 18px rgba(0, 162, 255, 0.55);
 }
 
-/* MAIN TITLE */
+/* MAIN TITLE with NEON GLOW */
 .header-title {
-    font-size: 58px;
+    font-size: 60px;
     font-weight: 900;
-    line-height: 1.15;
-    color: white;
+    color: #dff2ff;
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 8px #00aaff,
+        0 0 12px #0099ff,
+        0 0 18px #0099ff,
+        0 0 25px #00c8ff;
 }
 
 /* SUBTITLE */
 .header-subtitle {
     font-size: 22px;
-    color: #cfd7e6;
-    margin-top: 6px;
     font-weight: 400;
+    margin-top: 8px;
+    color: #c6e4ff;
+    text-shadow: 0 0 10px rgba(0, 136, 255, 0.35);
 }
 
 /* Section Title */
 .section-title {
     font-size: 38px;
     font-weight: 700;
-    margin-top: 40px;
-    color: #102a43;
+    color: #0f2a45;
     padding-left: 12px;
-    border-left: 7px solid #376ba6;
+    border-left: 7px solid #0094ff;
+    margin-top: 40px;
 }
 
 /* Card */
 .card {
-    background: rgba(255,255,255,0.90);
+    background: rgba(255,255,255,0.92);
     backdrop-filter: blur(6px);
     padding: 30px;
     border-radius: 22px;
-    border-left: 7px solid #123d73;
+    border-left: 7px solid #0074d4;
     box-shadow: 0px 8px 25px rgba(0,0,0,0.12);
     transition: 0.3s;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0px 14px 35px rgba(0,0,0,0.20);
-    border-left: 7px solid #0a1f42;
-}
-
-/* List */
-ul li {
-    font-size: 18px;
-    color: #0f2557;
+    box-shadow: 0px 14px 35px rgba(0, 140, 255, 0.28);
+    border-left: 7px solid #004c99;
 }
 
 </style>
@@ -130,7 +130,7 @@ col1, col2 = st.columns([1, 4])
 
 with col1:
     st.markdown('<div class="header-logo">', unsafe_allow_html=True)
-    st.image(logo_path, width=135)
+    st.image(logo_path, width=150)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:

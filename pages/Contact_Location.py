@@ -119,16 +119,24 @@ body {{
     box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
     transition: 0.3s;
 }}
-
-.call-btn:hover {{
-    transform: scale(1.05);
-}}
+.call-btn:hover {{ transform: scale(1.05); }}
 
 .social-btn {{
     display: inline-block;
     padding: 10px 22px;
     margin: 5px;
     background: #0a4ba6;
+    color: white !important;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+}}
+
+.gmail-btn {{
+    display: inline-block;
+    padding: 10px 22px;
+    margin: 5px;
+    background: #d93025;
     color: white !important;
     border-radius: 8px;
     font-weight: 700;
@@ -162,11 +170,17 @@ with col1:
         <h2>Contact Details</h2>
         📞 <b>Phone:</b> +91 9775410996 <br><br>
         💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
-        ✉️ <b>Email:</b> minamultipurposestore@gmail.com <br><br>
+
+        ✉️ <b>Email:</b> 
+        <a href="mailto:minamultipurposestore@gmail.com">
+            minamultipurposestore@gmail.com
+        </a><br><br>
+
         🔗 <b>LinkedIn:</b> 
         <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
             Mina Multi-Purpose Store
         </a><br><br>
+
         🕒 <b>Opening Hours:</b><br>
         Mon–Sun: <b>7:00 AM – 10:00 PM</b>
     </div>
@@ -188,6 +202,7 @@ st.markdown("""
 <div style="text-align:center; margin-top:10px;">
     <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
+    <a href="mailto:minamultipurposestore@gmail.com" class="gmail-btn">📧 Gmail</a>
     <a href="tel:+919775410996" class="social-btn">📞 Call</a>
 </div>
 """, unsafe_allow_html=True)

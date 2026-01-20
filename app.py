@@ -4,27 +4,29 @@ st.set_page_config(page_title="Mina Multi-Purpose Store",
                    page_icon="Mina Store Logo.png",
                    layout="wide")
 
-# --------------------------
-# Detect DARK / LIGHT mode
-# --------------------------
+# ---------------------------------------------------
+# Detect DARK / LIGHT Mode
+# ---------------------------------------------------
 theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
-# Dark / Light Variables
+# ---------------------------------------------------
+# Colors
+# ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
-    TEXT = "#e6edf3"          # MAIN TEXT – White
-    SUBTEXT = "#b9c0c8"       # Slightly grey text
+    TEXT_MAIN = "#ffffff"          # Full white – visible in dark mode
+    TEXT_SECOND = "#e6edf3"
 else:
     BG = "#eef3ff"
-    CARD_BG = "rgba(255,255,255,0.95)"
-    TEXT = "#102a45"
-    SUBTEXT = "#4d5b6c"
+    CARD_BG = "rgba(255,255,255,0.92)"
+    TEXT_MAIN = "#0a0a0a"          # Neon-Black for light mode
+    TEXT_SECOND = "#102a45"
 
-# --------------------------
-# CSS
-# --------------------------
+# ---------------------------------------------------
+# CSS FIX — PERFECT FOR BOTH MODES
+# ---------------------------------------------------
 st.markdown(f"""
 <style>
 
@@ -32,7 +34,6 @@ body {{
     background: {BG} !important;
 }}
 
-/* HEADER */
 .header-box {{
     background: #0d2340;
     padding: 42px 55px;
@@ -70,41 +71,37 @@ body {{
     font-size: 36px;
     font-weight: 700;
     margin-top: 40px;
-    color: {TEXT};
+    color: {TEXT_MAIN};
     padding-left: 12px;
     border-left: 6px solid #007bff;
 }}
 
-/* CARD BOXES */
+/* CARD */
 .card {{
     background: {CARD_BG};
     padding: 28px;
     border-radius: 20px;
     border-left: 6px solid #0a4ba6;
     box-shadow: 0px 6px 18px rgba(0,0,0,0.10);
-    color: {TEXT};          /* FIX: TEXT NOW VISIBLE IN DARK MODE */
     font-size: 18px;
     line-height: 1.55;
+    color: {TEXT_MAIN};
 }}
 
-.card b {{
-    color: {TEXT};          /* Bold text visible */
-}}
-
-.card p, .card span {{
-    color: {TEXT} !important;
+.card * {{
+    color: {TEXT_MAIN} !important;
 }}
 
 .card a {{
-    color: #58a6ff !important;   /* Blue links in dark mode */
+    color: #58a6ff !important;
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
-# --------------------------
+# ---------------------------------------------------
 # HEADER
-# --------------------------
+# ---------------------------------------------------
 st.markdown('<div class="header-box">', unsafe_allow_html=True)
 st.markdown('<div class="header-flex">', unsafe_allow_html=True)
 
@@ -116,7 +113,7 @@ with col1:
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
-    st.markdown("""
+    st.markdown(f"""
         <div>
             <div class="header-title">Mina Multi-Purpose Store</div>
             <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
@@ -126,9 +123,9 @@ with col2:
 st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# --------------------------
+# ---------------------------------------------------
 # ABOUT US
-# --------------------------
+# ---------------------------------------------------
 st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
@@ -140,13 +137,13 @@ We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West 
 ✔ Hardware Tools 🔧<br>
 ✔ Xerox & Printing Services 📝<br><br>
 
-Our mission is to provide <b>quality, convenience, and fair pricing</b> daily.
+Our mission is to provide <b>quality, convenience, and fair pricing</b> every day.
 </div>
 """, unsafe_allow_html=True)
 
-# --------------------------
+# ---------------------------------------------------
 # TIMINGS
-# --------------------------
+# ---------------------------------------------------
 st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
 
 st.markdown(f"""

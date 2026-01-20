@@ -17,15 +17,16 @@ if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT_MAIN = "#ffffff"
-    TEXT_SECOND = "#e6edf3"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
-    TEXT_MAIN = "#0a0a0a"
-    TEXT_SECOND = "#102a45"
+    TEXT_MAIN = "#0a0a0a"     # Neon black
+
+NEON_BLUE = "#00c6ff"          # Main Neon Blue Color
+NEON_GLOW = "0px 0px 10px rgba(0, 198, 255, 0.7)"  # Simple glow (no animation)
 
 # ---------------------------------------------------
-# CSS FIX + NEON FLICKER ANIMATION
+# CSS (NO ANIMATION + FULL NEON BLUE)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -34,14 +35,14 @@ body {{
     background: {BG} !important;
 }}
 
+/* HEADER BOX */
 .header-box {{
-    background: #0d2340;
+    background: #00182b;
     padding: 42px 55px;
     border-radius: 26px;
     margin-bottom: 40px;
-    border: 1px solid rgba(0, 112, 230, 0.55);
-    box-shadow: 0px 0px 18px rgba(0, 112, 230, 0.28),
-                0px 10px 26px rgba(0,0,0,0.45);
+    border: 2px solid {NEON_BLUE};
+    box-shadow: {NEON_GLOW};
 }}
 
 .header-flex {{
@@ -53,50 +54,39 @@ body {{
 .header-logo img {{
     width: 145px;
     border-radius: 14px;
-}}
-
-/* ✨ NEON FLICKER ANIMATION ✨ */
-@keyframes neon-flicker {{
-  0%   {{ opacity: 1;   text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; }}
-  5%   {{ opacity: 0.7; text-shadow: 0 0 4px #ffff00; }}
-  10%  {{ opacity: 1;   text-shadow: 0 0 15px #ffff00, 0 0 25px #ffff00; }}
-  15%  {{ opacity: 0.8; text-shadow: 0 0 5px #ffff00; }}
-  20%  {{ opacity: 1;   text-shadow: 0 0 18px #ffff00, 0 0 35px #ffff00; }}
-  25%  {{ opacity: 0.6; text-shadow: none; }}
-  30%  {{ opacity: 1;   text-shadow: 0 0 10px #ffff00, 0 0 22px #ffff00; }}
-  100% {{ opacity: 1;   text-shadow: 0 0 12px #ffff00, 0 0 28px #ffff00; }}
+    border: 2px solid {NEON_BLUE};
 }}
 
 .header-title {{
     font-size: 40px;
     font-weight: 800;
-    color: #ffff00 !important;
-    animation: neon-flicker 2.4s infinite alternate;
+    color: {NEON_BLUE};
+    text-shadow: {NEON_GLOW};
 }}
 
 .header-subtitle {{
     font-size: 20px;
-    color: #ffff00 !important;
-    animation: neon-flicker 3s infinite alternate;
+    color: white;
 }}
 
-/* SECTION TITLES */
+/* SECTION TITLE */
 .section-title {{
     font-size: 36px;
     font-weight: 700;
     margin-top: 40px;
-    color: {TEXT_MAIN};
+    color: {NEON_BLUE};
     padding-left: 12px;
-    border-left: 6px solid #007bff;
+    border-left: 6px solid {NEON_BLUE};
+    text-shadow: {NEON_GLOW};
 }}
 
-/* CARD */
+/* CONTENT CARD */
 .card {{
     background: {CARD_BG};
     padding: 28px;
     border-radius: 20px;
-    border-left: 6px solid #0a4ba6;
-    box-shadow: 0px 6px 18px rgba(0,0,0,0.10);
+    border: 2px solid {NEON_BLUE};
+    box-shadow: {NEON_GLOW};
     font-size: 18px;
     line-height: 1.55;
     color: {TEXT_MAIN};
@@ -106,8 +96,12 @@ body {{
     color: {TEXT_MAIN} !important;
 }}
 
+.card b {{
+    color: {NEON_BLUE} !important;
+}}
+
 .card a {{
-    color: #58a6ff !important;
+    color: {NEON_BLUE} !important;
 }}
 
 </style>

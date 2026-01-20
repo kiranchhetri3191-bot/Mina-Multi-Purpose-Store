@@ -25,7 +25,7 @@ else:
     TEXT_SECOND = "#102a45"
 
 # ---------------------------------------------------
-# CSS FIX — UPDATED WITH NEON GRADIENT
+# CSS FIX + NEON FLICKER ANIMATION
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -55,23 +55,29 @@ body {{
     border-radius: 14px;
 }}
 
-/* 🌟 NEON GRADIENT TITLE + SUBTITLE */
-.header-title, .header-subtitle {{
-    background: linear-gradient(90deg, #ffff00, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-    text-shadow: 0px 0px 12px rgba(255,200,0,0.55),
-                 0px 0px 18px rgba(255,150,0,0.55);
+/* ✨ NEON FLICKER ANIMATION ✨ */
+@keyframes neon-flicker {{
+  0%   {{ opacity: 1;   text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; }}
+  5%   {{ opacity: 0.7; text-shadow: 0 0 4px #ffff00; }}
+  10%  {{ opacity: 1;   text-shadow: 0 0 15px #ffff00, 0 0 25px #ffff00; }}
+  15%  {{ opacity: 0.8; text-shadow: 0 0 5px #ffff00; }}
+  20%  {{ opacity: 1;   text-shadow: 0 0 18px #ffff00, 0 0 35px #ffff00; }}
+  25%  {{ opacity: 0.6; text-shadow: none; }}
+  30%  {{ opacity: 1;   text-shadow: 0 0 10px #ffff00, 0 0 22px #ffff00; }}
+  100% {{ opacity: 1;   text-shadow: 0 0 12px #ffff00, 0 0 28px #ffff00; }}
 }}
 
 .header-title {{
     font-size: 40px;
+    font-weight: 800;
+    color: #ffff00 !important;
+    animation: neon-flicker 2.4s infinite alternate;
 }}
 
 .header-subtitle {{
     font-size: 20px;
-    font-weight: 600;
+    color: #ffff00 !important;
+    animation: neon-flicker 3s infinite alternate;
 }}
 
 /* SECTION TITLES */

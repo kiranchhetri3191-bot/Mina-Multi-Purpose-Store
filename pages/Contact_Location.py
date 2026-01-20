@@ -7,23 +7,26 @@ st.set_page_config(
     layout="wide"
 )
 
-# Detect DARK / LIGHT Mode
+# ---------------------------------------------------
+# DARK / LIGHT MODE THEME DETECTION
+# ---------------------------------------------------
 theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
-# Theme Colors
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
-    CARD_SHADOW = "0px 6px 18px rgba(0,150,255,0.25)"
+    CARD_SHADOW = "0px 6px 18px rgba(0,150,255,0.28)"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
     TEXT = "#0a0a0a"
     CARD_SHADOW = "0px 6px 18px rgba(0,100,255,0.20)"
 
-# CSS Styling
+# ---------------------------------------------------
+# CSS
+# ---------------------------------------------------
 st.markdown(f"""
 <style>
 
@@ -46,22 +49,22 @@ body {{
     font-weight: 800;
     text-align: center;
     color: #2ab7ff;
-    text-shadow: 0 0 5px #2ab7ff;
+    text-shadow: 0 0 6px #2ab7ff;
     margin-bottom: 10px;
 }}
 
 .card {{
     background: {CARD_BG};
-    padding: 25px;
+    padding: 23px;
     border-radius: 18px;
     border-left: 5px solid #2ab7ff;
     box-shadow: {CARD_SHADOW};
     margin-bottom: 25px;
 }}
 
-.call-btn, .email-btn, .linkedin-btn {{
+.call-btn, .email-btn {{
     display: inline-block;
-    padding: 12px 28px;
+    padding: 12px 30px;
     background: #2ab7ff;
     color: white !important;
     font-size: 20px;
@@ -91,7 +94,7 @@ body {{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    font-size: 36px;
+    font-size: 34px;
     text-align: center;
     padding-top: 8px;
     box-shadow: 0 0 12px #25D366;
@@ -117,7 +120,7 @@ body {{
 .footer {{
     text-align: center;
     color: {TEXT};
-    margin-top: 45px;
+    margin-top: 50px;
     padding-top: 20px;
     border-top: 2px solid #2ab7ff50;
 }}
@@ -125,18 +128,16 @@ body {{
 </style>
 """, unsafe_allow_html=True)
 
-
-
-# -------------------------------------------------------------------
-# 1️⃣ PAGE HEADER
-# -------------------------------------------------------------------
+# ---------------------------------------------------
+# 1️⃣ HEADER
+# ---------------------------------------------------
 st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
 
 
 
-# -------------------------------------------------------------------
-# 2️⃣ GOOGLE MAP FIRST (Requested Order)
-# -------------------------------------------------------------------
+# ---------------------------------------------------
+# 2️⃣ GOOGLE MAP FIRST
+# ---------------------------------------------------
 st.markdown("<div class='sub-title'>📍 Find Us on Google Maps</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
@@ -153,9 +154,9 @@ st.markdown(f"""
 
 
 
-# -------------------------------------------------------------------
-# 3️⃣ STORE LOCATION CARD
-# -------------------------------------------------------------------
+# ---------------------------------------------------
+# 3️⃣ STORE LOCATION
+# ---------------------------------------------------
 st.markdown("<div class='sub-title'>🏪 Store Location</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
@@ -170,9 +171,9 @@ Near Pragati Club, Birpara, West Bengal <br><br>
 
 
 
-# -------------------------------------------------------------------
+# ---------------------------------------------------
 # 4️⃣ CONTACT DETAILS
-# -------------------------------------------------------------------
+# ---------------------------------------------------
 st.markdown("<div class='sub-title'>📞 Contact Details</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
@@ -185,22 +186,18 @@ st.markdown(f"""
 
 
 
-# -------------------------------------------------------------------
-# 5️⃣ BUTTON GROUP (BOTTOM)
-# -------------------------------------------------------------------
+# ---------------------------------------------------
+# 5️⃣ QUICK ACTION BUTTONS (BOTTOM)
+# ---------------------------------------------------
 st.markdown("<div class='sub-title'>⚡ Quick Actions</div>", unsafe_allow_html=True)
 
-# Buttons row
 st.markdown(f"""
 <div style="text-align:center;">
 
-    <!-- Call -->
     <a href="tel:+919775410996" class="call-btn">📞 Call Now</a>
 
-    <!-- Email -->
     <a href="mailto:minamultipurposestore@gmail.com" class="email-btn">✉️ Email Us</a>
 
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
              class="linkedin-icon"
@@ -212,9 +209,9 @@ st.markdown(f"""
 
 
 
-# -------------------------------------------------------------------
+# ---------------------------------------------------
 # 6️⃣ FLOATING BUTTONS
-# -------------------------------------------------------------------
+# ---------------------------------------------------
 st.markdown("""
 <a href="https://wa.me/919775410996" class="float-whatsapp">💬</a>
 <a href="tel:+919775410996" class="float-call">📞</a>
@@ -222,9 +219,9 @@ st.markdown("""
 
 
 
-# -------------------------------------------------------------------
+# ---------------------------------------------------
 # 7️⃣ FOOTER
-# -------------------------------------------------------------------
+# ---------------------------------------------------
 st.markdown("""
 <div class="footer">
 <b>Mina Multi-Purpose Store</b><br>

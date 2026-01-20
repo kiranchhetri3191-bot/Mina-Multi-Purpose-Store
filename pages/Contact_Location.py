@@ -7,170 +7,204 @@ st.set_page_config(
     layout="wide"
 )
 
-# -------------------------
-# Detect Dark / Light Mode
-# -------------------------
+# ---------------------------------------------------
+# Detect DARK / LIGHT Mode
+# ---------------------------------------------------
 theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
+# ---------------------------------------------------
+# Auto Colors for Both Modes
+# ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
+    TEXT_GLOW = "#ffffff"
     NEON_TEXT = "#00ccff"
+    CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
 else:
     BG = "#eef3ff"
-    CARD_BG = "#ffffff"
+    CARD_BG = "rgba(255,255,255,0.92)"
     TEXT = "#000000"
+    TEXT_GLOW = "#000000"
     NEON_TEXT = "#000000"
+    CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
-# -------------------------
-# Global CSS (Stable)
-# -------------------------
+# ---------------------------------------------------
+# CSS FIX — FULL DARK/LIGHT MODE SUPPORT
+# ---------------------------------------------------
 st.markdown(f"""
 <style>
 
 body {{
-    background-color: {BG} !important;
+    background: {BG} !important;
     color: {TEXT} !important;
 }}
 
-h2 {{
-    margin-bottom: 10px;
+@keyframes led-color-shift {{
+    0%   {{ color: #ff0000; text-shadow: 0 0 12px #ff0000; }}
+    20%  {{ color: #ff9900; text-shadow: 0 0 14px #ff9900; }}
+    40%  {{ color: #ffff00; text-shadow: 0 0 18px #ffff00; }}
+    60%  {{ color: #00ff00; text-shadow: 0 0 14px #00ff00; }}
+    80%  {{ color: #00ccff; text-shadow: 0 0 18px #00ccff; }}
+    100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
+}}
+
+.double-text {{
+    position: relative;
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+}}
+
+.double-text::before {{
+    content: "📞 Contact & Location";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: {TEXT_GLOW};
+    z-index: -1;
+    filter: blur(3px);
+}}
+
+.double-text {{
+    color: {NEON_TEXT};
+    animation: led-color-shift 3s infinite linear;
+}}
+
+.map-title {{
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    animation: led-color-shift 3s infinite linear;
 }}
 
 .card {{
     background: {CARD_BG};
-    padding: 20px;
-    border-radius: 15px;
+    padding: 25px;
+    border-radius: 18px;
     border-left: 5px solid #0a4ba6;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
-    margin-bottom: 20px;
+    box-shadow: {CARD_SHADOW};
+    margin-bottom: 25px;
 }}
 
-.card * {{
+.card, .card * {{
     color: {TEXT} !important;
-}}
-
-.social-btn {{
-    display: inline-block;
-    padding: 10px 20px;
-    background: #0a4ba6;
-    color: #fff !important;
-    border-radius: 8px;
-    font-weight: 700;
-    margin: 5px;
-    text-decoration: none;
-}}
-
-.gmail-btn {{
-    background: #d93025 !important;
-    color: #fff !important;
-}}
-
-.call-btn {{
-    display: inline-block;
-    padding: 15px 30px;
-    background: linear-gradient(90deg, #ff0066, #ffcc00);
-    color: #fff !important;
-    font-weight: 700;
-    font-size: 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    margin-top: 15px;
 }}
 
 .map-box {{
     background: {CARD_BG};
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 18px;
     border-left: 5px solid #0a4ba6;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: {CARD_SHADOW};
+    margin-top: 25px;
+}}
+
+.map-box, .map-box * {{
+    color: {TEXT} !important;
+}}
+
+.call-btn {{
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(90deg, #ff0066, #ffcc00);
+    color: white !important;
+    font-size: 22px;
+    font-weight: 800;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
+    transition: 0.3s;
+}}
+
+.call-btn:hover {{
+    transform: scale(1.05);
+}}
+
+.social-btn {{
+    display: inline-block;
+    padding: 10px 22px;
+    margin: 5px;
+    background: #0a4ba6;
+    color: white !important;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
 }}
 
 .footer {{
-    text-align: center;
-    margin-top: 30px;
-    opacity: 0.8;
+    text-align:center;
+    margin-top:40px;
+    font-size:18px;
+    opacity:0.8;
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
-# -------------------------
-# Header
-# -------------------------
-st.markdown(
-    f"<h1 style='text-align:center; color:{NEON_TEXT}; font-weight:900;'>📞 Contact & Location</h1>",
-    unsafe_allow_html=True
-)
+# ---------------------------------------------------
+# HEADER
+# ---------------------------------------------------
+st.markdown("<div class='double-text'>📞 Contact & Location</div>", unsafe_allow_html=True)
 st.write("---")
 
-# -------------------------
-# Columns
-# -------------------------
+# ---------------------------------------------------
+# CONTACT + LOCATION CARDS
+# ---------------------------------------------------
 col1, col2 = st.columns(2)
 
-# LEFT CARD
 with col1:
     st.markdown(f"""
     <div class="card">
         <h2>Contact Details</h2>
-
         📞 <b>Phone:</b> +91 9775410996 <br><br>
-
         💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
-
-        ✉️ <b>Email:</b> 
-        <a href="mailto:minamultipurposestore@gmail.com">
-            minamultipurposestore@gmail.com
-        </a><br><br>
-
-        🔗 <b>LinkedIn:</b>
+        ✉️ <b>Email:</b> minamultipurposestore@gmail.com <br><br>
+        🔗 <b>LinkedIn:</b> 
         <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
             Mina Multi-Purpose Store
         </a><br><br>
-
         🕒 <b>Opening Hours:</b><br>
-        Everyday: <b>7:00 AM – 10:00 PM</b>
+        Mon–Sun: <b>7:00 AM – 10:00 PM</b>
     </div>
     """, unsafe_allow_html=True)
 
-# RIGHT CARD
 with col2:
     st.markdown(f"""
     <div class="card">
         <h2>Store Location</h2>
         📍 <b>Mina Multi-Purpose Store</b><br>
-        Near Pragati Club, Birpara, West Bengal
+        Near Pragati Club, Birpara, West Bengal <br><br>
     </div>
     """, unsafe_allow_html=True)
 
-# -------------------------
-# Social Buttons
-# -------------------------
+# ---------------------------------------------------
+# SOCIAL BUTTONS
+# ---------------------------------------------------
 st.markdown("""
-<div style="text-align:center;">
+<div style="text-align:center; margin-top:10px;">
     <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
-    <a href="mailto:minamultipurposestore@gmail.com" class="social-btn gmail-btn">📧 Gmail</a>
     <a href="tel:+919775410996" class="social-btn">📞 Call</a>
 </div>
 """, unsafe_allow_html=True)
 
-# -------------------------
-# Call Now Big Button
-# -------------------------
+# ---------------------------------------------------
+# CALL BUTTON
+# ---------------------------------------------------
 st.markdown("""
-<div style="text-align:center;">
+<div style="text-align:center; margin-top:15px; margin-bottom:20px;">
     <a href="tel:+919775410996" class="call-btn">📞 Call Now</a>
 </div>
 """, unsafe_allow_html=True)
 
-# -------------------------
-# Google Map
-# -------------------------
-st.markdown("<div class='map-box'><h2 style='text-align:center;'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
+# ---------------------------------------------------
+# GOOGLE MAP
+# ---------------------------------------------------
+st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
     """
@@ -180,17 +214,16 @@ components.html(
         height="350"
         style="border:0; border-radius:12px;"
         allowfullscreen=""
-        loading="lazy"
-    ></iframe>
+        loading="lazy"></iframe>
     """,
     height=380,
 )
 
-# -------------------------
-# Footer
-# -------------------------
+# ---------------------------------------------------
+# FOOTER
+# ---------------------------------------------------
 st.markdown("""
-<div class="footer">
-    ❤️ Thank you for choosing Mina Multi-Purpose Store!
+<div class='footer'>
+    ❤️ Thank you for choosing Mina Multi-Purpose Store — Birpara’s Most Trusted Shop
 </div>
 """, unsafe_allow_html=True)

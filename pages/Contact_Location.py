@@ -145,6 +145,7 @@ body {{
     text-decoration: none;
     box-shadow: 0 0 18px rgba(255,0,150,0.7);
     transition: 0.2s;
+    pointer-events: auto !important;
 }}
 
 .float-btn:hover {{
@@ -249,19 +250,19 @@ components.html(
 st.success("📌 We are always happy to serve you!")
 
 # ---------------------------------------------------
-# FLOATING CONTACT BUTTONS (CALL + LINKEDIN + EMAIL)
+# FLOATING CONTACT BUTTONS (CLICKABLE)
 # ---------------------------------------------------
-st.markdown(f"""
+st.markdown("""
 <div class="floating-container">
 
     <!-- CALL -->
-    <a class="float-btn" href="tel:+919775410996">📞</a>
+    <a class="float-btn" href="tel:+919775410996" target="_blank" style="pointer-events:auto;">📞</a>
 
     <!-- LINKEDIN -->
-    <a class="float-btn" href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">🔗</a>
+    <a class="float-btn" href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank" style="pointer-events:auto;">🔗</a>
 
     <!-- EMAIL -->
-    <a class="float-btn" href="mailto:minamultipurposestore@gmail.com">✉️</a>
+    <a class="float-btn" href="mailto:minamultipurposestore@gmail.com" target="_blank" style="pointer-events:auto;">✉️</a>
 
 </div>
 """, unsafe_allow_html=True)

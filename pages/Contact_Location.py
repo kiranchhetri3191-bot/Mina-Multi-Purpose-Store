@@ -26,7 +26,7 @@ else:
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
 # ---------------------------------------------------
-# CSS
+# CSS (LED Header + Neon Cards)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -45,11 +45,17 @@ body {{
     100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
 }}
 
+@keyframes led-pulse {{
+    0%   {{ opacity: 0.75; transform: scale(1); }}
+    50%  {{ opacity: 1;    transform: scale(1.05); }}
+    100% {{ opacity: 0.75; transform: scale(1); }}
+}}
+
 .section-title {{
     font-size: 40px;
     font-weight: 900;
     text-align: center;
-    animation: led-color-shift 3s infinite linear;
+    animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
 }}
 
 .card {{
@@ -58,6 +64,17 @@ body {{
     border-radius: 18px;
     border-left: 5px solid #0a4ba6;
     box-shadow: {CARD_SHADOW};
+    margin-bottom: 25px;
+}}
+
+.card h2 {{
+    margin-top: 0;
+    color: {TEXT};
+}}
+
+.card p, .card b {{
+    color: {TEXT};
+    font-size: 18px;
 }}
 
 .map-box {{
@@ -79,7 +96,7 @@ st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_a
 st.write("---")
 
 # ---------------------------------------------------
-# CONTACT & LOCATION
+# CONTACT + LOCATION CARDS
 # ---------------------------------------------------
 col1, col2 = st.columns(2)
 
@@ -96,28 +113,30 @@ with col2:
     st.markdown(f"""
     <div class="card">
         <h2>Store Location</h2>
-        📍 <b>Near Pragati Club, Birpara, West Bengal</b>
+        📍 <b>Mina Multi-Purpose Store<br>Near Pragati Club, Birpara, West Bengal</b>
     </div>
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# GOOGLE MAP EMBED (No File Required)
+# GOOGLE MAP EMBED (EXACT STORE LOCATION & 100% FREE)
 # ---------------------------------------------------
-
-st.markdown("<div class='map-box'><h2>📍 Google Maps</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='map-box'><h2>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
     """
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.3938486000578!2d89.1450!3d26.7015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e209a2d564c0d5%3A0x6c28e232625e0193!2sPragati%20Club%2C%20Birpara!5e0!3m2!1sen!2sin!4v1707040000000!5m2!1sen!2sin" 
-        width="100%" 
-        height="350" 
-        style="border:0; border-radius:12px;" 
-        allowfullscreen="" 
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11509.41960234578!2d89.1368766!3d26.725808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e3bfb8052ef40d%3A0xec84f6cdedee5f4a!2sMina%20Multi-Purpose%20Store!5e0!3m2!1sen!2sin!4v1707120000000!5m2!1sen!2sin"
+        width="100%"
+        height="350"
+        style="border:0; border-radius:12px;"
+        allowfullscreen=""
         loading="lazy">
     </iframe>
     """,
     height=380,
 )
 
+# ---------------------------------------------------
+# FOOTER MESSAGE
+# ---------------------------------------------------
 st.success("📌 We are always happy to serve you!")

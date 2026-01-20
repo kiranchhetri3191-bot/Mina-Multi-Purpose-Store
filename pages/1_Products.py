@@ -1,45 +1,32 @@
-
-import streamlit as st
-
-st.set_page_config(layout="wide")
-
-# ---- CSS ----
-st.markdown("""
+st.markdown(f"""
 <style>
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
-    margin-bottom: 25px;
-    transition: 0.3s;
-}
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0px 12px 30px rgba(0,0,0,0.15);
-}
-.section-title {
+
+@keyframes led-color-shift {{
+    0%   {{ color: #ff0000; text-shadow: 0 0 12px #ff0000, 0 0 25px #ff0000; }}
+    20%  {{ color: #ff9900; text-shadow: 0 0 12px #ff9900, 0 0 25px #ff9900; }}
+    40%  {{ color: #ffff00; text-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00; }}
+    60%  {{ color: #00ff00; text-shadow: 0 0 12px #00ff00, 0 0 25px #00ff00; }}
+    80%  {{ color: #00ccff; text-shadow: 0 0 15px #00ccff, 0 0 30px #00ccff; }}
+    100% {{ color: #ff00ff; text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff; }}
+}}
+
+@keyframes led-pulse {{
+    0%   {{ opacity: 0.75; transform: scale(1); }}
+    50%  {{ opacity: 1;    transform: scale(1.05); }}
+    100% {{ opacity: 0.75; transform: scale(1); }}
+}}
+
+.header-title {{
     font-size: 40px;
-    font-weight: bold;
-    color: #2c3e50;
-    text-align: center;
-}
+    font-weight: 900;
+    animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
+}}
+
+.header-subtitle {{
+    font-size: 20px;
+    font-weight: 600;
+    animation: led-color-shift 4s infinite linear, led-pulse 3s infinite ease-in-out;
+}}
+
 </style>
 """, unsafe_allow_html=True)
-
-st.markdown("<div class='section-title'>🛒 Our Products</div>", unsafe_allow_html=True)
-st.write("---")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.markdown("<div class='card'><h3>🎁 Gift Items</h3>Soft toys, greeting cards, toys, showpieces.</div>", unsafe_allow_html=True)
-    st.markdown("<div class='card'><h3>📚 Stationery</h3>School notebooks, pens, files, supplies.</div>", unsafe_allow_html=True)
-
-with col2:
-    st.markdown("<div class='card'><h3>🍫 Chocolates & Snacks</h3>Biscuits, chips, candies, chocolates.</div>", unsafe_allow_html=True)
-    st.markdown("<div class='card'><h3>🛒 Grocery Items</h3>Daily essentials, soaps, detergents, dry foods.</div>", unsafe_allow_html=True)
-
-with col3:
-    st.markdown("<div class='card'><h3>🔧 Hardware Items</h3>Tapes, batteries, tools, small hardware.</div>", unsafe_allow_html=True)
-    st.markdown("<div class='card'><h3>📝 Xerox & Printing</h3>Black & white Xerox, printouts.</div>", unsafe_allow_html=True)

@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Contact - Mina Multi-Purpose Store",
                    page_icon="Mina Store Logo.png",
@@ -17,15 +18,15 @@ if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
-    CARD_SHADOW = "0px 6px 20px rgba(0, 150, 255, 0.25)"
+    CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
     TEXT = "#0a0a0a"
-    CARD_SHADOW = "0px 6px 20px rgba(0, 100, 255, 0.25)"
+    CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
 # ---------------------------------------------------
-# CSS (LED Header + Neon Cards)
+# CSS
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -44,49 +45,41 @@ body {{
     100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
 }}
 
-@keyframes led-pulse {{
-    0%   {{ opacity: 0.75; transform: scale(1); }}
-    50%  {{ opacity: 1;    transform: scale(1.05); }}
-    100% {{ opacity: 0.75; transform: scale(1); }}
-}}
-
 .section-title {{
     font-size: 40px;
     font-weight: 900;
     text-align: center;
-    margin-bottom: 10px;
-    animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
+    animation: led-color-shift 3s infinite linear;
 }}
 
 .card {{
     background: {CARD_BG};
     padding: 25px;
     border-radius: 18px;
-    box-shadow: {CARD_SHADOW};
     border-left: 5px solid #0a4ba6;
+    box-shadow: {CARD_SHADOW};
 }}
 
-.card h2 {{
-    margin-top: 0;
-    color: {TEXT};
-}}
-
-.card p, .card b {{
-    color: {TEXT};
-    font-size: 18px;
+.map-box {{
+    background: {CARD_BG};
+    padding: 15px;
+    border-radius: 18px;
+    border-left: 5px solid #0a4ba6;
+    box-shadow: {CARD_SHADOW};
+    margin-top: 25px;
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PAGE HEADER
+# HEADER
 # ---------------------------------------------------
 st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
 st.write("---")
 
 # ---------------------------------------------------
-# CONTENT
+# CONTACT & LOCATION
 # ---------------------------------------------------
 col1, col2 = st.columns(2)
 
@@ -106,5 +99,25 @@ with col2:
         📍 <b>Near Pragati Club, Birpara, West Bengal</b>
     </div>
     """, unsafe_allow_html=True)
+
+# ---------------------------------------------------
+# GOOGLE MAP EMBED (No File Required)
+# ---------------------------------------------------
+
+st.markdown("<div class='map-box'><h2>📍 Google Maps</h2></div>", unsafe_allow_html=True)
+
+components.html(
+    """
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.3938486000578!2d89.1450!3d26.7015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e209a2d564c0d5%3A0x6c28e232625e0193!2sPragati%20Club%2C%20Birpara!5e0!3m2!1sen!2sin!4v1707040000000!5m2!1sen!2sin" 
+        width="100%" 
+        height="350" 
+        style="border:0; border-radius:12px;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+    """,
+    height=380,
+)
 
 st.success("📌 We are always happy to serve you!")

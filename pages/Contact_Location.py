@@ -19,14 +19,14 @@ is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
-    TEXT = "#ffffff"     # TEXT becomes white
+    TEXT = "#ffffff"
     TEXT_GLOW = "#ffffff"
     NEON_TEXT = "#00ccff"
     CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
-    TEXT = "#000000"     # TEXT becomes black
+    TEXT = "#000000"
     TEXT_GLOW = "#000000"
     NEON_TEXT = "#000000"
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
@@ -64,7 +64,7 @@ body {{
     top: 0;
     left: 0;
     color: {TEXT_GLOW};
-    z-index: -1; 
+    z-index: -1;
     filter: blur(3px);
 }}
 
@@ -89,7 +89,6 @@ body {{
     margin-bottom: 25px;
 }}
 
-/* FIX: MAKE ALL TEXT INSIDE CARDS VISIBLE */
 .card, .card * {{
     color: {TEXT} !important;
 }}
@@ -103,7 +102,6 @@ body {{
     margin-top: 25px;
 }}
 
-/* FIX: MAKE MAP BOX TEXT VISIBLE */
 .map-box, .map-box * {{
     color: {TEXT} !important;
 }}
@@ -119,6 +117,29 @@ body {{
     text-align: center;
     text-decoration: none;
     box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
+    transition: 0.3s;
+}}
+
+.call-btn:hover {{
+    transform: scale(1.05);
+}}
+
+.social-btn {{
+    display: inline-block;
+    padding: 10px 22px;
+    margin: 5px;
+    background: #0a4ba6;
+    color: white !important;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+}}
+
+.footer {{
+    text-align:center;
+    margin-top:40px;
+    font-size:18px;
+    opacity:0.8;
 }}
 
 </style>
@@ -140,7 +161,14 @@ with col1:
     <div class="card">
         <h2>Contact Details</h2>
         📞 <b>Phone:</b> +91 9775410996 <br><br>
-        💬 <b>WhatsApp:</b> +91 9775410996 <br>
+        💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
+        ✉️ <b>Email:</b> minamultipurposestore@gmail.com <br><br>
+        🔗 <b>LinkedIn:</b> 
+        <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
+            Mina Multi-Purpose Store
+        </a><br><br>
+        🕒 <b>Opening Hours:</b><br>
+        Mon–Sun: <b>7:00 AM – 10:00 PM</b>
     </div>
     """, unsafe_allow_html=True)
 
@@ -148,9 +176,23 @@ with col2:
     st.markdown(f"""
     <div class="card">
         <h2>Store Location</h2>
-        📍 <b>Mina Multi-Purpose Store<br>Near Pragati Club, Birpara, West Bengal</b>
+        📍 <b>Mina Multi-Purpose Store</b><br>
+        Near Pragati Club, Birpara, West Bengal <br><br>
+
+        ⭐ <b>Your trusted local store in Birpara</b><br>
     </div>
     """, unsafe_allow_html=True)
+
+# ---------------------------------------------------
+# SOCIAL BUTTONS
+# ---------------------------------------------------
+st.markdown("""
+<div style="text-align:center; margin-top:10px;">
+    <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
+    <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
+    <a href="tel:+919775410996" class="social-btn">📞 Call</a>
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------------------------------------------
 # CALL BUTTON
@@ -182,4 +224,8 @@ components.html(
 # ---------------------------------------------------
 # FOOTER
 # ---------------------------------------------------
-st.success("📌 We are always happy to serve you!")
+st.markdown("""
+<div class='footer'>
+    ❤️ Thank you for choosing Mina Multi-Purpose Store — Birpara’s Most Trusted Shop
+</div>
+""", unsafe_allow_html=True)

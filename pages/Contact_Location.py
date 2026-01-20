@@ -28,7 +28,7 @@ else:
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
 # ---------------------------------------------------
-# CSS (LED Header + Neon Cards + Buttons)
+# CSS (LED Header + Neon Cards + Buttons + MAP TITLE)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -57,6 +57,13 @@ body {{
     font-size: 40px;
     font-weight: 900;
     text-align: center;
+    animation: led-color-sh-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
+}}
+
+.map-title {{
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
     animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
 }}
 
@@ -67,16 +74,6 @@ body {{
     border-left: 5px solid #0a4ba6;
     box-shadow: {CARD_SHADOW};
     margin-bottom: 25px;
-}}
-
-.card h2 {{
-    margin-top: 0;
-    color: {TEXT};
-}}
-
-.card p, .card b {{
-    color: {TEXT};
-    font-size: 18px;
 }}
 
 .map-box {{
@@ -149,9 +146,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# GOOGLE MAP EMBED (Exact Store Location)
+# GOOGLE MAP TITLE (NEON) + MAP
 # ---------------------------------------------------
-st.markdown("<div class='map-box'><h2>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
     """
@@ -170,4 +167,3 @@ components.html(
 # FOOTER
 # ---------------------------------------------------
 st.success("📌 We are always happy to serve you!")
-

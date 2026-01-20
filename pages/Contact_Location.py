@@ -178,8 +178,6 @@ with col2:
         <h2>Store Location</h2>
         📍 <b>Mina Multi-Purpose Store</b><br>
         Near Pragati Club, Birpara, West Bengal <br><br>
-
-        ⭐ <b>Your trusted local store in Birpara</b><br>
     </div>
     """, unsafe_allow_html=True)
 

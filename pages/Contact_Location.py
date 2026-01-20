@@ -7,10 +7,15 @@ st.set_page_config(
     layout="wide"
 )
 
+# ---------------------------------------------------
 # Detect DARK / LIGHT Mode
+# ---------------------------------------------------
 theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
+# ---------------------------------------------------
+# Auto Colors for Both Modes
+# ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
@@ -22,6 +27,9 @@ else:
     TEXT = "#0a0a0a"
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
+# ---------------------------------------------------
+# CSS (LED Header + Neon Cards + Buttons + MAP TITLE)
+# ---------------------------------------------------
 st.markdown(f"""
 <style>
 
@@ -30,23 +38,33 @@ body {{
     color: {TEXT} !important;
 }}
 
+@keyframes led-color-shift {{
+    0%   {{ color: #ff0000; text-shadow: 0 0 12px #ff0000; }}
+    20%  {{ color: #ff9900; text-shadow: 0 0 14px #ff9900; }}
+    40%  {{ color: #ffff00; text-shadow: 0 0 18px #ffff00; }}
+    60%  {{ color: #00ff00; text-shadow: 0 0 14px #00ff00; }}
+    80%  {{ color: #00ccff; text-shadow: 0 0 18px #00ccff; }}
+    100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
+}}
+
+@keyframes led-pulse {{
+    0%   {{ opacity: 0.7; transform: scale(1); }}
+    50%  {{ opacity: 1; transform: scale(1.05); }}
+    100% {{ opacity: 0.7; transform: scale(1); }}
+}}
+
 .section-title {{
     font-size: 40px;
     font-weight: 900;
     text-align: center;
-    color: #2ab7ff;
-    text-shadow: 0 0 5px #2ab7ff, 0 0 12px #2ab7ff;
+    animation: led-color-sh-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
 }}
 
 .map-title {{
     font-size: 28px;
     font-weight: 900;
     text-align: center;
-    color: #2ab7ff;
-    text-shadow: 
-        0 0 5px #2ab7ff,
-        0 0 10px #2ab7ff,
-        0 0 15px #0a99e0;
+    animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
 }}
 
 .card {{
@@ -70,24 +88,35 @@ body {{
 .call-btn {{
     display: inline-block;
     padding: 14px 28px;
-    background: #2ab7ff;
+    background: linear-gradient(90deg, #ff0066, #ffcc00);
     color: white !important;
     font-size: 22px;
     font-weight: 800;
     border-radius: 50px;
     text-align: center;
     text-decoration: none;
-    box-shadow: 0px 0px 12px #2ab7ff;
+    box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
+    animation: pulse 1.6s infinite ease-in-out;
+}}
+
+@keyframes pulse {{
+    0% {{ transform: scale(1); box-shadow: 0px 0px 18px rgba(255,0,150,0.6); }}
+    50% {{ transform: scale(1.05); box-shadow: 0px 0px 28px rgba(255,200,0,0.8); }}
+    100% {{ transform: scale(1); box-shadow: 0px 0px 18px rgba(255,0,150,0.6); }}
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
+# ---------------------------------------------------
 # HEADER
+# ---------------------------------------------------
 st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
 st.write("---")
 
-# CONTACT + LOCATION
+# ---------------------------------------------------
+# CONTACT + LOCATION CARDS
+# ---------------------------------------------------
 col1, col2 = st.columns(2)
 
 with col1:
@@ -107,14 +136,18 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
-# CALL BUTTON
+# ---------------------------------------------------
+# CALL NOW BUTTON
+# ---------------------------------------------------
 st.markdown("""
 <div style="text-align:center; margin-top:15px; margin-bottom:20px;">
     <a href="tel:+919775410996" class="call-btn">📞 Call Now</a>
 </div>
 """, unsafe_allow_html=True)
 
-# GOOGLE MAP (NEON TITLE)
+# ---------------------------------------------------
+# GOOGLE MAP TITLE (NEON) + MAP
+# ---------------------------------------------------
 st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
@@ -127,7 +160,10 @@ components.html(
         allowfullscreen=""
         loading="lazy"></iframe>
     """,
-    height=380
+    height=380,
 )
 
+# ---------------------------------------------------
+# FOOTER
+# ---------------------------------------------------
 st.success("📌 We are always happy to serve you!")

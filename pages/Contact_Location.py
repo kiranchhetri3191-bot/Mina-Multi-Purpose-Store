@@ -1,7 +1,5 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import datetime
-import pytz
 
 st.set_page_config(
     page_title="Contact - Mina Multi-Purpose Store",
@@ -16,25 +14,25 @@ theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
 # ---------------------------------------------------
-# Auto Colors
+# Auto Colors for Both Modes
 # ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
-    TEXT = "#ffffff"
+    TEXT = "#ffffff"     # TEXT becomes white
     TEXT_GLOW = "#ffffff"
     NEON_TEXT = "#00ccff"
     CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
-    TEXT = "#000000"
+    TEXT = "#000000"     # TEXT becomes black
     TEXT_GLOW = "#000000"
     NEON_TEXT = "#000000"
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
 # ---------------------------------------------------
-# CSS + Floating Buttons
+# CSS FIX — FULL DARK/LIGHT MODE SUPPORT
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -91,6 +89,7 @@ body {{
     margin-bottom: 25px;
 }}
 
+/* FIX: MAKE ALL TEXT INSIDE CARDS VISIBLE */
 .card, .card * {{
     color: {TEXT} !important;
 }}
@@ -104,6 +103,7 @@ body {{
     margin-top: 25px;
 }}
 
+/* FIX: MAKE MAP BOX TEXT VISIBLE */
 .map-box, .map-box * {{
     color: {TEXT} !important;
 }}
@@ -121,72 +121,7 @@ body {{
     box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
 }}
 
- /* Floating Buttons */
-.floating-container {{
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 9999;
-}}
-
-.float-btn {{
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    color: white;
-    background: linear-gradient(135deg, #ff0099, #ff6600);
-    text-decoration: none;
-    box-shadow: 0 0 18px rgba(255,0,150,0.7);
-    transition: 0.2s;
-    pointer-events: auto !important;
-}}
-
-.float-btn:hover {{
-    transform: scale(1.12);
-    box-shadow: 0 0 25px rgba(255,200,0,0.9);
-}}
-
 </style>
-""", unsafe_allow_html=True)
-
-# ---------------------------------------------------
-# STORE TIMING (9 AM – 7 PM)
-# ---------------------------------------------------
-OPEN_HOUR = 9
-CLOSE_HOUR = 19
-
-india = pytz.timezone("Asia/Kolkata")
-now = datetime.datetime.now(india)
-current_hour = now.hour
-
-if OPEN_HOUR <= current_hour < CLOSE_HOUR:
-    STATUS_TEXT = "🟢 OPEN NOW"
-    STATUS_COLOR = "#00ff66"
-else:
-    STATUS_TEXT = "🔴 CLOSED NOW"
-    STATUS_COLOR = "#ff3333"
-
-st.markdown(f"""
-<div style="
-    padding: 14px;
-    text-align: center;
-    font-size: 26px;
-    font-weight: 900;
-    margin-bottom: 15px;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.25);
-    color: {STATUS_COLOR};
-    text-shadow: 0 0 18px {STATUS_COLOR};
-">
-    {STATUS_TEXT}
-</div>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
@@ -227,7 +162,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# MAP
+# GOOGLE MAP
 # ---------------------------------------------------
 st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
@@ -248,21 +183,3 @@ components.html(
 # FOOTER
 # ---------------------------------------------------
 st.success("📌 We are always happy to serve you!")
-
-# ---------------------------------------------------
-# FLOATING CONTACT BUTTONS (CLICKABLE)
-# ---------------------------------------------------
-st.markdown("""
-<div class="floating-container">
-
-    <!-- CALL -->
-    <a class="float-btn" href="tel:+919775410996" target="_blank" style="pointer-events:auto;">📞</a>
-
-    <!-- LINKEDIN -->
-    <a class="float-btn" href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank" style="pointer-events:auto;">🔗</a>
-
-    <!-- EMAIL -->
-    <a class="float-btn" href="mailto:minamultipurposestore@gmail.com" target="_blank" style="pointer-events:auto;">✉️</a>
-
-</div>
-""", unsafe_allow_html=True)

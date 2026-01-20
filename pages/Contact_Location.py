@@ -156,7 +156,7 @@ body {{
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# STORE TIMING: 9 AM to 7 PM
+# STORE TIMING (9 AM – 7 PM)
 # ---------------------------------------------------
 OPEN_HOUR = 9
 CLOSE_HOUR = 19

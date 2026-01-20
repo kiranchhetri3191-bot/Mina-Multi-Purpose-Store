@@ -44,7 +44,7 @@ body {{
     font-weight: 900;
     text-align: center;
     color: #2ab7ff;
-    text-shadow: 
+    text-shadow:
         0 0 5px #2ab7ff,
         0 0 10px #2ab7ff,
         0 0 15px #0a99e0;
@@ -77,7 +77,10 @@ body {{
     font-weight: 800;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 0 12px #2ab7ff, 0 0 18px #0a99e0;
+    box-shadow:
+        0 0 6px #2ab7ff,
+        0 0 12px #2ab7ff,
+        0 0 18px #0a99e0;
 }}
 
 .email-btn {{
@@ -92,9 +95,15 @@ body {{
     box-shadow: 0 0 10px #2ab7ff;
 }}
 
-.social-icon {{
+.linkedin-icon {{
     width: 45px;
-    margin-right: 10px;
+    transition: 0.25s ease-in-out;
+}}
+
+.linkedin-icon:hover {{
+    filter: drop-shadow(0 0 8px #2ab7ff)
+            drop-shadow(0 0 12px #2ab7ff);
+    transform: scale(1.15);
 }}
 
 .footer {{
@@ -118,6 +127,7 @@ body {{
     text-align: center;
     padding-top: 8px;
     box-shadow: 0 0 12px #25D366;
+    z-index: 999;
 }}
 
 .float-call {{
@@ -133,6 +143,7 @@ body {{
     text-align: center;
     padding-top: 10px;
     box-shadow: 0 0 12px #2ab7ff;
+    z-index: 999;
 }}
 
 </style>
@@ -151,8 +162,8 @@ with col1:
         <h2>Contact Details</h2>
         📞 <b>Phone:</b> +91 9775410996 <br><br>
         💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
-        📧 <b>Email: </b> minamultipurpose@gmail.com <br><br>
-        <a href="mailto:minamultipurpose@gmail.com" class="email-btn">✉️ Send Email</a>
+        📧 <b>Email:</b> minamultipurposestore@gmail.com <br><br>
+        <a href="mailto:minamultipurposestore@gmail.com" class="email-btn">✉️ Send Email</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -190,14 +201,13 @@ components.html(
     height=380,
 )
 
-# ---------- SOCIAL LINKS ----------
-st.markdown("""
+# ---------- SOCIAL LINKS (ONLY LINKEDIN) ----------
+st.markdown(f"""
 <div style="text-align:center; margin-top:35px;">
-    <a href="https://instagram.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="social-icon">
-    </a>
-    <a href="https://facebook.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="social-icon">
+    <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
+             class="linkedin-icon"
+             style="filter: {'invert(1)' if is_dark else 'none'};">
     </a>
 </div>
 """, unsafe_allow_html=True)

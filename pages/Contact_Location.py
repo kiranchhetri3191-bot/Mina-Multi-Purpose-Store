@@ -20,15 +20,19 @@ if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
+    TEXT_GLOW = "#ffffff"      # WHITE duplicate text for dark mode
+    NEON_TEXT = "#00ccff"      # neon for dark mode
     CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
     TEXT = "#0a0a0a"
+    TEXT_GLOW = "#000000"      # BLACK duplicate for light mode
+    NEON_TEXT = "#000000"      # neon-black text for light mode
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
 # ---------------------------------------------------
-# CSS (LED Header + Neon Cards + Buttons + MAP TITLE)
+# CSS
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -47,24 +51,33 @@ body {{
     100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
 }}
 
-@keyframes led-pulse {{
-    0%   {{ opacity: 0.7; transform: scale(1); }}
-    50%  {{ opacity: 1; transform: scale(1.05); }}
-    100% {{ opacity: 0.7; transform: scale(1); }}
-}}
-
-.section-title {{
+.double-text {{
+    position: relative;
     font-size: 40px;
     font-weight: 900;
     text-align: center;
-    animation: led-color-sh-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
+}}
+
+.double-text::before {{
+    content: "📞 Contact & Location";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: {TEXT_GLOW};
+    z-index: -1; 
+    filter: blur(3px);
+}}
+
+.double-text {{
+    color: {NEON_TEXT};
+    animation: led-color-shift 3s infinite linear;
 }}
 
 .map-title {{
     font-size: 28px;
     font-weight: 900;
     text-align: center;
-    animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
+    animation: led-color-shift 3s infinite linear;
 }}
 
 .card {{
@@ -96,22 +109,15 @@ body {{
     text-align: center;
     text-decoration: none;
     box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
-    animation: pulse 1.6s infinite ease-in-out;
-}}
-
-@keyframes pulse {{
-    0% {{ transform: scale(1); box-shadow: 0px 0px 18px rgba(255,0,150,0.6); }}
-    50% {{ transform: scale(1.05); box-shadow: 0px 0px 28px rgba(255,200,0,0.8); }}
-    100% {{ transform: scale(1); box-shadow: 0px 0px 18px rgba(255,0,150,0.6); }}
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# HEADER
+# HEADER (with double-layer text)
 # ---------------------------------------------------
-st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
+st.markdown("<div class='double-text'>📞 Contact & Location</div>", unsafe_allow_html=True)
 st.write("---")
 
 # ---------------------------------------------------
@@ -146,7 +152,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# GOOGLE MAP TITLE (NEON) + MAP
+# GOOGLE MAP TITLE + MAP
 # ---------------------------------------------------
 st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 

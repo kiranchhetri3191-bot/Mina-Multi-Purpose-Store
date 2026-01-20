@@ -22,6 +22,7 @@ else:
     TEXT = "#0a0a0a"
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
+# ---------- CSS ----------
 st.markdown(f"""
 <style>
 
@@ -75,19 +76,73 @@ body {{
     font-size: 22px;
     font-weight: 800;
     border-radius: 50px;
-    text-align: center;
     text-decoration: none;
-    box-shadow: 0px 0px 12px #2ab7ff;
+    box-shadow: 0 0 12px #2ab7ff, 0 0 18px #0a99e0;
+}}
+
+.email-btn {{
+    display: inline-block;
+    padding: 12px 24px;
+    background: #2ab7ff;
+    color: white !important;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 0 10px #2ab7ff;
+}}
+
+.social-icon {{
+    width: 45px;
+    margin-right: 10px;
+}}
+
+.footer {{
+    text-align: center;
+    color: {TEXT};
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 2px solid #2ab7ff50;
+}}
+
+.float-whatsapp {{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 35px;
+    text-align: center;
+    padding-top: 8px;
+    box-shadow: 0 0 12px #25D366;
+}}
+
+.float-call {{
+    position: fixed;
+    bottom: 95px;
+    right: 25px;
+    background: #2ab7ff;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 32px;
+    text-align: center;
+    padding-top: 10px;
+    box-shadow: 0 0 12px #2ab7ff;
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
-# HEADER
+# ---------- HEADER ----------
 st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
 st.write("---")
 
-# CONTACT + LOCATION
+# ---------- CONTACT + LOCATION ----------
 col1, col2 = st.columns(2)
 
 with col1:
@@ -95,7 +150,9 @@ with col1:
     <div class="card">
         <h2>Contact Details</h2>
         📞 <b>Phone:</b> +91 9775410996 <br><br>
-        💬 <b>WhatsApp:</b> +91 9775410996 <br>
+        💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
+        📧 <b>Email: </b> minamultipurpose@gmail.com <br><br>
+        <a href="mailto:minamultipurpose@gmail.com" class="email-btn">✉️ Send Email</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -104,17 +161,20 @@ with col2:
     <div class="card">
         <h2>Store Location</h2>
         📍 <b>Mina Multi-Purpose Store<br>Near Pragati Club, Birpara, West Bengal</b>
+        <br><br>
+        🕙 <b>Opening:</b> 9:00 AM <br>
+        🕖 <b>Closing:</b> 7:00 PM
     </div>
     """, unsafe_allow_html=True)
 
-# CALL BUTTON
+# ---------- CALL BUTTON ----------
 st.markdown("""
 <div style="text-align:center; margin-top:15px; margin-bottom:20px;">
     <a href="tel:+919775410996" class="call-btn">📞 Call Now</a>
 </div>
 """, unsafe_allow_html=True)
 
-# GOOGLE MAP (NEON TITLE)
+# ---------- GOOGLE MAP ----------
 st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
@@ -127,7 +187,32 @@ components.html(
         allowfullscreen=""
         loading="lazy"></iframe>
     """,
-    height=380
+    height=380,
 )
 
-st.success("📌 We are always happy to serve you!")
+# ---------- SOCIAL LINKS ----------
+st.markdown("""
+<div style="text-align:center; margin-top:35px;">
+    <a href="https://instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="social-icon">
+    </a>
+    <a href="https://facebook.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="social-icon">
+    </a>
+</div>
+""", unsafe_allow_html=True)
+
+# ---------- FLOATING BUTTONS ----------
+st.markdown("""
+<a href="https://wa.me/919775410996" class="float-whatsapp">💬</a>
+<a href="tel:+919775410996" class="float-call">📞</a>
+""", unsafe_allow_html=True)
+
+# ---------- FOOTER ----------
+st.markdown("""
+<div class="footer">
+    <b>Mina Multi-Purpose Store</b><br>
+    Near Pragati Club, Birpara, West Bengal<br>
+    © 2024 All Rights Reserved
+</div>
+""", unsafe_allow_html=True)

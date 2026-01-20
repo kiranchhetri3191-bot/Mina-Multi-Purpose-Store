@@ -63,7 +63,6 @@ body {{
     animation: led-color-shift 4s infinite linear, led-pulse 3s infinite ease-in-out;
 }}
 
-/* SECTION HEADER */
 .section-title {{
     font-size: 32px;
     font-weight: 700;
@@ -74,7 +73,6 @@ body {{
     text-shadow: 0 0 8px rgba(0,123,255,0.55);
 }}
 
-/* PRODUCT CARD */
 .product-card {{
     background: {CARD_BG};
     padding: 20px;
@@ -84,19 +82,9 @@ body {{
     margin-bottom: 18px;
 }}
 
-.product-card h3 {{
-    margin: 0;
-    color: {TEXT};
-}}
-
-.product-card p {{
-    margin-top: 6px;
-    color: {TEXT};
-}}
-
 .product-img {{
-    width: 100px;
-    border-radius: 10px;
+    width: 120px;
+    border-radius: 12px;
     margin-bottom: 10px;
 }}
 
@@ -104,34 +92,34 @@ body {{
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PAGE HEADER (LED ANIMATION)
+# PAGE HEADER
 # ---------------------------------------------------
 st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=True)
 st.markdown("<div class='header-subtitle'>Explore All Categories Available at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST
+# UPDATED PRODUCT LIST — MATCHING YOUR FILE NAMES EXACTLY
 # ---------------------------------------------------
 products = [
     {
         "name": "Gift Items",
-        "desc": "Decorations, soft toys, greeting cards, keychains and more.",
-        "img": "images/gift.png"
-    },
-    {
-        "name": "Grocery Essentials",
-        "desc": "Oil, rice, biscuits, spices, pulses and more daily items.",
-        "img": "images/grocery.png"
+        "desc": "Gift toys, greeting cards, keychains & small items.",
+        "img": "gift item.png"
     },
     {
         "name": "Hardware Tools",
-        "desc": "Tape, wrench, screwdrivers, cutters and repair tools.",
-        "img": "images/hardware.png"
+        "desc": "Bulbs, tools, tapes, repair items & essentials.",
+        "img": "hardware item.png"
     },
     {
         "name": "Printing & Xerox",
-        "desc": "Xerox, printing, lamination, online form fill-up.",
-        "img": "images/print.png"
+        "desc": "Xerox, printing, lamination & form fill-up.",
+        "img": "Xerox item.png"
+    },
+    {
+        "name": "Snacks",
+        "desc": "Cakes, biscuits, chocolates & snacks.",
+        "img": "Snaks.png"
     }
 ]
 

@@ -19,20 +19,20 @@ is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
-    TEXT = "#ffffff"
-    TEXT_GLOW = "#ffffff"      # WHITE duplicate text for dark mode
-    NEON_TEXT = "#00ccff"      # neon for dark mode
+    TEXT = "#ffffff"     # TEXT becomes white
+    TEXT_GLOW = "#ffffff"
+    NEON_TEXT = "#00ccff"
     CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
-    TEXT = "#0a0a0a"
-    TEXT_GLOW = "#000000"      # BLACK duplicate for light mode
-    NEON_TEXT = "#000000"      # neon-black text for light mode
+    TEXT = "#000000"     # TEXT becomes black
+    TEXT_GLOW = "#000000"
+    NEON_TEXT = "#000000"
     CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
 
 # ---------------------------------------------------
-# CSS
+# CSS FIX — FULL DARK/LIGHT MODE SUPPORT
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -89,6 +89,11 @@ body {{
     margin-bottom: 25px;
 }}
 
+/* FIX: MAKE ALL TEXT INSIDE CARDS VISIBLE */
+.card, .card * {{
+    color: {TEXT} !important;
+}}
+
 .map-box {{
     background: {CARD_BG};
     padding: 15px;
@@ -96,6 +101,11 @@ body {{
     border-left: 5px solid #0a4ba6;
     box-shadow: {CARD_SHADOW};
     margin-top: 25px;
+}}
+
+/* FIX: MAKE MAP BOX TEXT VISIBLE */
+.map-box, .map-box * {{
+    color: {TEXT} !important;
 }}
 
 .call-btn {{
@@ -115,7 +125,7 @@ body {{
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# HEADER (with double-layer text)
+# HEADER
 # ---------------------------------------------------
 st.markdown("<div class='double-text'>📞 Contact & Location</div>", unsafe_allow_html=True)
 st.write("---")
@@ -143,7 +153,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# CALL NOW BUTTON
+# CALL BUTTON
 # ---------------------------------------------------
 st.markdown("""
 <div style="text-align:center; margin-top:15px; margin-bottom:20px;">
@@ -152,7 +162,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# GOOGLE MAP TITLE + MAP
+# GOOGLE MAP
 # ---------------------------------------------------
 st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 

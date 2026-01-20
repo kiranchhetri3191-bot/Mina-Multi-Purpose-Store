@@ -1,106 +1,161 @@
 import streamlit as st
 
-st.set_page_config(page_title="Mina Multi-Purpose Store", page_icon="Mina Store Logo.png", layout="wide")
+st.set_page_config(page_title="Mina Multi-Purpose Store",
+                   page_icon="Mina Store Logo.png",
+                   layout="wide")
 
-# -------------------------------------------------
-# Detect Streamlit Theme (Dark / Light)
-# -------------------------------------------------
+# --------------------------
+# Detect DARK / LIGHT mode
+# --------------------------
 theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
-# -------------------------------------------------
+# Dark / Light Variables
+if is_dark:
+    BG = "#0d1117"
+    CARD_BG = "#161b22"
+    TEXT = "#e6edf3"          # MAIN TEXT – White
+    SUBTEXT = "#b9c0c8"       # Slightly grey text
+else:
+    BG = "#eef3ff"
+    CARD_BG = "rgba(255,255,255,0.95)"
+    TEXT = "#102a45"
+    SUBTEXT = "#4d5b6c"
+
+# --------------------------
 # CSS
-# -------------------------------------------------
-st.markdown("""
+# --------------------------
+st.markdown(f"""
 <style>
 
-.header-wrapper {
-    position: relative;
-    height: 115px;
-}
+body {{
+    background: {BG} !important;
+}}
 
-/* BLACK NEON TEXT (Shown only in Light Mode) */
-.text-light {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: black;
-    font-size: 42px;
+/* HEADER */
+.header-box {{
+    background: #0d2340;
+    padding: 42px 55px;
+    border-radius: 26px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(0, 112, 230, 0.55);
+    box-shadow: 0px 0px 18px rgba(0, 112, 230, 0.28),
+                0px 10px 26px rgba(0,0,0,0.45);
+}}
+
+.header-flex {{
+    display: flex;
+    align-items: center;
+    gap: 38px;
+}}
+
+.header-logo img {{
+    width: 145px;
+    border-radius: 14px;
+}}
+
+.header-title {{
+    font-size: 40px;
     font-weight: 800;
-    text-shadow:
-        0px 0px 6px rgba(0,0,0,0.45),
-        0px 0px 12px rgba(0,0,0,0.30);
-}
-
-/* WHITE COPY TEXT (Shown only in Dark Mode) */
-.text-dark {
-    position: absolute;
-    top: 0;
-    left: 0;
     color: white;
-    font-size: 42px;
-    font-weight: 800;
-    text-shadow:
-        0px 0px 10px rgba(0, 60, 160, 0.80),
-        0px 0px 20px rgba(0, 60, 160, 0.60);
-}
+}}
 
-/* Subtitle (same logic) */
-.sub-light {
-    position: absolute;
-    top: 55px;
-    left: 0;
-    color: black;
-    font-size: 22px;
-    font-weight: 500;
-    text-shadow:
-        0px 0px 5px rgba(0,0,0,0.45),
-        0px 0px 8px rgba(0,0,0,0.25);
-}
-
-.sub-dark {
-    position: absolute;
-    top: 55px;
-    left: 0;
+.header-subtitle {{
+    font-size: 20px;
     color: white;
-    font-size: 22px;
-    font-weight: 500;
-    text-shadow:
-        0px 0px 10px rgba(0, 60, 160, 0.80),
-        0px 0px 20px rgba(0, 60, 160, 0.60);
-}
+}}
+
+/* SECTION TITLES */
+.section-title {{
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 40px;
+    color: {TEXT};
+    padding-left: 12px;
+    border-left: 6px solid #007bff;
+}}
+
+/* CARD BOXES */
+.card {{
+    background: {CARD_BG};
+    padding: 28px;
+    border-radius: 20px;
+    border-left: 6px solid #0a4ba6;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.10);
+    color: {TEXT};          /* FIX: TEXT NOW VISIBLE IN DARK MODE */
+    font-size: 18px;
+    line-height: 1.55;
+}}
+
+.card b {{
+    color: {TEXT};          /* Bold text visible */
+}}
+
+.card p, .card span {{
+    color: {TEXT} !important;
+}}
+
+.card a {{
+    color: #58a6ff !important;   /* Blue links in dark mode */
+}}
 
 </style>
 """, unsafe_allow_html=True)
 
-# -------------------------------------------------
+# --------------------------
 # HEADER
-# -------------------------------------------------
-
-st.markdown('<div class="header-box" style="background:#0d2340;padding:40px;border-radius:20px;">', unsafe_allow_html=True)
+# --------------------------
+st.markdown('<div class="header-box">', unsafe_allow_html=True)
+st.markdown('<div class="header-flex">', unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 4])
 
 with col1:
+    st.markdown('<div class="header-logo">', unsafe_allow_html=True)
     st.image("Mina Store Logo.png", width=145)
-
-with col2:
-    st.markdown('<div class="header-wrapper">', unsafe_allow_html=True)
-
-    # Light Mode (Black Neon Text)
-    if not is_dark:
-        st.markdown("""
-            <div class="text-light">Mina Multi-Purpose Store</div>
-            <div class="sub-light">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
-        """, unsafe_allow_html=True)
-
-    # Dark Mode (White Text Copy)
-    else:
-        st.markdown("""
-            <div class="text-dark">Mina Multi-Purpose Store</div>
-            <div class="sub-dark">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
-        """, unsafe_allow_html=True)
-
     st.markdown('</div>', unsafe_allow_html=True)
 
+with col2:
+    st.markdown("""
+        <div>
+            <div class="header-title">Mina Multi-Purpose Store</div>
+            <div class="header-subtitle">Birpara's Trusted Store for Gifts, Groceries, Hardware & Xerox</div>
+        </div>
+    """, unsafe_allow_html=True)
+
 st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# --------------------------
+# ABOUT US
+# --------------------------
+st.markdown("<div class='section-title'>About Us</div>", unsafe_allow_html=True)
+
+st.markdown(f"""
+<div class="card">
+We are a trusted neighborhood store located <b>near Pragati Club, Birpara, West Bengal</b>.<br><br>
+
+✔ Gift Items 🎁<br>
+✔ Grocery Essentials 🛒<br>
+✔ Hardware Tools 🔧<br>
+✔ Xerox & Printing Services 📝<br><br>
+
+Our mission is to provide <b>quality, convenience, and fair pricing</b> daily.
+</div>
+""", unsafe_allow_html=True)
+
+# --------------------------
+# TIMINGS
+# --------------------------
+st.markdown("<div class='section-title'>Store Timings</div>", unsafe_allow_html=True)
+
+st.markdown(f"""
+<div class="card">
+🕘 <b>Opening:</b> 9:00 AM<br>
+🕖 <b>Closing:</b> 7:00 PM<br><br>
+
+We are open every day to serve our customers.
+</div>
+""", unsafe_allow_html=True)
+
+st.success("✨ Explore Products & Contact pages using the sidebar!")

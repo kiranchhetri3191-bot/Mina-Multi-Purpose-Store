@@ -8,23 +8,29 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------
-# DARK / LIGHT MODE DETECTION (SAFE METHOD)
+# RELIABLE DARK MODE DETECTION
 # ---------------------------------------------------
-theme = st.get_option("theme.base")
+bg_col = st.get_option("theme.backgroundColor")
 
-is_dark = theme == "dark"
+is_dark = bg_col in ["#0e1117", "#000000", "#1e1e1e", "#0d1117"]
 
+# ---------------------------------------------------
+# THEME COLORS (STYLE 1)
+# ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
+    ICON_FILTER = "invert(1)"  # makes emojis/icons visible
 else:
-    BG = "#f2f6ff"
+    BG = "#eef3ff"
     CARD_BG = "#ffffff"
     TEXT = "#0a0a0a"
+    ICON_FILTER = "none"
+
 
 # ---------------------------------------------------
-# CSS (CLEAN + BUG-FREE + COMPACT)
+# CSS (CLEAN + FIXED)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -48,8 +54,8 @@ body {{
     font-weight: 700;
     text-align: center;
     color: #2ab7ff;
-    text-shadow: 0 0 4px #2ab7ff;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 5px #2ab7ff;
 }}
 
 .card {{
@@ -57,13 +63,13 @@ body {{
     padding: 22px;
     border-radius: 14px;
     border-left: 5px solid #2ab7ff;
-    box-shadow: 0 0 12px rgba(0, 162, 255, 0.2);
+    box-shadow: 0 0 12px rgba(0,162,255,0.20);
     margin-bottom: 20px;
 }}
 
 .call-btn, .email-btn {{
     display: inline-block;
-    padding: 12px 28px;
+    padding: 12px 30px;
     background: #2ab7ff;
     color: white !important;
     font-size: 20px;
@@ -71,12 +77,13 @@ body {{
     border-radius: 40px;
     text-decoration: none;
     margin: 6px;
-    box-shadow: 0 0 10px #2ab7ff;
+    box-shadow: 0 0 12px #2ab7ff;
 }}
 
 .linkedin-icon {{
-    width: 46px;
+    width: 45px;
     transition: 0.2s;
+    filter: {ICON_FILTER};
 }}
 
 .linkedin-icon:hover {{
@@ -93,7 +100,7 @@ body {{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    font-size: 36px;
+    font-size: 34px;
     text-align: center;
     padding-top: 8px;
     box-shadow: 0 0 12px #25d366;
@@ -109,7 +116,7 @@ body {{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    font-size: 32px;
+    font-size: 30px;
     text-align: center;
     padding-top: 10px;
     box-shadow: 0 0 12px #2ab7ff;
@@ -121,23 +128,21 @@ body {{
     color: {TEXT};
     margin-top: 40px;
     padding-top: 15px;
-    border-top: 1px solid #2ab7ff60;
+    border-top: 1px solid #2ab7ff50;
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
 
-
 # ---------------------------------------------------
-# PAGE HEADER
+# 1️⃣ HEADER
 # ---------------------------------------------------
 st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
 
 
-
 # ---------------------------------------------------
-# GOOGLE MAP (TOP)
+# 2️⃣ GOOGLE MAP FIRST
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>📍 Find Us on Google Maps</div>", unsafe_allow_html=True)
 
@@ -154,9 +159,8 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
-
 # ---------------------------------------------------
-# STORE LOCATION
+# 3️⃣ STORE LOCATION
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>🏪 Store Location</div>", unsafe_allow_html=True)
 
@@ -165,34 +169,31 @@ st.markdown(f"""
 <b>Mina Multi-Purpose Store</b><br>
 Near Pragati Club, Birpara, West Bengal <br><br>
 
-🕙 <b>Opening:</b> 9:00 AM<br>
-🕖 <b>Closing:</b> 7:00 PM
+🕙 Opening: 9:00 AM<br>
+🕖 Closing: 7:00 PM
 </div>
 """, unsafe_allow_html=True)
 
 
-
 # ---------------------------------------------------
-# CONTACT DETAILS
+# 4️⃣ CONTACT DETAILS
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>📞 Contact Details</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
 <div class="card">
-📞 <b>Phone:</b> +91 9775410996 <br><br>
-💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
-📧 <b>Email:</b> minamultipurposestore@gmail.com <br>
+📞 Phone: +91 9775410996 <br><br>
+💬 WhatsApp: +91 9775410996 <br><br>
+📧 Email: minamultipurposestore@gmail.com
 </div>
 """, unsafe_allow_html=True)
 
 
-
 # ---------------------------------------------------
-# QUICK ACTION BUTTONS
+# 5️⃣ QUICK ACTION BUTTONS
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>⚡ Quick Actions</div>", unsafe_allow_html=True)
 
-# Buttons
 st.markdown(f"""
 <div style="text-align:center;">
 
@@ -202,13 +203,11 @@ st.markdown(f"""
 
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
-             class="linkedin-icon"
-             style="filter: {'invert(1)' if is_dark else 'none'};">
+             class="linkedin-icon">
     </a>
 
 </div>
 """, unsafe_allow_html=True)
-
 
 
 # ---------------------------------------------------
@@ -218,7 +217,6 @@ st.markdown("""
 <a href="https://wa.me/919775410996" class="float-whatsapp">💬</a>
 <a href="tel:+919775410996" class="float-call">📞</a>
 """, unsafe_allow_html=True)
-
 
 
 # ---------------------------------------------------

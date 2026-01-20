@@ -8,103 +8,102 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------
-# DARK / LIGHT MODE THEME DETECTION
+# DARK / LIGHT MODE DETECTION (SAFE METHOD)
 # ---------------------------------------------------
-theme_bg = st.get_option("theme.backgroundColor")
-is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
+theme = st.get_option("theme.base")
+
+is_dark = theme == "dark"
 
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
-    CARD_SHADOW = "0px 6px 18px rgba(0,150,255,0.28)"
 else:
-    BG = "#eef3ff"
-    CARD_BG = "rgba(255,255,255,0.92)"
+    BG = "#f2f6ff"
+    CARD_BG = "#ffffff"
     TEXT = "#0a0a0a"
-    CARD_SHADOW = "0px 6px 18px rgba(0,100,255,0.20)"
 
 # ---------------------------------------------------
-# CSS
+# CSS (CLEAN + BUG-FREE + COMPACT)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
 
 body {{
-    background: {BG} !important;
-    color: {TEXT} !important;
+    background-color: {BG};
+    color: {TEXT};
 }}
 
 .section-title {{
     font-size: 40px;
     font-weight: 900;
     text-align: center;
-    color: #2ab7ff;
     margin-bottom: 25px;
-    text-shadow: 0 0 6px #2ab7ff, 0 0 12px #2ab7ff;
+    color: #2ab7ff;
+    text-shadow: 0 0 6px #2ab7ff;
 }}
 
 .sub-title {{
     font-size: 26px;
-    font-weight: 800;
+    font-weight: 700;
     text-align: center;
     color: #2ab7ff;
-    text-shadow: 0 0 6px #2ab7ff;
+    text-shadow: 0 0 4px #2ab7ff;
     margin-bottom: 10px;
 }}
 
 .card {{
     background: {CARD_BG};
-    padding: 23px;
-    border-radius: 18px;
+    padding: 22px;
+    border-radius: 14px;
     border-left: 5px solid #2ab7ff;
-    box-shadow: {CARD_SHADOW};
-    margin-bottom: 25px;
+    box-shadow: 0 0 12px rgba(0, 162, 255, 0.2);
+    margin-bottom: 20px;
 }}
 
 .call-btn, .email-btn {{
     display: inline-block;
-    padding: 12px 30px;
+    padding: 12px 28px;
     background: #2ab7ff;
     color: white !important;
     font-size: 20px;
     font-weight: 800;
-    border-radius: 50px;
+    border-radius: 40px;
     text-decoration: none;
-    margin: 8px;
-    box-shadow: 0 0 10px #2ab7ff, 0 0 16px #0a99e0;
+    margin: 6px;
+    box-shadow: 0 0 10px #2ab7ff;
 }}
 
 .linkedin-icon {{
-    width: 48px;
-    transition: 0.2s ease-in-out;
+    width: 46px;
+    transition: 0.2s;
 }}
 
 .linkedin-icon:hover {{
-    transform: scale(1.15);
+    transform: scale(1.12);
     filter: drop-shadow(0 0 8px #2ab7ff);
 }}
 
 .float-whatsapp {{
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 22px;
+    right: 22px;
     background: #25D366;
     color: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    font-size: 34px;
+    font-size: 36px;
     text-align: center;
     padding-top: 8px;
-    box-shadow: 0 0 12px #25D366;
+    box-shadow: 0 0 12px #25d366;
     z-index: 999;
 }}
 
 .float-call {{
     position: fixed;
     bottom: 95px;
-    right: 25px;
+    right: 22px;
     background: #2ab7ff;
     color: white;
     width: 60px;
@@ -120,32 +119,34 @@ body {{
 .footer {{
     text-align: center;
     color: {TEXT};
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 2px solid #2ab7ff50;
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 1px solid #2ab7ff60;
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
+
+
 # ---------------------------------------------------
-# 1️⃣ HEADER
+# PAGE HEADER
 # ---------------------------------------------------
 st.markdown("<div class='section-title'>📞 Contact & Location</div>", unsafe_allow_html=True)
 
 
 
 # ---------------------------------------------------
-# 2️⃣ GOOGLE MAP FIRST
+# GOOGLE MAP (TOP)
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>📍 Find Us on Google Maps</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
-<div class='card'>
+<div class="card">
 <iframe 
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11509.41960234578!2d89.1368766!3d26.725808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e3bfb8052ef40d%3A0xec84f6cdedee5f4a!2sMina%20Multi-Purpose%20Store!5e0!3m2!1sen!2sin!4v1707120000000!5m2!1sen!2sin"
     width="100%" 
-    height="350"
+    height="330"
     style="border:0; border-radius:12px;"
     allowfullscreen=""
     loading="lazy"></iframe>
@@ -155,12 +156,12 @@ st.markdown(f"""
 
 
 # ---------------------------------------------------
-# 3️⃣ STORE LOCATION
+# STORE LOCATION
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>🏪 Store Location</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
-<div class='card'>
+<div class="card">
 <b>Mina Multi-Purpose Store</b><br>
 Near Pragati Club, Birpara, West Bengal <br><br>
 
@@ -172,12 +173,12 @@ Near Pragati Club, Birpara, West Bengal <br><br>
 
 
 # ---------------------------------------------------
-# 4️⃣ CONTACT DETAILS
+# CONTACT DETAILS
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>📞 Contact Details</div>", unsafe_allow_html=True)
 
 st.markdown(f"""
-<div class='card'>
+<div class="card">
 📞 <b>Phone:</b> +91 9775410996 <br><br>
 💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
 📧 <b>Email:</b> minamultipurposestore@gmail.com <br>
@@ -187,10 +188,11 @@ st.markdown(f"""
 
 
 # ---------------------------------------------------
-# 5️⃣ QUICK ACTION BUTTONS (BOTTOM)
+# QUICK ACTION BUTTONS
 # ---------------------------------------------------
 st.markdown("<div class='sub-title'>⚡ Quick Actions</div>", unsafe_allow_html=True)
 
+# Buttons
 st.markdown(f"""
 <div style="text-align:center;">
 
@@ -210,7 +212,7 @@ st.markdown(f"""
 
 
 # ---------------------------------------------------
-# 6️⃣ FLOATING BUTTONS
+# FLOATING BUTTONS
 # ---------------------------------------------------
 st.markdown("""
 <a href="https://wa.me/919775410996" class="float-whatsapp">💬</a>
@@ -220,7 +222,7 @@ st.markdown("""
 
 
 # ---------------------------------------------------
-# 7️⃣ FOOTER
+# FOOTER
 # ---------------------------------------------------
 st.markdown("""
 <div class="footer">

@@ -184,4 +184,3 @@ We are open every day to serve our customers.
 """, unsafe_allow_html=True)
 
 st.success("✨ Explore Products & Contact pages using the sidebar!")
-

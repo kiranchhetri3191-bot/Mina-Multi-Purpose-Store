@@ -16,16 +16,16 @@ is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
-    TEXT_MAIN = "#ffffff"          # Full white – visible in dark mode
+    TEXT_MAIN = "#ffffff"
     TEXT_SECOND = "#e6edf3"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
-    TEXT_MAIN = "#0a0a0a"          # Neon-Black for light mode
+    TEXT_MAIN = "#0a0a0a"
     TEXT_SECOND = "#102a45"
 
 # ---------------------------------------------------
-# CSS FIX — PERFECT FOR BOTH MODES
+# CSS FIX — UPDATED WITH NEON GRADIENT
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -55,15 +55,23 @@ body {{
     border-radius: 14px;
 }}
 
+/* 🌟 NEON GRADIENT TITLE + SUBTITLE */
+.header-title, .header-subtitle {{
+    background: linear-gradient(90deg, #ffff00, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    text-shadow: 0px 0px 12px rgba(255,200,0,0.55),
+                 0px 0px 18px rgba(255,150,0,0.55);
+}}
+
 .header-title {{
     font-size: 40px;
-    font-weight: 800;
-    color: white;
 }}
 
 .header-subtitle {{
     font-size: 20px;
-    color: white;
+    font-weight: 600;
 }}
 
 /* SECTION TITLES */

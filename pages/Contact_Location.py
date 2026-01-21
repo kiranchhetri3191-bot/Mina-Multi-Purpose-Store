@@ -131,19 +131,22 @@ with col1:
     st.markdown(f"""
     <div class="card">
         <h2>Contact Details</h2>
+
         📞 <b>Phone:</b> +91 9775410996 <br><br>
 
         💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
 
         ✉️ <b>Email:</b> 
-        <a href="mailto:minamultipurposestore@gmail.com" style="color:#00bfff; font-weight:700;">
+        <a href="mailto:minamultipurposestore@gmail.com" target="_blank">
             minamultipurposestore@gmail.com
-        </a><br><br>
+        </a>
+        <br><br>
 
         🔗 <b>LinkedIn:</b> 
-        <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank" style="color:#00bfff; font-weight:700;">
+        <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
             Mina Multi-Purpose Store
-        </a><br><br>
+        </a>
+        <br><br>
 
         🕒 <b>Opening Hours:</b><br>
         Mon–Sun: <b>7:00 AM – 10:00 PM</b>
@@ -160,14 +163,19 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# SOCIAL BUTTONS (Email Added)
+# SOCIAL BUTTONS (with Email button added)
 # ---------------------------------------------------
 st.markdown("""
 <div style="text-align:center; margin-top:10px;">
+
     <a href="mailto:minamultipurposestore@gmail.com" class="social-btn">✉️ Email</a>
+
     <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
+
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
+
     <a href="tel:+919775410996" class="social-btn">📞 Call</a>
+
 </div>
 """, unsafe_allow_html=True)
 

@@ -28,7 +28,7 @@ else:
     NEON_BORDER = "0 0 15px #00bfff, 0 0 25px #00bfff"
 
 # ---------------------------------------------------
-# CSS — Neon + Floating Buttons
+# CSS — Neon + Icon Buttons + Boxed Map Heading
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -39,9 +39,9 @@ body {{
 }}
 
 @keyframes led-color-shift {{
-    0% {{ color: #00ccff; text-shadow: 0 0 12px #00ccff; }}
-    50% {{ color: #0099ff; text-shadow: 0 0 18px #0099ff; }}
-    100% {{ color: #00ccff; text-shadow: 0 0 12px #00ccff; }}
+    0% {{ color: #00ccff; text-shadow: 0 0 10px #00ccff; }}
+    50% {{ color: #0099ff; text-shadow: 0 0 16px #0099ff; }}
+    100% {{ color: #00ccff; text-shadow: 0 0 10px #00ccff; }}
 }}
 
 .double-text {{
@@ -55,13 +55,6 @@ body {{
     font-size: 28px;
     font-weight: 900;
     color: #00ccff !important;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
-}}
-
-.neon-title-black {{
-    font-size: 28px;
-    font-weight: 900;
-    color: black !important;
     text-shadow: 0 0 10px #00ccff;
 }}
 
@@ -78,32 +71,56 @@ body {{
     color: {TEXT} !important;
 }}
 
-/* -------- NEW FLOATING BUTTONS (Perfect equal spacing) -------- */
+/* -------- Circular Neon Floating Icons -------- */
 
-.floating-btn {{
+.floating-icon {{
     position: fixed;
     right: 25px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
     background: #00bfff;
-    color: white !important;
-    padding: 14px 22px;
-    font-size: 20px;
-    font-weight: 800;
-    border-radius: 50px;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 0 20px #00bfff;
     transition: 0.25s;
     z-index: 9999;
 }}
 
-.floating-btn:hover {{
-    transform: scale(1.09);
+.floating-icon img {{
+    width: 30px;
+    filter: invert(1); /* Makes icons white */
 }}
 
-/* Equal vertical spacing = 60px */
+.floating-icon:hover {{
+    transform: scale(1.15);
+}}
+
 .floating-whatsapp {{ bottom: 260px; }}
 .floating-linkedin {{ bottom: 200px; }}
 .floating-email {{ bottom: 140px; }}
 .floating-call {{ bottom: 80px; }}
+
+/* ------- MAP BOX WITH NEON BORDER ------- */
+
+.map-box {{
+    background: {CARD_BG};
+    padding: 18px;
+    border-radius: 16px;
+    border: 3px solid #00bfff;
+    box-shadow: {NEON_BORDER};
+    margin-top: 35px;
+    margin-bottom: 10px;
+}}
+
+.map-title {{
+    font-size: 26px;
+    font-weight: 900;
+    color: #00ccff;
+    text-shadow: 0 0 10px #00ccff;
+    text-align: center;
+}}
 
 .footer {{
     text-align:center;
@@ -122,7 +139,7 @@ st.markdown("<div class='double-text'>📞 Contact & Location</div>", unsafe_all
 st.write("---")
 
 # ---------------------------------------------------
-# CONTACT + LOCATION
+# CONTACT + LOCATION (Cards)
 # ---------------------------------------------------
 col1, col2 = st.columns(2)
 
@@ -151,30 +168,33 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# REMOVE OLD BUTTONS (WhatsApp + LinkedIn) — Already removed
-# ---------------------------------------------------
-
-# ---------------------------------------------------
-# FLOATING BUTTONS — ONLY THESE REMAIN
+# FLOATING ICON BUTTONS (ONLY THESE)
 # ---------------------------------------------------
 st.markdown("""
-<a href="https://wa.me/919775410996"
-   class="floating-btn floating-whatsapp">💬 WhatsApp</a>
+<a href="https://wa.me/919775410996" class="floating-icon floating-whatsapp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg">
+</a>
 
 <a href="https://www.linkedin.com/company/mina-multi-purpose-store"
-   class="floating-btn floating-linkedin">🔗 LinkedIn</a>
+   class="floating-icon floating-linkedin">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg">
+</a>
 
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
-   class="floating-btn floating-email">✉️ Email</a>
+   class="floating-icon floating-email">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg">
+</a>
 
-<a href="tel:+919775410996" 
-   class="floating-btn floating-call">📞 Call</a>
+<a href="tel:+919775410996" class="floating-icon floating-call">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phone.svg">
+</a>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# MAP
+# MAP BOX WITH NEON BORDER + TITLE INSIDE BOX
 # ---------------------------------------------------
-st.markdown("<div class='map-box'><h2 class='neon-title-black'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='map-box'><div class='map-title'>📍 Find Us on Google Maps</div></div>",
+            unsafe_allow_html=True)
 
 components.html(
     """

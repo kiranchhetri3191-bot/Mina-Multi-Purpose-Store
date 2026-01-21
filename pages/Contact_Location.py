@@ -14,7 +14,7 @@ theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
 # ---------------------------------------------------
-# Auto Colors
+# Auto Colors for Both Modes
 # ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
@@ -24,7 +24,7 @@ if is_dark:
 else:
     BG = "#eef3ff"
     CARD_BG = "white"
-    TEXT = "#000"
+    TEXT = "#000000"
     NEON_BORDER = "0 0 15px #00bfff, 0 0 25px #00bfff"
 
 # ---------------------------------------------------
@@ -78,7 +78,7 @@ body {{
     color: {TEXT} !important;
 }}
 
-/* -------- FLOATING BUTTON STYLE (same for all) -------- */
+/* -------- NEW FLOATING BUTTONS (Perfect equal spacing) -------- */
 
 .floating-btn {{
     position: fixed;
@@ -99,22 +99,11 @@ body {{
     transform: scale(1.09);
 }}
 
-# Email button
-# bottom: 150px
-
-# Call button
-# bottom: 90px
-
-# LinkedIn button
-# bottom: 210px
-
-# WhatsApp button
-# bottom: 270px
-
-.floating-email {{ bottom: 150px; }}
-.floating-call {{ bottom: 90px; }}
-.floating-linkedin {{ bottom: 210px; }}
-.floating-whatsapp {{ bottom: 270px; }}
+/* Equal vertical spacing = 60px */
+.floating-whatsapp {{ bottom: 260px; }}
+.floating-linkedin {{ bottom: 200px; }}
+.floating-email {{ bottom: 140px; }}
+.floating-call {{ bottom: 80px; }}
 
 .footer {{
     text-align:center;
@@ -148,7 +137,7 @@ with col1:
         <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
             Mina Multi-Purpose Store
         </a><br><br>
-        🕒 <b>Opening:</b> 9 AM – 7 PM
+        🕒 <b>Opening Hours:</b> 9 AM – 7 PM
     </div>
     """, unsafe_allow_html=True)
 
@@ -162,17 +151,11 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# CENTER SOCIAL BUTTONS (no email)
+# REMOVE OLD BUTTONS (WhatsApp + LinkedIn) — Already removed
 # ---------------------------------------------------
-st.markdown("""
-<div style="text-align:center; margin-top:10px;">
-    <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
-    <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
-</div>
-""", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# FLOATING BUTTONS — ALL MATCHING STYLE
+# FLOATING BUTTONS — ONLY THESE REMAIN
 # ---------------------------------------------------
 st.markdown("""
 <a href="https://wa.me/919775410996"

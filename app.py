@@ -1,5 +1,18 @@
 import streamlit as st
 
+import os
+os.system("mkdir -p ~/.streamlit/")
+
+with open(os.path.expanduser("~/.streamlit/config.toml"), "w") as f:
+    f.write("""
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+port = $PORT
+""")
+
+
 st.set_page_config(page_title="Mina Multi-Purpose Store",
                    page_icon="Mina Store Logo.png",
                    layout="wide")

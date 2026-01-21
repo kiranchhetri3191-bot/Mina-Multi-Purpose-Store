@@ -127,4 +127,23 @@ products = [
         "img": "../images/hardware.png"
     },
     {
-        "name":
+        "name": "Printing & Xerox",
+        "desc": "Xerox, printing, lamination & online form fill-up.",
+        "img": "../images/print.png"
+    }
+]
+
+# ---------------------------------------------------
+# PRODUCT GRID (2 Columns)
+# ---------------------------------------------------
+cols = st.columns(2)
+
+for i, p in enumerate(products):
+    with cols[i % 2]:
+        st.markdown(f"""
+        <div class="product-card">
+            <img src="{p['img']}" class="product-img">
+            <div class="product-name">{p['name']}</div>
+            <div class="product-desc">{p['desc']}</div>
+        </div>
+        """, unsafe_allow_html=True)

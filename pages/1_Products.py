@@ -111,22 +111,22 @@ products = [
     {
         "name": "Gift Items",
         "desc": "Decorations, soft toys, greeting cards, keychains & more.",
-        "img": "images/gift.png"
+        "img": "pages/images/gift.png"
     },
     {
         "name": "Grocery Essentials",
         "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
-        "img": "images/grocery.png"
+        "img": "pages/images/grocery.png"
     },
     {
         "name": "Hardware Tools",
         "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
-        "img": "images/hardware.png"
+        "img": "pages/images/hardware.png"
     },
     {
         "name": "Printing & Xerox",
         "desc": "Xerox, printing, lamination & online form fill-up.",
-        "img": "images/print.png"
+        "img": "pages/images/print.png"
     }
 ]
 

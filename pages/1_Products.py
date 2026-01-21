@@ -107,28 +107,28 @@ st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=Tr
 st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST (Same)
+# PRODUCT LIST (PNG paths fixed only)
 # ---------------------------------------------------
 products = [
     {
         "name": "Gift Items",
         "desc": "Decorations, soft toys, greeting cards, keychains & more.",
-        "img": "images/gift.png"
+        "img": "gift.png"
     },
     {
         "name": "Grocery Essentials",
         "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
-        "img": "images/grocery.png"
+        "img": "grocery.png"
     },
     {
         "name": "Hardware Tools",
         "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
-        "img": "images/hardware.png"
+        "img": "hardware.png"
     },
     {
         "name": "Printing & Xerox",
         "desc": "Xerox, printing, lamination & online form fill-up.",
-        "img": "images/print.png"
+        "img": "print.png"
     }
 ]
 

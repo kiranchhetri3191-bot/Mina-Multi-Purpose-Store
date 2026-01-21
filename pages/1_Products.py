@@ -30,7 +30,7 @@ NEON_BLUE = "#00c6ff"
 NEON_GLOW = "0px 0px 12px rgba(0,198,255,0.7)"
 
 # ---------------------------------------------------
-# CSS (Neon Theme + Mixed Image Fix)
+# CSS (Neon Theme + Real-Photo Image Support)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -73,14 +73,14 @@ body {{
     box-shadow: 0px 0px 20px rgba(0,198,255,0.9);
 }}
 
-/* IMAGE SUPPORT FOR MIXED SIZES */
+/* WIDE IMAGE FRAME (for real shop photos) */
 .product-img {{
     width: 100%;
-    height: 180px;              /* FIXED 4:3 FRAME */
-    object-fit: cover;          /* PERFECT CENTER CROP */
+    height: 180px;       
+    object-fit: cover;    
     border-radius: 14px;
     border: 2px solid {NEON_BLUE};
-    background: rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.1);
     box-shadow: {NEON_GLOW};
 }}
 
@@ -108,28 +108,28 @@ st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=Tr
 st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST (Corrected Image Paths)
+# PRODUCT LIST (Correct image paths)
 # ---------------------------------------------------
 products = [
     {
         "name": "Gift Items",
         "desc": "Decorations, soft toys, greeting cards, keychains & more.",
-        "img": "pages/gift.png"
+        "img": "../gift.png"
     },
     {
         "name": "Grocery Essentials",
         "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
-        "img": "pages/grocery.png"
+        "img": "../grocery.png"
     },
     {
         "name": "Hardware Tools",
         "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
-        "img": "pages/hardware.png"
+        "img": "../hardware.png"
     },
     {
         "name": "Printing & Xerox",
         "desc": "Xerox, printing, lamination & online form fill-up.",
-        "img": "pages/print.png"
+        "img": "../print.png"
     }
 ]
 

@@ -18,21 +18,17 @@ is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 # ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
-    CARD_BG = "#161b22"
+    CARD_BG = "#11161c"
     TEXT = "#ffffff"
-    TEXT_GLOW = "#ffffff"
-    NEON_TEXT = "#00ccff"
-    CARD_SHADOW = "0px 6px 20px rgba(0,150,255,0.25)"
+    NEON_BORDER = "0 0 18px #00bfff, 0 0 28px #00bfff"
 else:
     BG = "#eef3ff"
-    CARD_BG = "rgba(255,255,255,0.92)"
+    CARD_BG = "white"
     TEXT = "#000000"
-    TEXT_GLOW = "#000000"
-    NEON_TEXT = "#000000"
-    CARD_SHADOW = "0px 6px 20px rgba(0,100,255,0.25)"
+    NEON_BORDER = "0 0 15px #00bfff, 0 0 25px #00bfff"
 
 # ---------------------------------------------------
-# CSS FIX — FULL DARK/LIGHT MODE SUPPORT
+# CSS — Neon Header + Neon Border Cards
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -43,49 +39,24 @@ body {{
 }}
 
 @keyframes led-color-shift {{
-    0%   {{ color: #ff0000; text-shadow: 0 0 12px #ff0000; }}
-    20%  {{ color: #ff9900; text-shadow: 0 0 14px #ff9900; }}
-    40%  {{ color: #ffff00; text-shadow: 0 0 18px #ffff00; }}
-    60%  {{ color: #00ff00; text-shadow: 0 0 14px #00ff00; }}
-    80%  {{ color: #00ccff; text-shadow: 0 0 18px #00ccff; }}
-    100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
+    0% {{ color: #00ccff; text-shadow: 0 0 12px #00ccff; }}
+    50% {{ color: #0099ff; text-shadow: 0 0 18px #0099ff; }}
+    100% {{ color: #00ccff; text-shadow: 0 0 12px #00ccff; }}
 }}
 
 .double-text {{
-    position: relative;
-    font-size: 40px;
+    font-size: 42px;
     font-weight: 900;
     text-align: center;
-}}
-
-.double-text::before {{
-    content: "📞 Contact & Location";
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: {TEXT_GLOW};
-    z-index: -1;
-    filter: blur(3px);
-}}
-
-.double-text {{
-    color: {NEON_TEXT};
-    animation: led-color-shift 3s infinite linear;
-}}
-
-.map-title {{
-    font-size: 28px;
-    font-weight: 900;
-    text-align: center;
-    animation: led-color-shift 3s infinite linear;
+    animation: led-color-shift 2.8s infinite linear;
 }}
 
 .card {{
     background: {CARD_BG};
     padding: 25px;
-    border-radius: 18px;
-    border-left: 5px solid #0a4ba6;
-    box-shadow: {CARD_SHADOW};
+    border-radius: 16px;
+    border: 3px solid #00bfff;
+    box-shadow: {NEON_BORDER};
     margin-bottom: 25px;
 }}
 
@@ -96,9 +67,9 @@ body {{
 .map-box {{
     background: {CARD_BG};
     padding: 15px;
-    border-radius: 18px;
-    border-left: 5px solid #0a4ba6;
-    box-shadow: {CARD_SHADOW};
+    border-radius: 16px;
+    border: 3px solid #00bfff;
+    box-shadow: {NEON_BORDER};
     margin-top: 25px;
 }}
 
@@ -106,33 +77,33 @@ body {{
     color: {TEXT} !important;
 }}
 
+.social-btn {{
+    display: inline-block;
+    padding: 10px 22px;
+    margin: 5px;
+    background: #00bfff;
+    color: white !important;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+}}
+
 .call-btn {{
     display: inline-block;
     padding: 14px 28px;
-    background: linear-gradient(90deg, #ff0066, #ffcc00);
+    background: #0099ff;
     color: white !important;
     font-size: 22px;
     font-weight: 800;
     border-radius: 50px;
     text-align: center;
     text-decoration: none;
-    box-shadow: 0px 0px 20px rgba(255, 0, 150, 0.6);
+    box-shadow: 0 0 20px #0099ff;
     transition: 0.3s;
 }}
 
 .call-btn:hover {{
     transform: scale(1.05);
-}}
-
-.social-btn {{
-    display: inline-block;
-    padding: 10px 22px;
-    margin: 5px;
-    background: #0a4ba6;
-    color: white !important;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
 }}
 
 .footer {{
@@ -204,7 +175,7 @@ st.markdown("""
 # ---------------------------------------------------
 # GOOGLE MAP
 # ---------------------------------------------------
-st.markdown("<div class='map-box'><h2 class='map-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='map-box'><h2>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
     """

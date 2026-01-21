@@ -30,7 +30,7 @@ NEON_BLUE = "#00c6ff"
 NEON_GLOW = "0px 0px 12px rgba(0,198,255,0.7)"
 
 # ---------------------------------------------------
-# CSS (Neon Theme + Real-Photo Image Support)
+# CSS (Neon Theme + Real Photos + 1:1 Square Images)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -73,11 +73,11 @@ body {{
     box-shadow: 0px 0px 20px rgba(0,198,255,0.9);
 }}
 
-/* WIDE IMAGE FRAME (for real shop photos) */
+/* 1:1 SQUARE IMAGE FRAME */
 .product-img {{
     width: 100%;
-    height: 180px;       
-    object-fit: cover;    
+    height: 180px;      
+    object-fit: cover;  
     border-radius: 14px;
     border: 2px solid {NEON_BLUE};
     background: rgba(0,0,0,0.1);
@@ -114,36 +114,17 @@ products = [
     {
         "name": "Gift Items",
         "desc": "Decorations, soft toys, greeting cards, keychains & more.",
-        "img": "../gift.png"
+        "img": "../images/gift.png"
     },
     {
         "name": "Grocery Essentials",
         "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
-        "img": "../grocery.png"
+        "img": "../images/grocery.png"
     },
     {
         "name": "Hardware Tools",
         "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
-        "img": "../hardware.png"
+        "img": "../images/hardware.png"
     },
     {
-        "name": "Printing & Xerox",
-        "desc": "Xerox, printing, lamination & online form fill-up.",
-        "img": "../print.png"
-    }
-]
-
-# ---------------------------------------------------
-# PRODUCT GRID (2 Columns)
-# ---------------------------------------------------
-cols = st.columns(2)
-
-for i, p in enumerate(products):
-    with cols[i % 2]:
-        st.markdown(f"""
-        <div class="product-card">
-            <img src="{p['img']}" class="product-img">
-            <div class="product-name">{p['name']}</div>
-            <div class="product-desc">{p['desc']}</div>
-        </div>
-        """, unsafe_allow_html=True)
+        "name":

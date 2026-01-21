@@ -90,14 +90,14 @@ body {{
 
 .floating-icon img {{
     width: 30px;
-    filter: invert(1);  /* makes icons fully white */
+    filter: invert(1); /* makes icons white */
 }}
 
 .floating-icon:hover {{
     transform: scale(1.15);
 }}
 
-/* Perfect Equal Spacing */
+/* Equal Spacing */
 .floating-whatsapp {{ bottom: 260px; }}
 .floating-linkedin {{ bottom: 200px; }}
 .floating-email {{ bottom: 140px; }}
@@ -168,7 +168,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# FLOATING ICON BUTTONS (SAFE + NO COPYRIGHT)
+# FLOATING ICON BUTTONS (INCLUDING WHITE EMOJI-STYLE 📞)
 # ---------------------------------------------------
 st.markdown("""
 <a href="https://wa.me/919775410996" class="floating-icon floating-whatsapp">
@@ -185,11 +185,11 @@ st.markdown("""
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg">
 </a>
 
-<!-- PURE WHITE CALL ICON (NO BLACK, NO COPYRIGHT) -->
+<!-- PURE WHITE EMOJI-STYLE PHONE ICON -->
 <a href="tel:+919775410996" class="floating-icon floating-call">
     <img src="data:image/svg+xml;utf8,
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
-        <path fill='white' d='M2 4.5C2 3.12 3.12 2 4.5 2h3c.66 0 1.25.32 1.65.85l2 2.62c.43.56.5 1.31.18 1.94L9.7 9.7a1 1 0 0 0-.13 1.04c.62 1.33 1.69 2.71 3.02 3.75 1.33 1.03 2.66 1.7 4 2a1 1 0 0 0 1.06-.46l1.06-1.7c.37-.6 1.05-.93 1.74-.82l2.76.46c.82.14 1.45.85 1.45 1.69v3c0 1.38-1.12 2.5-2.5 2.5C10.19 22 2 13.81 2 4.5z'/>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>
+        <path fill='white' d='M34.6 30.8 29 35.4c-5.8-3.1-10.4-7.7-13.5-13.5l4.6-5.6c.5-.6.6-1.4.3-2.1l-3-7.2c-.6-1.6-2.4-2.3-3.9-1.6L7 8.4c-1.3.6-2.1 2-2 3.4C6 28.7 19.3 42 36.2 43c1.4.1 2.8-.7 3.4-2l2.9-6.5c.7-1.5 0-3.3-1.6-3.9l-7.2-3c-.7-.3-1.5-.2-2.1.2z'/>
     </svg>
     ">
 </a>

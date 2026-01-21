@@ -58,6 +58,18 @@ body {{
     text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
 }}
 
+/* NEW: Black text with neon glow */
+.neon-title-black {{
+    font-size: 28px;
+    font-weight: 900;
+    color: #000000 !important;
+    text-shadow:
+        0 0 8px #00ccff,
+        0 0 14px #00ccff,
+        0 0 22px #00ccff,
+        0 0 30px #00ccff;
+}}
+
 .card {{
     background: {CARD_BG};
     padding: 25px;
@@ -196,9 +208,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# GOOGLE MAP
+# GOOGLE MAP WITH BLACK NEON HEADING
 # ---------------------------------------------------
-st.markdown("<div class='map-box'><h2 class='neon-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='map-box'><h2 class='neon-title-black'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
     """

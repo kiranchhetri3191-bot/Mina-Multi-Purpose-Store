@@ -90,7 +90,7 @@ body {{
 
 .floating-icon img {{
     width: 30px;
-    filter: invert(1); /* Makes icons white */
+    filter: invert(1);  /* makes icons fully white */
 }}
 
 .floating-icon:hover {{
@@ -185,11 +185,11 @@ st.markdown("""
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg">
 </a>
 
-<!-- FINAL SAFE CALL ICON (MIT LICENSE) -->
+<!-- PURE WHITE CALL ICON (NO BLACK, NO COPYRIGHT) -->
 <a href="tel:+919775410996" class="floating-icon floating-call">
     <img src="data:image/svg+xml;utf8,
-    <svg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'>
-        <path d='M2 4.5C2 3.12 3.12 2 4.5 2h3c.66 0 1.25.32 1.65.85l2 2.62c.43.56.5 1.31.18 1.94L9.7 9.7a1 1 0 0 0-.13 1.04c.62 1.33 1.69 2.71 3.02 3.75 1.33 1.03 2.66 1.7 4 2a1 1 0 0 0 1.06-.46l1.06-1.7c.37-.6 1.05-.93 1.74-.82l2.76.46c.82.14 1.45.85 1.45 1.69v3c0 1.38-1.12 2.5-2.5 2.5C10.19 22 2 13.81 2 4.5z'/>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+        <path fill='white' d='M2 4.5C2 3.12 3.12 2 4.5 2h3c.66 0 1.25.32 1.65.85l2 2.62c.43.56.5 1.31.18 1.94L9.7 9.7a1 1 0 0 0-.13 1.04c.62 1.33 1.69 2.71 3.02 3.75 1.33 1.03 2.66 1.7 4 2a1 1 0 0 0 1.06-.46l1.06-1.7c.37-.6 1.05-.93 1.74-.82l2.76.46c.82.14 1.45.85 1.45 1.69v3c0 1.38-1.12 2.5-2.5 2.5C10.19 22 2 13.81 2 4.5z'/>
     </svg>
     ">
 </a>

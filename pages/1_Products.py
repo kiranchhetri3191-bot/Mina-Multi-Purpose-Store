@@ -105,7 +105,7 @@ st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=Tr
 st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST  (Correct image paths)
+# PRODUCT LIST  (Correct paths here)
 # ---------------------------------------------------
 products = [
     {

@@ -58,7 +58,6 @@ body {{
     text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
 }}
 
-/* NEW: Black text with neon glow */
 .neon-title-black {{
     font-size: 28px;
     font-weight: 900;
@@ -186,14 +185,12 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# SOCIAL BUTTONS (non-floating)
+# SOCIAL BUTTONS (updated: email removed)
 # ---------------------------------------------------
 st.markdown("""
 <div style="text-align:center; margin-top:10px;">
     <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
-       class="social-btn">✉️ Email</a>
 </div>
 """, unsafe_allow_html=True)
 

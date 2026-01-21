@@ -1,8 +1,10 @@
 import streamlit as st
 
-st.set_page_config(page_title="Products - Mina Multi-Purpose Store",
-                   page_icon="Mina Store Logo.png",
-                   layout="wide")
+st.set_page_config(
+    page_title="Products - Mina Multi-Purpose Store",
+    page_icon="Mina Store Logo.png",
+    layout="wide"
+)
 
 # ---------------------------------------------------
 # Detect DARK / LIGHT Mode
@@ -11,103 +13,97 @@ theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
 # ---------------------------------------------------
-# Auto Colors for Both Modes
+# Auto Colors
 # ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
     CARD_BG = "#161b22"
     TEXT = "#ffffff"
+    SUBTEXT = "#d0d0d0"
 else:
     BG = "#eef3ff"
     CARD_BG = "rgba(255,255,255,0.92)"
     TEXT = "#0a0a0a"
+    SUBTEXT = "#303030"
+
+NEON_BLUE = "#00c6ff"
+NEON_GLOW = "0px 0px 12px rgba(0,198,255,0.7)"
 
 # ---------------------------------------------------
-# CSS (LED Header + Neon Section Titles + Neon Cards)
+# CSS (Neon Blue Theme)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
 
 body {{
     background: {BG} !important;
-    color: {TEXT} !important;
 }}
 
-@keyframes led-color-shift {{
-    0%   {{ color: #ff0000; text-shadow: 0 0 12px #ff0000; }}
-    20%  {{ color: #ff9900; text-shadow: 0 0 14px #ff9900; }}
-    40%  {{ color: #ffff00; text-shadow: 0 0 18px #ffff00; }}
-    60%  {{ color: #00ff00; text-shadow: 0 0 14px #00ff00; }}
-    80%  {{ color: #00ccff; text-shadow: 0 0 18px #00ccff; }}
-    100% {{ color: #ff00ff; text-shadow: 0 0 18px #ff00ff; }}
-}}
-
-@keyframes led-pulse {{
-    0%   {{ opacity: 0.75; transform: scale(1); }}
-    50%  {{ opacity: 1;    transform: scale(1.05); }}
-    100% {{ opacity: 0.75; transform: scale(1); }}
-}}
-
+/* PAGE HEADER */
 .header-title {{
     font-size: 40px;
-    font-weight: 900;
+    font-weight: 800;
     text-align: center;
     margin-bottom: 10px;
-    animation: led-color-shift 3s infinite linear, led-pulse 2s infinite ease-in-out;
+    color: {NEON_BLUE};
+    text-shadow: {NEON_GLOW};
 }}
 
 .header-subtitle {{
     font-size: 18px;
     text-align: center;
     margin-bottom: 35px;
-    animation: led-color-shift 4s infinite linear, led-pulse 3s infinite ease-in-out;
-}}
-
-/* SECTION HEADER */
-.section-title {{
-    font-size: 32px;
-    font-weight: 700;
-    margin-top: 20px;
-    padding-left: 12px;
     color: {TEXT};
-    border-left: 6px solid #007bff;
-    text-shadow: 0 0 8px rgba(0,123,255,0.55);
 }}
 
-/* PRODUCT CARD */
+/* PRODUCT GRID */
 .product-card {{
     background: {CARD_BG};
     padding: 20px;
     border-radius: 18px;
-    border-left: 5px solid #0a4ba6;
-    box-shadow: 0px 6px 20px rgba(0, 100, 255, 0.25);
-    margin-bottom: 18px;
+    border: 2px solid {NEON_BLUE};
+    box-shadow: {NEON_GLOW};
+    transition: 0.25s ease-in-out;
+    text-align: center;
 }}
 
-.product-card h3 {{
-    margin: 0;
-    color: {TEXT};
-}}
-
-.product-card p {{
-    margin-top: 6px;
-    color: {TEXT};
+.product-card:hover {{
+    transform: translateY(-6px);
+    box-shadow: 0px 0px 18px rgba(0,198,255,0.9);
 }}
 
 .product-img {{
-    width: 100px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 2px solid {NEON_BLUE};
+    padding: 8px;
+    background: rgba(0,0,0,0.05);
+}}
+
+.product-name {{
+    margin-top: 14px;
+    font-size: 22px;
+    font-weight: 700;
+    color: {NEON_BLUE};
+    text-shadow: {NEON_GLOW};
+}}
+
+.product-desc {{
+    margin-top: 6px;
+    font-size: 16px;
+    color: {SUBTEXT};
 }}
 
 </style>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PAGE HEADER (LED ANIMATION)
+# PAGE HEADER
 # ---------------------------------------------------
 st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=True)
-st.markdown("<div class='header-subtitle'>Explore All Categories Available at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
+st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
 # PRODUCT LIST
@@ -115,22 +111,22 @@ st.markdown("<div class='header-subtitle'>Explore All Categories Available at Mi
 products = [
     {
         "name": "Gift Items",
-        "desc": "Decorations, soft toys, greeting cards, keychains and more.",
+        "desc": "Decorations, soft toys, greeting cards, keychains & more.",
         "img": "images/gift.png"
     },
     {
         "name": "Grocery Essentials",
-        "desc": "Oil, rice, biscuits, spices, pulses and more daily items.",
+        "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
         "img": "images/grocery.png"
     },
     {
         "name": "Hardware Tools",
-        "desc": "Tape, wrench, screwdrivers, cutters and repair tools.",
+        "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
         "img": "images/hardware.png"
     },
     {
         "name": "Printing & Xerox",
-        "desc": "Xerox, printing, lamination, online form fill-up.",
+        "desc": "Xerox, printing, lamination & online form fill-up.",
         "img": "images/print.png"
     }
 ]
@@ -145,7 +141,7 @@ for i, p in enumerate(products):
         st.markdown(f"""
         <div class="product-card">
             <img src="{p['img']}" class="product-img">
-            <h3>{p['name']}</h3>
-            <p>{p['desc']}</p>
+            <div class="product-name">{p['name']}</div>
+            <div class="product-desc">{p['desc']}</div>
         </div>
         """, unsafe_allow_html=True)

@@ -30,7 +30,7 @@ NEON_BLUE = "#00c6ff"
 NEON_GLOW = "0px 0px 12px rgba(0,198,255,0.7)"
 
 # ---------------------------------------------------
-# CSS (Neon Theme + Real Photos + 1:1 Square Images)
+# CSS
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -39,7 +39,6 @@ body {{
     background: {BG} !important;
 }}
 
-/* PAGE HEADER */
 .header-title {{
     font-size: 40px;
     font-weight: 800;
@@ -56,7 +55,6 @@ body {{
     color: {TEXT};
 }}
 
-/* PRODUCT CARD */
 .product-card {{
     background: {CARD_BG};
     padding: 22px;
@@ -73,11 +71,10 @@ body {{
     box-shadow: 0px 0px 20px rgba(0,198,255,0.9);
 }}
 
-/* 1:1 SQUARE IMAGE FRAME */
 .product-img {{
     width: 100%;
-    height: 180px;      
-    object-fit: cover;  
+    height: 180px;
+    object-fit: cover;
     border-radius: 14px;
     border: 2px solid {NEON_BLUE};
     background: rgba(0,0,0,0.1);
@@ -108,33 +105,33 @@ st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=Tr
 st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST (Correct image paths)
+# PRODUCT LIST  (Correct image paths)
 # ---------------------------------------------------
 products = [
     {
         "name": "Gift Items",
         "desc": "Decorations, soft toys, greeting cards, keychains & more.",
-        "img": "../images/gift.png"
+        "img": "images/gift.png"
     },
     {
         "name": "Grocery Essentials",
         "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
-        "img": "../images/grocery.png"
+        "img": "images/grocery.png"
     },
     {
         "name": "Hardware Tools",
         "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
-        "img": "../images/hardware.png"
+        "img": "images/hardware.png"
     },
     {
         "name": "Printing & Xerox",
         "desc": "Xerox, printing, lamination & online form fill-up.",
-        "img": "../images/print.png"
+        "img": "images/print.png"
     }
 ]
 
 # ---------------------------------------------------
-# PRODUCT GRID (2 Columns)
+# PRODUCT GRID
 # ---------------------------------------------------
 cols = st.columns(2)
 

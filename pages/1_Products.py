@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------
-# Detect DARK / LIGHT Mode
+# Detect Dark / Light Mode
 # ---------------------------------------------------
 theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
@@ -30,7 +30,7 @@ NEON_BLUE = "#00c6ff"
 NEON_GLOW = "0px 0px 12px rgba(0,198,255,0.7)"
 
 # ---------------------------------------------------
-# CSS (Neon Blue Theme + Bigger Images)
+# CSS (Neon Theme + Mixed Image Fix)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -59,12 +59,13 @@ body {{
 /* PRODUCT CARD */
 .product-card {{
     background: {CARD_BG};
-    padding: 25px;
+    padding: 22px;
     border-radius: 20px;
     border: 2px solid {NEON_BLUE};
     box-shadow: {NEON_GLOW};
     transition: 0.25s ease-in-out;
     text-align: center;
+    margin-bottom: 25px;
 }}
 
 .product-card:hover {{
@@ -72,19 +73,19 @@ body {{
     box-shadow: 0px 0px 20px rgba(0,198,255,0.9);
 }}
 
+/* IMAGE SUPPORT FOR MIXED SIZES */
 .product-img {{
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
+    width: 100%;
+    height: 180px;              /* FIXED 4:3 FRAME */
+    object-fit: cover;          /* PERFECT CENTER CROP */
     border-radius: 14px;
     border: 2px solid {NEON_BLUE};
-    padding: 10px;
-    background: rgba(0,0,0,0.05);
+    background: rgba(0,0,0,0.15);
     box-shadow: {NEON_GLOW};
 }}
 
 .product-name {{
-    margin-top: 16px;
+    margin-top: 14px;
     font-size: 24px;
     font-weight: 700;
     color: {NEON_BLUE};
@@ -92,8 +93,8 @@ body {{
 }}
 
 .product-desc {{
-    margin-top: 8px;
-    font-size: 17px;
+    margin-top: 6px;
+    font-size: 16px;
     color: {SUBTEXT};
 }}
 
@@ -107,33 +108,33 @@ st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=Tr
 st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST (PNG paths fixed only)
+# PRODUCT LIST (Corrected Image Paths)
 # ---------------------------------------------------
 products = [
     {
         "name": "Gift Items",
         "desc": "Decorations, soft toys, greeting cards, keychains & more.",
-        "img": "gift.png"
+        "img": "pages/gift.png"
     },
     {
         "name": "Grocery Essentials",
         "desc": "Rice, oil, biscuits, spices, pulses & daily items.",
-        "img": "grocery.png"
+        "img": "pages/grocery.png"
     },
     {
         "name": "Hardware Tools",
         "desc": "Tape, hammer, screwdrivers, cutters & repair tools.",
-        "img": "hardware.png"
+        "img": "pages/hardware.png"
     },
     {
         "name": "Printing & Xerox",
         "desc": "Xerox, printing, lamination & online form fill-up.",
-        "img": "print.png"
+        "img": "pages/print.png"
     }
 ]
 
 # ---------------------------------------------------
-# PRODUCT GRID
+# PRODUCT GRID (2 Columns)
 # ---------------------------------------------------
 cols = st.columns(2)
 

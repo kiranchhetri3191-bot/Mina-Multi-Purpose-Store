@@ -57,6 +57,7 @@ body {{
     border: 2px solid {NEON_BLUE};
 }}
 
+/* TITLE */
 .header-title {{
     font-size: 40px;
     font-weight: 800;
@@ -64,9 +65,12 @@ body {{
     text-shadow: {NEON_GLOW};
 }}
 
+/* SUBTITLE — NOW NEON BLUE */
 .header-subtitle {{
     font-size: 20px;
-    color: white;
+    font-weight: 600;
+    color: {NEON_BLUE};
+    text-shadow: {NEON_GLOW};
 }}
 
 /* SECTION TITLE */

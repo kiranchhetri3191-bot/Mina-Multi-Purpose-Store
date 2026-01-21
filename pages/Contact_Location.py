@@ -14,7 +14,7 @@ theme_bg = st.get_option("theme.backgroundColor")
 is_dark = theme_bg and theme_bg.lower() in ["#0e1117", "#000000", "#1e1e1e"]
 
 # ---------------------------------------------------
-# Auto Colors for Both Modes
+# Auto Colors
 # ---------------------------------------------------
 if is_dark:
     BG = "#0d1117"
@@ -24,7 +24,7 @@ if is_dark:
 else:
     BG = "#eef3ff"
     CARD_BG = "white"
-    TEXT = "#000000"
+    TEXT = "#000"
     NEON_BORDER = "0 0 15px #00bfff, 0 0 25px #00bfff"
 
 # ---------------------------------------------------
@@ -55,18 +55,14 @@ body {{
     font-size: 28px;
     font-weight: 900;
     color: #00ccff !important;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
 }}
 
 .neon-title-black {{
     font-size: 28px;
     font-weight: 900;
-    color: #000000 !important;
-    text-shadow:
-        0 0 8px #00ccff,
-        0 0 14px #00ccff,
-        0 0 22px #00ccff,
-        0 0 30px #00ccff;
+    color: black !important;
+    text-shadow: 0 0 10px #00ccff;
 }}
 
 .card {{
@@ -82,61 +78,43 @@ body {{
     color: {TEXT} !important;
 }}
 
-.map-box {{
-    background: {CARD_BG};
-    padding: 15px;
-    border-radius: 16px;
-    border: 3px solid #00bfff;
-    box-shadow: {NEON_BORDER};
-    margin-top: 25px;
-}}
+/* -------- FLOATING BUTTON STYLE (same for all) -------- */
 
-.social-btn {{
-    display: inline-block;
-    padding: 10px 22px;
-    margin: 5px;
-    background: #00bfff;
-    color: white !important;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-}}
-
-.floating-call {{
+.floating-btn {{
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #0099ff;
-    color: white !important;
-    padding: 14px 24px;
-    font-size: 22px;
-    font-weight: 800;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 0 20px #0099ff;
-    transition: 0.3s;
-    z-index: 9999;
-}}
-
-.floating-email {{
-    position: fixed;
-    bottom: 90px;
     right: 25px;
     background: #00bfff;
     color: white !important;
-    padding: 14px 20px;
+    padding: 14px 22px;
     font-size: 20px;
     font-weight: 800;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 0 18px #00bfff;
-    transition: 0.3s;
+    box-shadow: 0 0 20px #00bfff;
+    transition: 0.25s;
     z-index: 9999;
 }}
 
-.floating-call:hover, .floating-email:hover {{
-    transform: scale(1.08);
+.floating-btn:hover {{
+    transform: scale(1.09);
 }}
+
+# Email button
+# bottom: 150px
+
+# Call button
+# bottom: 90px
+
+# LinkedIn button
+# bottom: 210px
+
+# WhatsApp button
+# bottom: 270px
+
+.floating-email {{ bottom: 150px; }}
+.floating-call {{ bottom: 90px; }}
+.floating-linkedin {{ bottom: 210px; }}
+.floating-whatsapp {{ bottom: 270px; }}
 
 .footer {{
     text-align:center;
@@ -155,7 +133,7 @@ st.markdown("<div class='double-text'>📞 Contact & Location</div>", unsafe_all
 st.write("---")
 
 # ---------------------------------------------------
-# CONTACT + LOCATION CARDS
+# CONTACT + LOCATION
 # ---------------------------------------------------
 col1, col2 = st.columns(2)
 
@@ -170,8 +148,7 @@ with col1:
         <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
             Mina Multi-Purpose Store
         </a><br><br>
-        🕒 <b>Opening Hours:</b><br>
-        Mon–Sun: <b>9:00 AM – 7:00 PM</b>
+        🕒 <b>Opening:</b> 9 AM – 7 PM
     </div>
     """, unsafe_allow_html=True)
 
@@ -185,7 +162,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# SOCIAL BUTTONS (updated: email removed)
+# CENTER SOCIAL BUTTONS (no email)
 # ---------------------------------------------------
 st.markdown("""
 <div style="text-align:center; margin-top:10px;">
@@ -195,17 +172,24 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# FLOATING CALL + EMAIL BUTTONS
+# FLOATING BUTTONS — ALL MATCHING STYLE
 # ---------------------------------------------------
 st.markdown("""
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
-   class="floating-email">✉️ Email</a>
+<a href="https://wa.me/919775410996"
+   class="floating-btn floating-whatsapp">💬 WhatsApp</a>
 
-<a href="tel:+919775410996" class="floating-call">📞 Call</a>
+<a href="https://www.linkedin.com/company/mina-multi-purpose-store"
+   class="floating-btn floating-linkedin">🔗 LinkedIn</a>
+
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
+   class="floating-btn floating-email">✉️ Email</a>
+
+<a href="tel:+919775410996" 
+   class="floating-btn floating-call">📞 Call</a>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# GOOGLE MAP WITH BLACK NEON HEADING
+# MAP
 # ---------------------------------------------------
 st.markdown("<div class='map-box'><h2 class='neon-title-black'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 

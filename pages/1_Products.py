@@ -30,7 +30,7 @@ NEON_BLUE = "#00c6ff"
 NEON_GLOW = "0px 0px 12px rgba(0,198,255,0.7)"
 
 # ---------------------------------------------------
-# CSS (Neon Blue Theme)
+# CSS (Neon Blue Theme + Bigger Images)
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -56,11 +56,11 @@ body {{
     color: {TEXT};
 }}
 
-/* PRODUCT GRID */
+/* PRODUCT CARD */
 .product-card {{
     background: {CARD_BG};
-    padding: 20px;
-    border-radius: 18px;
+    padding: 25px;
+    border-radius: 20px;
     border: 2px solid {NEON_BLUE};
     box-shadow: {NEON_GLOW};
     transition: 0.25s ease-in-out;
@@ -69,30 +69,31 @@ body {{
 
 .product-card:hover {{
     transform: translateY(-6px);
-    box-shadow: 0px 0px 18px rgba(0,198,255,0.9);
+    box-shadow: 0px 0px 20px rgba(0,198,255,0.9);
 }}
 
 .product-img {{
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 14px;
     border: 2px solid {NEON_BLUE};
-    padding: 8px;
+    padding: 10px;
     background: rgba(0,0,0,0.05);
+    box-shadow: {NEON_GLOW};
 }}
 
 .product-name {{
-    margin-top: 14px;
-    font-size: 22px;
+    margin-top: 16px;
+    font-size: 24px;
     font-weight: 700;
     color: {NEON_BLUE};
     text-shadow: {NEON_GLOW};
 }}
 
 .product-desc {{
-    margin-top: 6px;
-    font-size: 16px;
+    margin-top: 8px;
+    font-size: 17px;
     color: {SUBTEXT};
 }}
 
@@ -106,7 +107,7 @@ st.markdown("<div class='header-title'>Our Products</div>", unsafe_allow_html=Tr
 st.markdown("<div class='header-subtitle'>Explore all available categories at Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# PRODUCT LIST
+# PRODUCT LIST (Same)
 # ---------------------------------------------------
 products = [
     {

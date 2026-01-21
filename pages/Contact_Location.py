@@ -90,7 +90,7 @@ body {{
 
 .floating-icon img {{
     width: 30px;
-    filter: invert(1); /* makes white icons */
+    filter: invert(1); /* makes icons white */
 }}
 
 .floating-icon:hover {{
@@ -186,8 +186,9 @@ st.markdown("""
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg">
 </a>
 
+<!-- FINAL FIXED CALL ICON (free forever) -->
 <a href="tel:+919775410996" class="floating-icon floating-call">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telephone.svg">
+    <span style="font-size:30px; color:white;">📞</span>
 </a>
 """, unsafe_allow_html=True)
 

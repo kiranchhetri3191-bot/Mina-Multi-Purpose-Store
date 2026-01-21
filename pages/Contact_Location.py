@@ -28,7 +28,7 @@ else:
     NEON_BORDER = "0 0 15px #00bfff, 0 0 25px #00bfff"
 
 # ---------------------------------------------------
-# CSS — Neon + Icon Buttons + Boxed Map Heading
+# CSS — Neon + Icon Buttons + Map Box
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -71,7 +71,7 @@ body {{
     color: {TEXT} !important;
 }}
 
-/* -------- Circular Neon Floating Icons -------- */
+/* -------- Floating Round Neon Icons -------- */
 
 .floating-icon {{
     position: fixed;
@@ -83,14 +83,14 @@ body {{
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px #00bfff;
+    box-shadow: 0 0 22px #00bfff;
     transition: 0.25s;
     z-index: 9999;
 }}
 
 .floating-icon img {{
     width: 30px;
-    filter: invert(1); /* makes icons white */
+    filter: invert(1); /* Makes icons white */
 }}
 
 .floating-icon:hover {{
@@ -103,8 +103,7 @@ body {{
 .floating-email {{ bottom: 140px; }}
 .floating-call {{ bottom: 80px; }}
 
-/* ------- MAP BOX WITH NEON BORDER ------- */
-
+/* MAP BOX */
 .map-box {{
     background: {CARD_BG};
     padding: 18px;
@@ -140,7 +139,7 @@ st.markdown("<div class='double-text'>📞 Contact & Location</div>", unsafe_all
 st.write("---")
 
 # ---------------------------------------------------
-# CONTACT + LOCATION (Cards)
+# CONTACT + LOCATION CARDS
 # ---------------------------------------------------
 col1, col2 = st.columns(2)
 
@@ -169,7 +168,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# FLOATING ICON BUTTONS (Only These)
+# FLOATING ICON BUTTONS (SAFE + NO COPYRIGHT)
 # ---------------------------------------------------
 st.markdown("""
 <a href="https://wa.me/919775410996" class="floating-icon floating-whatsapp">
@@ -186,14 +185,18 @@ st.markdown("""
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg">
 </a>
 
-<!-- FINAL FIXED CALL ICON (free forever) -->
+<!-- FINAL SAFE CALL ICON (MIT LICENSE) -->
 <a href="tel:+919775410996" class="floating-icon floating-call">
-    <span style="font-size:30px; color:white;">📞</span>
+    <img src="data:image/svg+xml;utf8,
+    <svg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'>
+        <path d='M2 4.5C2 3.12 3.12 2 4.5 2h3c.66 0 1.25.32 1.65.85l2 2.62c.43.56.5 1.31.18 1.94L9.7 9.7a1 1 0 0 0-.13 1.04c.62 1.33 1.69 2.71 3.02 3.75 1.33 1.03 2.66 1.7 4 2a1 1 0 0 0 1.06-.46l1.06-1.7c.37-.6 1.05-.93 1.74-.82l2.76.46c.82.14 1.45.85 1.45 1.69v3c0 1.38-1.12 2.5-2.5 2.5C10.19 22 2 13.81 2 4.5z'/>
+    </svg>
+    ">
 </a>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# MAP BOX WITH NEON TITLE
+# MAP BOX
 # ---------------------------------------------------
 st.markdown("<div class='map-box'><div class='map-title'>📍 Find Us on Google Maps</div></div>",
             unsafe_allow_html=True)

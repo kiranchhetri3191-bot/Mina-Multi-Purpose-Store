@@ -3,6 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Mina Multi-Purpose Store",
                    page_icon="Mina Store Logo.png",
                    layout="wide")
+st.title("Home")
 
 # ---------------------------------------------------
 # Detect DARK / LIGHT Mode

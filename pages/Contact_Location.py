@@ -28,7 +28,7 @@ else:
     NEON_BORDER = "0 0 15px #00bfff, 0 0 25px #00bfff"
 
 # ---------------------------------------------------
-# CSS — Neon Header + Neon Border Cards
+# CSS — Neon + Floating Buttons
 # ---------------------------------------------------
 st.markdown(f"""
 <style>
@@ -73,10 +73,6 @@ body {{
     margin-top: 25px;
 }}
 
-.map-box, .map-box * {{
-    color: {TEXT} !important;
-}}
-
 .social-btn {{
     display: inline-block;
     padding: 10px 22px;
@@ -88,22 +84,40 @@ body {{
     text-decoration: none;
 }}
 
-.call-btn {{
-    display: inline-block;
-    padding: 14px 28px;
+.floating-call {{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
     background: #0099ff;
     color: white !important;
+    padding: 14px 24px;
     font-size: 22px;
     font-weight: 800;
     border-radius: 50px;
-    text-align: center;
     text-decoration: none;
     box-shadow: 0 0 20px #0099ff;
     transition: 0.3s;
+    z-index: 9999;
 }}
 
-.call-btn:hover {{
-    transform: scale(1.05);
+.floating-email {{
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    background: #00bfff;
+    color: white !important;
+    padding: 14px 20px;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 0 18px #00bfff;
+    transition: 0.3s;
+    z-index: 9999;
+}}
+
+.floating-call:hover, .floating-email:hover {{
+    transform: scale(1.08);
 }}
 
 .footer {{
@@ -134,7 +148,7 @@ with col1:
         📞 <b>Phone:</b> +91 9775410996 <br><br>
         💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
         ✉️ <b>Email:</b> minamultipurposestore@gmail.com <br><br>
-        🔗 <b>LinkedIn:</b> 
+        🔗 <b>LinkedIn:</b>
         <a href="https://www.linkedin.com/company/mina-multi-purpose-store" target="_blank">
             Mina Multi-Purpose Store
         </a><br><br>
@@ -153,23 +167,25 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# SOCIAL BUTTONS
+# SOCIAL BUTTONS (non-floating)
 # ---------------------------------------------------
 st.markdown("""
 <div style="text-align:center; margin-top:10px;">
     <a href="https://wa.me/919775410996" class="social-btn">💬 WhatsApp</a>
     <a href="https://www.linkedin.com/company/mina-multi-purpose-store" class="social-btn">🔗 LinkedIn</a>
-    <a href="tel:+919775410996" class="social-btn">📞 Call</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
+       class="social-btn">✉️ Email</a>
 </div>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# CALL BUTTON
+# FLOATING CALL + EMAIL BUTTONS (ONLY ONE CALL NOW)
 # ---------------------------------------------------
 st.markdown("""
-<div style="text-align:center; margin-top:15px; margin-bottom:20px;">
-    <a href="tel:+919775410996" class="call-btn">📞 Call Now</a>
-</div>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
+   class="floating-email">✉️ Email</a>
+
+<a href="tel:+919775410996" class="floating-call">📞 Call</a>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------

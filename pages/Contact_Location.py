@@ -51,6 +51,13 @@ body {{
     animation: led-color-shift 2.8s infinite linear;
 }}
 
+.neon-title {{
+    font-size: 28px;
+    font-weight: 900;
+    color: #00ccff !important;
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
+}}
+
 .card {{
     background: {CARD_BG};
     padding: 25px;
@@ -144,7 +151,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown(f"""
     <div class="card">
-        <h2>Contact Details</h2>
+        <h2 class='neon-title'>Contact Details</h2>
         📞 <b>Phone:</b> +91 9775410996 <br><br>
         💬 <b>WhatsApp:</b> +91 9775410996 <br><br>
         ✉️ <b>Email:</b> minamultipurposestore@gmail.com <br><br>
@@ -153,14 +160,14 @@ with col1:
             Mina Multi-Purpose Store
         </a><br><br>
         🕒 <b>Opening Hours:</b><br>
-    Mon–Sun: <b>9:00 AM – 7:00 PM</b>
+        Mon–Sun: <b>9:00 AM – 7:00 PM</b>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown(f"""
     <div class="card">
-        <h2>Store Location</h2>
+        <h2 class='neon-title'>Store Location</h2>
         📍 <b>Mina Multi-Purpose Store</b><br>
         Near Pragati Club, Birpara, West Bengal <br><br>
     </div>
@@ -179,7 +186,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# FLOATING CALL + EMAIL BUTTONS (ONLY ONE CALL NOW)
+# FLOATING CALL + EMAIL BUTTONS
 # ---------------------------------------------------
 st.markdown("""
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=minamultipurposestore@gmail.com" 
@@ -191,7 +198,7 @@ st.markdown("""
 # ---------------------------------------------------
 # GOOGLE MAP
 # ---------------------------------------------------
-st.markdown("<div class='map-box'><h2>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
+st.markdown("<div class='map-box'><h2 class='neon-title'>📍 Find Us on Google Maps</h2></div>", unsafe_allow_html=True)
 
 components.html(
     """

@@ -90,13 +90,14 @@ body {{
 
 .floating-icon img {{
     width: 30px;
-    filter: invert(1); /* Makes icons white */
+    filter: invert(1); /* makes white icons */
 }}
 
 .floating-icon:hover {{
     transform: scale(1.15);
 }}
 
+/* Perfect Equal Spacing */
 .floating-whatsapp {{ bottom: 260px; }}
 .floating-linkedin {{ bottom: 200px; }}
 .floating-email {{ bottom: 140px; }}
@@ -168,7 +169,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# FLOATING ICON BUTTONS (ONLY THESE)
+# FLOATING ICON BUTTONS (Only These)
 # ---------------------------------------------------
 st.markdown("""
 <a href="https://wa.me/919775410996" class="floating-icon floating-whatsapp">
@@ -186,12 +187,12 @@ st.markdown("""
 </a>
 
 <a href="tel:+919775410996" class="floating-icon floating-call">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/phone.svg">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telephone.svg">
 </a>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------
-# MAP BOX WITH NEON BORDER + TITLE INSIDE BOX
+# MAP BOX WITH NEON TITLE
 # ---------------------------------------------------
 st.markdown("<div class='map-box'><div class='map-title'>📍 Find Us on Google Maps</div></div>",
             unsafe_allow_html=True)

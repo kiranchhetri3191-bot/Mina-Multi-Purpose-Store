@@ -153,7 +153,7 @@ with col1:
             Mina Multi-Purpose Store
         </a><br><br>
         🕒 <b>Opening Hours:</b><br>
-        Mon–Sun: <b>7:00 AM – 10:00 PM</b>
+    Mon–Sun: <b>9:00 AM – 7:00 PM</b>
     </div>
     """, unsafe_allow_html=True)
 

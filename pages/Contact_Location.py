@@ -2,8 +2,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
-    page_title="Contact - Mina Multi-Purpose Store",
-    page_icon="Mina Store Logo.png",
+    page_title="Mina Multi-Purpose Store",
+    page_icon="mina_logo.png",  # replace with your file name
     layout="wide"
 )
 

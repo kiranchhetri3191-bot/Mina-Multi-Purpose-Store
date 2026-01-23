@@ -104,11 +104,17 @@ categories = [
 ]
 
 for img, caption in categories:
-    st.markdown(f"""
-        <div class='product-card'>
-            <img src='data:image/png;base64,{st.image(load_img(img), use_column_width=True, output_format="PNG")}'/>
-            <div class='caption'>{caption}</div>
-        </div>
-    """, unsafe_allow_html=True)
+    # OPEN CARD
+    st.markdown("<div class='product-card'>", unsafe_allow_html=True)
 
+    # LOAD IMAGE SAFELY
+    st.image(load_img(img), use_column_width=True)
+
+    # CAPTION
+    st.markdown(f"<div class='caption'>{caption}</div>", unsafe_allow_html=True)
+
+    # CLOSE CARD
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# CLOSE GRID
 st.markdown("</div>", unsafe_allow_html=True)

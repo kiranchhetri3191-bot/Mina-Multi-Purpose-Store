@@ -20,12 +20,12 @@ st.set_page_config(
 )
 
 # --------------------------
-# RESPONSIVE CSS
+# RESPONSIVE + SOFT NEON CSS
 # --------------------------
 st.markdown("""
 <style>
 
-/* Gradient Title */
+/* Title (gradient stays same) */
 .title {
     font-size: 42px;
     font-weight: 900;
@@ -34,6 +34,16 @@ st.markdown("""
     -webkit-text-fill-color: transparent;
     text-align: center;
     margin-bottom: 25px;
+}
+
+/* Soft Neon Subtitle */
+.subtitle-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1FA8FF;
+    text-shadow: 
+        0 0 3px rgba(31,168,255,0.6),
+        0 0 6px rgba(31,168,255,0.3);
 }
 
 /* Grid Container */
@@ -61,17 +71,38 @@ st.markdown("""
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* Caption */
+/* Soft Neon Caption */
 .caption {
     font-size: 18px;
     font-weight: 700;
     margin-top: 8px;
+    color: #39BFFF;
+    text-shadow: 
+        0 0 3px rgba(57,191,255,0.5),
+        0 0 6px rgba(57,191,255,0.3);
+}
+
+/* Light mode softer glow */
+@media (prefers-color-scheme: light) {
+    .subtitle-text {
+        text-shadow: 
+            0 0 2px rgba(31,168,255,0.4),
+            0 0 4px rgba(31,168,255,0.2);
+    }
+    .caption {
+        text-shadow:
+            0 0 2px rgba(57,191,255,0.4),
+            0 0 4px rgba(57,191,255,0.2);
+    }
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 480px) {
     .title {
         font-size: 30px;
+    }
+    .subtitle-text {
+        font-size: 18px;
     }
     .product-card {
         padding: 12px;
@@ -89,7 +120,9 @@ st.markdown("""
 # PAGE TITLE
 # --------------------------
 st.markdown("<div class='title'>🛍️ Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
-st.write("### Browse Categories:")
+
+# Soft neon subtitle
+st.markdown("<h3 class='subtitle-text'>Browse Categories:</h3>", unsafe_allow_html=True)
 
 # --------------------------
 # PRODUCT GRID RESPONSIVE
@@ -104,17 +137,9 @@ categories = [
 ]
 
 for img, caption in categories:
-    # OPEN CARD
     st.markdown("<div class='product-card'>", unsafe_allow_html=True)
-
-    # LOAD IMAGE SAFELY
     st.image(load_img(img), use_column_width=True)
-
-    # CAPTION
     st.markdown(f"<div class='caption'>{caption}</div>", unsafe_allow_html=True)
-
-    # CLOSE CARD
     st.markdown("</div>", unsafe_allow_html=True)
 
-# CLOSE GRID
 st.markdown("</div>", unsafe_allow_html=True)

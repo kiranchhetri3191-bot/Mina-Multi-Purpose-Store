@@ -13,6 +13,14 @@ port = $PORT
 """)
 
 
+st.set_page_config(
+    page_title="Mina Multi-Purpose Store",
+    page_icon="mina_logo.png",  # replace with your file name
+    layout="wide"
+)
+
+
+
 st.set_page_config(page_title="Mina Multi-Purpose Store",
                    page_icon="Mina Store Logo.png",
                    layout="wide")

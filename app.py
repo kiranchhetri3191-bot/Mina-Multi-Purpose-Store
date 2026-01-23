@@ -14,6 +14,15 @@ port = $PORT
 
 
 
+st.set_page_config(
+    page_title="Mina Multi-Purpose Store",
+    page_icon="Mina_Store_Logo.png",  # your logo file
+    layout="wide"
+)
+
+
+
+
 st.set_page_config(page_title="Mina Multi-Purpose Store",
                    page_icon="Mina Store Logo.png",
                    layout="wide")

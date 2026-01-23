@@ -137,7 +137,7 @@ col1, col2 = st.columns([1, 4])
 
 with col1:
     st.markdown('<div class="header-logo">', unsafe_allow_html=True)
-    st.image("Mina Store Logo.png", width=145)
+    st.image("Mina_Store_Logo.png", width=145)
     st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:

@@ -14,8 +14,8 @@ def load_img(name):
 # PAGE CONFIG
 # --------------------------
 st.set_page_config(
-    page_title="Products - Mina Store",
-    page_icon="🛍️",
+    page_title="Mina Multi-Purpose Store",
+    page_icon="mina_logo.png",  # replace with your file name
     layout="wide"
 )
 

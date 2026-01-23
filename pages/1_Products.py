@@ -66,6 +66,7 @@ st.markdown("""
     text-align: center;
 }
 
+/* Hover Effect */
 .product-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
@@ -73,13 +74,21 @@ st.markdown("""
 
 /* BIGGER Soft Neon Captions */
 .caption {
-    font-size: 22px;        /* Bigger text */
-    font-weight: 800;       /* Bolder */
+    font-size: 22px;
+    font-weight: 800;
     margin-top: 12px;
     color: #39BFFF;
     text-shadow: 
         0 0 3px rgba(57,191,255,0.5),
         0 0 6px rgba(57,191,255,0.3);
+}
+
+/* DESCRIPTION TEXT (Added) */
+.desc {  /* <-- ADDED CSS HERE */
+    font-size: 14px;
+    color: #e8f7ff;
+    margin-top: 4px;
+    opacity: 0.9;
 }
 
 /* Light mode softer glow */
@@ -88,6 +97,9 @@ st.markdown("""
         text-shadow:
             0 0 2px rgba(57,191,255,0.4),
             0 0 4px rgba(57,191,255,0.2);
+    }
+    .desc {  /* <-- ADDED CSS HERE */
+        color: #0b4c66;
     }
 }
 
@@ -104,7 +116,10 @@ st.markdown("""
         border-radius: 14px;
     }
     .caption {
-        font-size: 19px;   /* Slightly smaller on phones */
+        font-size: 19px;
+    }
+    .desc { /* <-- ADDED CSS HERE */
+        font-size: 13px;
     }
 }
 
@@ -124,17 +139,29 @@ st.markdown("<h3 class='subtitle-text'>Browse Categories:</h3>", unsafe_allow_ht
 # --------------------------
 st.markdown("<div class='grid-container'>", unsafe_allow_html=True)
 
+# CATEGORY LIST WITH DESCRIPTION INCLUDED
 categories = [
-    ("gift.png", "Gift Items"),
-    ("grocery.png", "Grocery"),
-    ("hardware.png", "Hardware"),
-    ("print.png", "Print & Xerox"),
+    ("gift.png", "Gift Items", ""),     # <-- NO DESCRIPTION
+    ("grocery.png", "Grocery", ""),     # <-- NO DESCRIPTION
+    ("hardware.png", "Hardware", ""),   # <-- NO DESCRIPTION
+    ("print.png", "Print & Xerox", "Xerox and Color Print Services"),  # <-- ADDED DESCRIPTION HERE
 ]
 
-for img, caption in categories:
+for img, caption, desc in categories:
+
     st.markdown("<div class='product-card'>", unsafe_allow_html=True)
+
     st.image(load_img(img), use_column_width=True)
+
     st.markdown(f"<div class='caption'>{caption}</div>", unsafe_allow_html=True)
+
+    # -----------------------------
+    # SHOW DESCRIPTION ONLY IF PRESENT
+    # -----------------------------
+    if desc != "":  
+        st.markdown(f"<div class='desc'>{desc}</div>", unsafe_allow_html=True)
+        # <-- ADDED THIS BLOCK
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)

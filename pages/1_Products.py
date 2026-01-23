@@ -1,32 +1,39 @@
+import streamlit as st
+import os
+
+# --------------------------
+# FIX IMAGE PATH
+# --------------------------
+BASE = os.path.dirname(os.path.abspath(__file__))           
+IMG_DIR = os.path.abspath(os.path.join(BASE, "..", "images"))
+
+def load_img(name):
+    return os.path.join(IMG_DIR, name)
+
+# --------------------------
+# PAGE CONFIG
+# --------------------------
+st.set_page_config(
+    page_title="Products - Mina Store",
+    page_icon="🛍️",
+    layout="wide"
+)
+
 # --------------------------
 # RESPONSIVE CSS
 # --------------------------
 st.markdown("""
 <style>
 
-/* NEON BLUE TITLE */
+/* Gradient Title */
 .title {
     font-size: 42px;
     font-weight: 900;
+    background: linear-gradient(90deg, #ff7a18, #af002d, #319197);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: center;
     margin-bottom: 25px;
-    color: #00C8FF !important;
-    text-shadow: 
-        0 0 8px #00C8FF,
-        0 0 12px #00AEDD,
-        0 0 20px #0088BB;
-}
-
-/* SUBTITLE */
-.subtitle {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #4FD9FF;
-    text-shadow:
-        0 0 6px #00C8FF,
-        0 0 10px #0095CC;
 }
 
 /* Grid Container */
@@ -66,9 +73,6 @@ st.markdown("""
     .title {
         font-size: 30px;
     }
-    .subtitle {
-        font-size: 18px;
-    }
     .product-card {
         padding: 12px;
         border-radius: 14px;
@@ -80,3 +84,31 @@ st.markdown("""
 
 </style>
 """, unsafe_allow_html=True)
+
+# --------------------------
+# PAGE TITLE
+# --------------------------
+st.markdown("<div class='title'>🛍️ Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
+st.write("### Browse Categories:")
+
+# --------------------------
+# PRODUCT GRID RESPONSIVE
+# --------------------------
+st.markdown("<div class='grid-container'>", unsafe_allow_html=True)
+
+categories = [
+    ("gift.png", "Gift Items"),
+    ("grocery.png", "Grocery"),
+    ("hardware.png", "Hardware"),
+    ("print.png", "Print & Xerox"),
+]
+
+for img, caption in categories:
+    st.markdown(f"""
+        <div class='product-card'>
+            <img src='data:image/png;base64,{st.image(load_img(img), use_column_width=True, output_format="PNG")}'/>
+            <div class='caption'>{caption}</div>
+        </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("</div>", unsafe_allow_html=True)

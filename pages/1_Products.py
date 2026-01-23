@@ -1,3 +1,27 @@
+import streamlit as st
+import os
+
+# --------------------------
+# FIX IMAGE PATH
+# --------------------------
+BASE = os.path.dirname(os.path.abspath(__file__))           
+IMG_DIR = os.path.abspath(os.path.join(BASE, "..", "images"))
+
+def load_img(name):
+    return os.path.join(IMG_DIR, name)
+
+# --------------------------
+# PAGE CONFIG
+# --------------------------
+st.set_page_config(
+    page_title="Products - Mina Store",
+    page_icon="🛍️",
+    layout="wide"
+)
+
+# --------------------------
+# NEON PREMIUM V2 CSS
+# --------------------------
 st.markdown("""
 <style>
 
@@ -61,9 +85,7 @@ body, .main {
     padding: 10px;
 }
 
-/* ──────────────────────────────────────────────── */
-/*            NEON CARD PREMIUM V2                  */
-/* ──────────────────────────────────────────────── */
+/* NEON CARD PREMIUM V2 */
 .product-card {
     padding: 15px;
     border-radius: 20px;
@@ -88,11 +110,12 @@ body, .main {
     transition: opacity 0.3s ease-in-out;
 }
 
-/* Hover premium effects */
+/* Hover effects */
 .product-card:hover {
     transform: scale(1.07) rotateX(6deg) rotateY(-6deg);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5),
-                0 0 50px rgba(0, 255, 255, 0.3);
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.5),
+        0 0 50px rgba(0, 255, 255, 0.3);
 }
 
 .product-card:hover::before {
@@ -108,7 +131,7 @@ body, .main {
     text-shadow: 0 0 6px #00dfff;
 }
 
-/* CLICK RIPPLE EFFECT */
+/* CLICK RIPPLE */
 .product-card:active {
     animation: clickRipple 0.4s ease-out;
 }
@@ -127,3 +150,32 @@ body, .main {
 
 </style>
 """, unsafe_allow_html=True)
+
+# --------------------------
+# TITLES
+# --------------------------
+st.markdown("<div class='title'>🛍️ Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
+st.markdown("<div class='subtitle'>Your Premium Neon Collection</div>", unsafe_allow_html=True)
+st.markdown("<div class='neon-divider'></div>", unsafe_allow_html=True)
+
+# --------------------------
+# PRODUCT GRID RESPONSIVE
+# --------------------------
+st.markdown("<div class='grid-container'>", unsafe_allow_html=True)
+
+categories = [
+    ("gift.png", "Gift Items"),
+    ("grocery.png", "Grocery"),
+    ("hardware.png", "Hardware"),
+    ("print.png", "Print & Xerox"),
+]
+
+for img, caption in categories:
+    st.markdown(f"""
+        <div class='product-card'>
+            <img src="app://local/{load_img(img)}" style="width:100%; border-radius:12px;" />
+            <div class='caption'>{caption}</div>
+        </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("</div>", unsafe_allow_html=True)

@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="Mina Multi-Purpose Store",
-    page_icon="Mina_Store_Logo.png",  # replace with your file name
+    page_icon="favicon.png",  # replace with your file name
     layout="wide"
 )
 

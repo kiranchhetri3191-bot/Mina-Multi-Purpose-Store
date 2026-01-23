@@ -4,8 +4,8 @@ import os
 # --------------------------
 # FIX IMAGE PATH
 # --------------------------
-BASE = os.path.dirname(os.path.abspath(__file__))           
-IMG_DIR = os.path.abspath(os.path.join(BASE, "..", "images"))  
+BASE = os.path.dirname(os.path.abspath(__file__))
+IMG_DIR = os.path.abspath(os.path.join(BASE, "..", "images"))
 
 def load_img(name):
     return os.path.join(IMG_DIR, name)
@@ -14,88 +14,131 @@ def load_img(name):
 # PAGE CONFIG
 # --------------------------
 st.set_page_config(
-    page_title="Products - Mina Multi-Purpose Store",
+    page_title="Products - Mina Store",
     page_icon="🛍️",
     layout="wide"
 )
 
 # --------------------------
-# CUSTOM CSS for Modern Look
+# DARK/LIGHT TOGGLE
 # --------------------------
-st.markdown(
-    """
-    <style>
-        /* Title Gradient */
-        .title {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #ff7a18, #af002d, #319197);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            padding-bottom: 10px;
-            text-align:center;
-        }
+mode = st.sidebar.radio("Theme Mode", ["Light", "Dark"], index=0)
 
-        /* Product Cards */
-        .product-card {
-            padding: 18px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: 0.3s ease-in-out;
-            text-align:center;
-        }
-
-        .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            cursor: pointer;
-        }
-
-        .caption {
-            font-size: 20px;
-            font-weight: 700;
-            margin-top: 10px;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+if mode == "Dark":
+    bg_color = "#0A0F24"
+    card_bg = "rgba(255, 255, 255, 0.12)"
+else:
+    bg_color = "#F5F7FA"
+    card_bg = "rgba(255, 255, 255, 0.65)"
 
 # --------------------------
-# PAGE TITLE
+# CUSTOM CSS (Neon + Responsive + Modern)
 # --------------------------
-st.markdown("<div class='title'>🛍️ Mina Multi-Purpose Store – Product Categories</div>", unsafe_allow_html=True)
+st.markdown(f"""
+<style>
 
-st.write("### Explore our categories below:")
+body {{
+    background-color: {bg_color} !important;
+}}
+
+.main {{
+    background-color: {bg_color} !important;
+}}
+
+/* NEON BLUE TITLE */
+.title {{
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00C8FF !important;
+    text-shadow: 0 0 10px #00C8FF, 0 0 20px #0099CC, 0 0 30px #00C8FF;
+}}
+
+/* SUBTITLE */
+.subtitle {{
+    font-size: 22px;
+    color: #00E1FF;
+    text-align:center;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #00D4FF;
+}}
+
+/* RESPONSIVE GRID */
+.grid-container {{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 22px;
+    padding: 10px;
+}}
+
+/* PRODUCT CARDS */
+.product-card {{
+    padding: 15px;
+    border-radius: 18px;
+    background: {card_bg};
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    text-align: center;
+}}
+
+.product-card:hover {{
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 200, 255, 0.4);
+    border-color: #00C8FF;
+}}
+
+/* CAPTION */
+.caption {{
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 8px;
+    color: #00E1FF;
+    text-shadow: 0 0 6px #00C8FF;
+}}
+
+/* SMALLER ON MOBILE */
+@media (max-width: 480px) {{
+    .title {{
+        font-size: 32px;
+    }}
+    .product-card {{
+        padding: 12px;
+    }}
+    .caption {{
+        font-size: 16px;
+    }}
+}}
+
+</style>
+""", unsafe_allow_html=True)
+
+# --------------------------
+# TITLE
+# --------------------------
+st.markdown("<div class='title'>🛍️ Mina Multi-Purpose Store</div>", unsafe_allow_html=True)
+st.markdown("<div class='subtitle'>Explore our top categories</div>", unsafe_allow_html=True)
 
 # --------------------------
 # PRODUCT GRID
 # --------------------------
-col1, col2, col3, col4 = st.columns(4)
+st.markdown("<div class='grid-container'>", unsafe_allow_html=True)
 
-with col1:
-    st.markdown("<div class='product-card'>", unsafe_allow_html=True)
-    st.image(load_img("gift.png"), use_column_width=True)
-    st.markdown("<div class='caption'>Gift Items</div>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+categories = [
+    ("gift.png", "Gift Items"),
+    ("grocery.png", "Grocery"),
+    ("hardware.png", "Hardware"),
+    ("print.png", "Print & Xerox"),
+]
 
-with col2:
-    st.markdown("<div class='product-card'>", unsafe_allow_html=True)
-    st.image(load_img("grocery.png"), use_column_width=True)
-    st.markdown("<div class='caption'>Grocery</div>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+for img, caption in categories:
+    st.markdown(f"""
+        <div class='product-card'>
+            <img src="app://local/{load_img(img)}" style="width:100%; border-radius:12px;" />
+            <div class='caption'>{caption}</div>
+        </div>
+    """, unsafe_allow_html=True)
 
-with col3:
-    st.markdown("<div class='product-card'>", unsafe_allow_html=True)
-    st.image(load_img("hardware.png"), use_column_width=True)
-    st.markdown("<div class='caption'>Hardware</div>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with col4:
-    st.markdown("<div class='product-card'>", unsafe_allow_html=True)
-    st.image(load_img("print.png"), use_column_width=True)
-    st.markdown("<div class='caption'>Print & Xerox</div>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)

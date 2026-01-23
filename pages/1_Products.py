@@ -25,7 +25,7 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Title (gradient stays same) */
+/* Title (original gradient) */
 .title {
     font-size: 42px;
     font-weight: 900;
@@ -71,11 +71,11 @@ st.markdown("""
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* Soft Neon Caption */
+/* BIGGER Soft Neon Captions */
 .caption {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 8px;
+    font-size: 22px;        /* Bigger text */
+    font-weight: 800;       /* Bolder */
+    margin-top: 12px;
     color: #39BFFF;
     text-shadow: 
         0 0 3px rgba(57,191,255,0.5),
@@ -84,11 +84,6 @@ st.markdown("""
 
 /* Light mode softer glow */
 @media (prefers-color-scheme: light) {
-    .subtitle-text {
-        text-shadow: 
-            0 0 2px rgba(31,168,255,0.4),
-            0 0 4px rgba(31,168,255,0.2);
-    }
     .caption {
         text-shadow:
             0 0 2px rgba(57,191,255,0.4),
@@ -109,7 +104,7 @@ st.markdown("""
         border-radius: 14px;
     }
     .caption {
-        font-size: 16px;
+        font-size: 19px;   /* Slightly smaller on phones */
     }
 }
 

@@ -263,7 +263,7 @@ reviews = [
     ),
     (
         "Tharun kumar vontimitta",
-        "⭐⭐⭐⭐⭐",
+        "⭐⭐⭐⭐⭐",.
     ),
 ]
 

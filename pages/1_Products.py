@@ -43,7 +43,7 @@ st.markdown("""
 
 
 /* ==========================
-   SOFT NEON SUBTITLE
+   SUBTITLE
    ========================== */
 .subtitle-text {
     font-size: 22px;
@@ -55,63 +55,149 @@ st.markdown("""
 }
 
 
-/* ==========================
-   CLICKABLE NAVIGATION ARROW
-   ========================== */
-.nav-arrow {
+/* =====================================================
+   NEXT PAGE BUTTON
+   ===================================================== */
+
+.next-page-button {
     position: fixed;
+
     left: 18px;
     top: 95px;
 
-    z-index: 999999;
-
-    width: 55px;
-    height: 55px;
+    width: 58px;
+    height: 58px;
 
     border-radius: 50%;
 
     background: linear-gradient(
         135deg,
-        #1677ff,
+        #006eff,
         #00c6ff
     );
 
     color: white !important;
 
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 900;
 
     text-align: center;
-    line-height: 55px;
+    line-height: 58px;
 
     text-decoration: none !important;
 
+    z-index: 999999;
+
     box-shadow:
-        0 4px 15px rgba(0,150,255,0.45);
+        0 0 10px rgba(0,174,255,0.7),
+        0 0 25px rgba(0,174,255,0.45);
 
     transition: all 0.25s ease;
+
+    animation: arrowPulse 1.8s infinite;
 }
 
 
-/* Arrow hover effect */
-.nav-arrow:hover {
-    transform: scale(1.12);
+/* Button hover */
+.next-page-button:hover {
+    transform: scale(1.15);
 
     box-shadow:
-        0 6px 25px rgba(0,150,255,0.70);
+        0 0 15px rgba(0,174,255,0.9),
+        0 0 35px rgba(0,174,255,0.7);
+}
+
+
+/* ==========================
+   NEXT PAGE LABEL
+   ========================== */
+
+.next-page-label {
+    position: fixed;
+
+    left: 88px;
+    top: 101px;
+
+    z-index: 999998;
+
+    background: rgba(0, 119, 255, 0.95);
+
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 25px;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 4px 15px rgba(0,100,255,0.35);
+
+    white-space: nowrap;
+
+    animation: labelPulse 1.8s infinite;
+}
+
+
+/* Little pointing arrow */
+.next-page-label::before {
+    content: "←";
+
+    font-size: 25px;
+    font-weight: 900;
+
+    margin-right: 7px;
+
+    vertical-align: middle;
+}
+
+
+/* ==========================
+   ANIMATION
+   ========================== */
+
+@keyframes arrowPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+
+@keyframes labelPulse {
+
+    0%, 100% {
+        opacity: 0.9;
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(4px);
+    }
+
 }
 
 
 /* ==========================
    GRID CONTAINER
    ========================== */
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(
-        auto-fill,
-        minmax(180px, 1fr)
-    );
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(180px, 1fr));
+
     gap: 22px;
+
     padding: 10px;
 }
 
@@ -119,6 +205,7 @@ st.markdown("""
 /* ==========================
    CARD DESIGN
    ========================== */
+
 .product-card {
     padding: 15px;
 
@@ -150,6 +237,7 @@ st.markdown("""
 /* ==========================
    CAPTION
    ========================== */
+
 .caption {
     font-size: 22px;
     font-weight: 800;
@@ -167,6 +255,7 @@ st.markdown("""
 /* ==========================
    DESCRIPTION
    ========================== */
+
 .desc {
     font-size: 14px;
 
@@ -181,6 +270,7 @@ st.markdown("""
 /* ==========================
    LIGHT MODE
    ========================== */
+
 @media (prefers-color-scheme: light) {
 
     .caption {
@@ -196,9 +286,10 @@ st.markdown("""
 
 
 /* ==========================
-   MOBILE RESPONSIVENESS
+   MOBILE
    ========================== */
-@media (max-width: 480px) {
+
+@media (max-width: 600px) {
 
     .title {
         font-size: 30px;
@@ -221,39 +312,62 @@ st.markdown("""
         font-size: 13px;
     }
 
-    /* Smaller arrow on mobile */
-    .nav-arrow {
-        width: 45px;
-        height: 45px;
 
-        line-height: 45px;
+    /* Smaller navigation button */
+    .next-page-button {
 
-        font-size: 26px;
+        width: 48px;
+        height: 48px;
+
+        line-height: 48px;
+
+        font-size: 27px;
 
         left: 12px;
         top: 85px;
     }
+
+
+    /* Smaller label */
+    .next-page-label {
+
+        left: 70px;
+        top: 88px;
+
+        padding: 8px 12px;
+
+        font-size: 13px;
+    }
+
+    .next-page-label::before {
+        font-size: 20px;
+    }
+
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 
-# --------------------------
-# CLICKABLE NEXT PAGE ARROW
-# --------------------------
-# Change /Gift_Items if your
-# next page has another filename.
+# =====================================================
+# NEXT PAGE NAVIGATION
+# =====================================================
+
+# Change /Gift_Items to your actual next page URL
 st.markdown(
     """
     <a
-        class="nav-arrow"
+        class="next-page-button"
         href="/Gift_Items"
         target="_self"
-        title="Go to Gift Items"
+        title="Go to Next Page"
     >
         ➜
     </a>
+
+    <div class="next-page-label">
+        CLICK HERE FOR NEXT PAGE
+    </div>
     """,
     unsafe_allow_html=True
 )
@@ -262,6 +376,7 @@ st.markdown(
 # --------------------------
 # PAGE TITLE
 # --------------------------
+
 st.markdown(
     "<div class='title'>🛍️ Mina Multi-Purpose Store</div>",
     unsafe_allow_html=True
@@ -271,6 +386,7 @@ st.markdown(
 # --------------------------
 # SUBTITLE
 # --------------------------
+
 st.markdown(
     "<h3 class='subtitle-text'>Browse Categories:</h3>",
     unsafe_allow_html=True
@@ -280,6 +396,7 @@ st.markdown(
 # --------------------------
 # PRODUCT GRID
 # --------------------------
+
 st.markdown(
     "<div class='grid-container'>",
     unsafe_allow_html=True
@@ -289,6 +406,7 @@ st.markdown(
 # --------------------------
 # CATEGORIES
 # --------------------------
+
 categories = [
 
     (
@@ -321,6 +439,7 @@ categories = [
 # --------------------------
 # DISPLAY PRODUCTS
 # --------------------------
+
 for img, caption, desc in categories:
 
     st.markdown(
@@ -330,7 +449,6 @@ for img, caption, desc in categories:
 
     image_path = load_img(img)
 
-    # Check whether image exists
     if os.path.exists(image_path):
 
         st.image(
@@ -363,6 +481,7 @@ for img, caption, desc in categories:
 # --------------------------
 # CLOSE GRID
 # --------------------------
+
 st.markdown(
     "</div>",
     unsafe_allow_html=True

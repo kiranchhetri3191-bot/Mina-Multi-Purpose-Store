@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import os
 
@@ -133,82 +132,6 @@ st.markdown("""
     }
 }
 
-
-/* =====================================================
-   NEXT PAGE BUTTON
-   ===================================================== */
-
-.next-page-section {
-    text-align: center;
-    margin-top: 45px;
-    margin-bottom: 30px;
-}
-
-.next-page-title {
-    font-size: 24px;
-    font-weight: 800;
-    color: #008cff;
-    margin-bottom: 8px;
-}
-
-.next-page-subtitle {
-    font-size: 15px;
-    color: #666;
-    margin-bottom: 18px;
-}
-
-
-/* Make Streamlit page link look like a button */
-.next-page-section [data-testid="stPageLink-NavLink"] {
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    width: 280px !important;
-
-    padding: 14px 25px !important;
-
-    border-radius: 30px !important;
-
-    background: linear-gradient(
-        90deg,
-        #007bff,
-        #00c6ff
-    ) !important;
-
-    color: white !important;
-
-    font-size: 17px !important;
-    font-weight: 900 !important;
-
-    text-decoration: none !important;
-
-    box-shadow:
-        0 6px 20px rgba(0,140,255,0.35) !important;
-
-    transition: all 0.3s ease !important;
-}
-
-
-/* Hover effect */
-.next-page-section [data-testid="stPageLink-NavLink"]:hover {
-    transform: translateY(-4px) scale(1.03);
-
-    box-shadow:
-        0 10px 30px rgba(0,140,255,0.55) !important;
-}
-
-
-/* Mobile button */
-@media (max-width: 480px) {
-
-    .next-page-section [data-testid="stPageLink-NavLink"] {
-        width: 85% !important;
-        font-size: 15px !important;
-    }
-
-}
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -281,17 +204,12 @@ for img, caption, desc in categories:
 
     # Check whether image exists
     if os.path.exists(image_path):
-
         st.image(
             image_path,
             width="stretch"
         )
-
     else:
-
-        st.warning(
-            f"Image not found: {img}"
-        )
+        st.warning(f"Image not found: {img}")
 
     st.markdown(
         f"<div class='caption'>{caption}</div>",
@@ -316,48 +234,3 @@ st.markdown(
     "</div>",
     unsafe_allow_html=True
 )
-
-
-# =====================================================
-# DIRECT NEXT PAGE BUTTON
-# =====================================================
-
-st.markdown(
-    """
-    <div class="next-page-section">
-
-        <div class="next-page-title">
-            👇 Want to know more?
-        </div>
-
-        <div class="next-page-subtitle">
-            Visit our next page for contact & location
-        </div>
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-
-# --------------------------
-# STREAMLIT PAGE LINK
-# --------------------------
-st.page_link(
-    "pages/Contact_Location.py",
-    label="📍  VISIT CONTACT & LOCATION  ➜",
-    icon="➡️"
-)
-```
-
-**Important:** Because `1_Products.py` and `Contact_Location.py` are both inside your `pages` folder, if Streamlit gives an error with `"pages/Contact_Location.py"`, change that one line to:
-
-```python
-st.page_link(
-    "Contact_Location.py",
-    label="📍  VISIT CONTACT & LOCATION  ➜",
-    icon="➡️"
-)
-```
-
-The rest of the code does not need to change.

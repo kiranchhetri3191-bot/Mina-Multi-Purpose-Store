@@ -28,9 +28,9 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* ==========================
-   TITLE
-   ========================== */
+/* --------------------------
+   Title
+   -------------------------- */
 .title {
     font-size: 42px;
     font-weight: 900;
@@ -42,9 +42,9 @@ st.markdown("""
 }
 
 
-/* ==========================
-   SUBTITLE
-   ========================== */
+/* --------------------------
+   Soft Neon Subtitle
+   -------------------------- */
 .subtitle-text {
     font-size: 22px;
     font-weight: 700;
@@ -56,194 +56,135 @@ st.markdown("""
 
 
 /* =====================================================
-   NEXT PAGE BUTTON
+   NEXT PAGE NAVIGATION
    ===================================================== */
 
-.next-page-button {
+.next-page {
     position: fixed;
 
-    left: 18px;
-    top: 95px;
-
-    width: 58px;
-    height: 58px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #006eff,
-        #00c6ff
-    );
-
-    color: white !important;
-
-    font-size: 34px;
-    font-weight: 900;
-
-    text-align: center;
-    line-height: 58px;
-
-    text-decoration: none !important;
+    left: 70px;
+    top: 85px;
 
     z-index: 999999;
 
-    box-shadow:
-        0 0 10px rgba(0,174,255,0.7),
-        0 0 25px rgba(0,174,255,0.45);
+    display: flex;
+    align-items: center;
 
-    transition: all 0.25s ease;
+    gap: 10px;
 
-    animation: arrowPulse 1.8s infinite;
+    text-decoration: none !important;
+
+    cursor: pointer;
 }
 
 
-/* Button hover */
-.next-page-button:hover {
-    transform: scale(1.15);
+/* Moving Arrow */
+.next-arrow {
+    font-size: 38px;
 
-    box-shadow:
-        0 0 15px rgba(0,174,255,0.9),
-        0 0 35px rgba(0,174,255,0.7);
+    color: #008cff;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 0 5px rgba(0,140,255,0.6),
+        0 0 12px rgba(0,140,255,0.4);
+
+    animation: moveArrow 1s infinite;
 }
 
 
-/* ==========================
-   NEXT PAGE LABEL
-   ========================== */
-
-.next-page-label {
-    position: fixed;
-
-    left: 88px;
-    top: 101px;
-
-    z-index: 999998;
-
-    background: rgba(0, 119, 255, 0.95);
+/* Click Here Label */
+.next-text {
+    background: #008cff;
 
     color: white;
 
-    padding: 10px 18px;
+    padding: 8px 16px;
 
-    border-radius: 25px;
+    border-radius: 20px;
 
     font-size: 16px;
+
     font-weight: 800;
 
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 
     box-shadow:
-        0 4px 15px rgba(0,100,255,0.35);
+        0 0 10px rgba(0,140,255,0.45),
+        0 0 20px rgba(0,140,255,0.25);
 
     white-space: nowrap;
 
-    animation: labelPulse 1.8s infinite;
+    transition: 0.25s;
 }
 
 
-/* Little pointing arrow */
-.next-page-label::before {
-    content: "←";
+/* Hover */
+.next-page:hover .next-text {
+    background: #006fe6;
 
-    font-size: 25px;
-    font-weight: 900;
+    transform: scale(1.05);
 
-    margin-right: 7px;
-
-    vertical-align: middle;
+    box-shadow:
+        0 0 15px rgba(0,140,255,0.7),
+        0 0 30px rgba(0,140,255,0.4);
 }
 
 
-/* ==========================
-   ANIMATION
-   ========================== */
-
-@keyframes arrowPulse {
+/* Arrow Animation */
+@keyframes moveArrow {
 
     0%, 100% {
-        transform: scale(1);
+        transform: translateX(0);
     }
 
     50% {
-        transform: scale(1.08);
+        transform: translateX(8px);
     }
 
 }
 
 
-@keyframes labelPulse {
-
-    0%, 100% {
-        opacity: 0.9;
-    }
-
-    50% {
-        opacity: 1;
-        transform: translateX(4px);
-    }
-
-}
-
-
-/* ==========================
-   GRID CONTAINER
-   ========================== */
-
+/* --------------------------
+   Grid Container
+   -------------------------- */
 .grid-container {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill, minmax(180px, 1fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 22px;
-
     padding: 10px;
 }
 
 
-/* ==========================
-   CARD DESIGN
-   ========================== */
-
+/* --------------------------
+   Card Design
+   -------------------------- */
 .product-card {
     padding: 15px;
-
     border-radius: 18px;
-
     background: rgba(255,255,255,0.15);
-
     border: 1px solid rgba(255,255,255,0.2);
-
     backdrop-filter: blur(7px);
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.15);
-
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     transition: 0.3s;
-
     text-align: center;
 }
 
 
 .product-card:hover {
     transform: scale(1.05);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
 
-/* ==========================
-   CAPTION
-   ========================== */
-
+/* --------------------------
+   Bigger Soft Neon Captions
+   -------------------------- */
 .caption {
     font-size: 22px;
     font-weight: 800;
-
     margin-top: 12px;
-
     color: #39BFFF;
 
     text-shadow:
@@ -252,25 +193,20 @@ st.markdown("""
 }
 
 
-/* ==========================
-   DESCRIPTION
-   ========================== */
-
+/* --------------------------
+   Description
+   -------------------------- */
 .desc {
     font-size: 14px;
-
     color: #e8f7ff;
-
     margin-top: 4px;
-
     opacity: 0.9;
 }
 
 
-/* ==========================
-   LIGHT MODE
-   ========================== */
-
+/* --------------------------
+   Light mode softer glow
+   -------------------------- */
 @media (prefers-color-scheme: light) {
 
     .caption {
@@ -285,11 +221,10 @@ st.markdown("""
 }
 
 
-/* ==========================
-   MOBILE
-   ========================== */
-
-@media (max-width: 600px) {
+/* --------------------------
+   Mobile Responsiveness
+   -------------------------- */
+@media (max-width: 480px) {
 
     .title {
         font-size: 30px;
@@ -313,34 +248,20 @@ st.markdown("""
     }
 
 
-    /* Smaller navigation button */
-    .next-page-button {
-
-        width: 48px;
-        height: 48px;
-
-        line-height: 48px;
-
-        font-size: 27px;
-
+    /* Mobile Next Page Button */
+    .next-page {
         left: 12px;
-        top: 85px;
+        top: 80px;
+        gap: 6px;
     }
 
-
-    /* Smaller label */
-    .next-page-label {
-
-        left: 70px;
-        top: 88px;
-
-        padding: 8px 12px;
-
-        font-size: 13px;
+    .next-arrow {
+        font-size: 30px;
     }
 
-    .next-page-label::before {
-        font-size: 20px;
+    .next-text {
+        font-size: 12px;
+        padding: 7px 11px;
     }
 
 }
@@ -350,24 +271,30 @@ st.markdown("""
 
 
 # =====================================================
-# NEXT PAGE NAVIGATION
+# NEXT PAGE BUTTON
+# =====================================================
+# Clicking this takes the customer to Gift_Items.py
+# inside the Streamlit pages folder.
 # =====================================================
 
-# Change /Gift_Items to your actual next page URL
 st.markdown(
     """
     <a
-        class="next-page-button"
         href="/Gift_Items"
         target="_self"
-        title="Go to Next Page"
+        class="next-page"
+        title="Go to Gift Items"
     >
-        ➜
-    </a>
 
-    <div class="next-page-label">
-        CLICK HERE FOR NEXT PAGE
-    </div>
+        <div class="next-arrow">
+            ➜
+        </div>
+
+        <div class="next-text">
+            CLICK HERE FOR NEXT PAGE
+        </div>
+
+    </a>
     """,
     unsafe_allow_html=True
 )
@@ -376,7 +303,6 @@ st.markdown(
 # --------------------------
 # PAGE TITLE
 # --------------------------
-
 st.markdown(
     "<div class='title'>🛍️ Mina Multi-Purpose Store</div>",
     unsafe_allow_html=True
@@ -386,7 +312,6 @@ st.markdown(
 # --------------------------
 # SUBTITLE
 # --------------------------
-
 st.markdown(
     "<h3 class='subtitle-text'>Browse Categories:</h3>",
     unsafe_allow_html=True
@@ -396,7 +321,6 @@ st.markdown(
 # --------------------------
 # PRODUCT GRID
 # --------------------------
-
 st.markdown(
     "<div class='grid-container'>",
     unsafe_allow_html=True
@@ -406,7 +330,6 @@ st.markdown(
 # --------------------------
 # CATEGORIES
 # --------------------------
-
 categories = [
 
     (
@@ -439,7 +362,6 @@ categories = [
 # --------------------------
 # DISPLAY PRODUCTS
 # --------------------------
-
 for img, caption, desc in categories:
 
     st.markdown(
@@ -449,6 +371,7 @@ for img, caption, desc in categories:
 
     image_path = load_img(img)
 
+    # Check whether image exists
     if os.path.exists(image_path):
 
         st.image(
@@ -481,7 +404,6 @@ for img, caption, desc in categories:
 # --------------------------
 # CLOSE GRID
 # --------------------------
-
 st.markdown(
     "</div>",
     unsafe_allow_html=True

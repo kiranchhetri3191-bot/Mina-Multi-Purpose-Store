@@ -260,11 +260,6 @@ reviews = [
         "Sunil Tamang",
         "⭐⭐⭐⭐⭐",
         "Nice store with friendly behaviour❤️."
-    ),
-    (
-        "Tharun kumar vontimitta",
-        "⭐⭐⭐⭐⭐",.
-    ),
 ]
 
 # Display existing reviews

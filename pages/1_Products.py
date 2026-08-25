@@ -257,19 +257,13 @@ st.markdown(
 # Sample reviews
 reviews = [
     (
-        "Rahul",
+        "Sunil Tamang",
         "⭐⭐⭐⭐⭐",
-        "Excellent service! Good quality products and very friendly staff."
+        "Nice store with friendly behaviour❤️."
     ),
     (
-        "Priya",
+        "Tharun kumar vontimitta",
         "⭐⭐⭐⭐⭐",
-        "Great experience. I found everything I needed at a reasonable price."
-    ),
-    (
-        "Amit",
-        "⭐⭐⭐⭐",
-        "Good collection and quick service. Will definitely visit again."
     ),
 ]
 
